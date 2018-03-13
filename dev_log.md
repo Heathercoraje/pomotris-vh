@@ -112,4 +112,4 @@ Below, there are prototype images created on Figma
 
 ### Architecture
 
-<img src="assets/architecture.png" width="400" display="inline">
+<img src="img/architecture.png" width="400" display="inline">
