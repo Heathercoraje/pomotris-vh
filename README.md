@@ -11,6 +11,4 @@ We are in building process. Below is a prototype layout of pomotris.
 
 Below, there are prototype images created on Figma
 
-<img src="assets/clock_myPage.png" width="600" display="inline">
-
-<img src="assets/signupLogin.png" width="600" display="inline">
+<img src="img/clock_myPage.png" width="600" display="inline">

@@ -12,9 +12,9 @@
 
 Below, there are prototype images created on Figma
 
-<img src="assets/clock_myPage.png" width="600" display="inline">
+<img src="img/clock_myPage.png" width="600" display="inline">
 
-<img src="assets/signupLogin.png" width="600" display="inline">
+<img src="img/signupLogin.png" width="600" display="inline">
 
 ---
 
@@ -113,9 +113,3 @@ Below, there are prototype images created on Figma
 ### Architecture
 
 <img src="assets/architecture.png" width="400" display="inline">
-
-### Flowchart
-
-<img src="assets/logIn.jpg" width="400" display="inline">
-<img src="assets/signUp.jpg" width="400" display="inline">
-<img src="assets/analystic.jpg" width="400" display="inline">
