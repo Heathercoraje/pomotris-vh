@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
+import Dashboard from '../components/DashBoard';
 
-const App = () => <Header />;
+const App = () => <Dashboard />;
 
 export default App;
