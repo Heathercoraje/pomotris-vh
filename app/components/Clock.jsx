@@ -2,34 +2,48 @@ import React, { Component } from 'react';
 
 class Clock extends Component {
 	state = {
-		startTime: Date.now(),
-		timer: 25,
-		remained: 25,
-		elapsed: 0
+		startTime: new Date().getTime(),
+		timeSetting: 25,
+		remained: '25 : 00'
 	};
 	componentDidMount() {
-		this.countDownID = setInterval(() => this.countDown(), 1000);
+		this.countDownID = setInterval(
+			() => this.countDown(this.state.timeSetting),
+			500
+		);
 	}
 	componentWillUnmount() {
 		clearInterval(this.countDownID);
 	}
-	countDown = () => {
-		// most update time - startTime
-		const elaspsedSecond = Date.now() - this.startTime;
+	countDown = timeSetting => {
+		const now = new Date().getTime(); // milliseconds
+		const time = timeSetting * 60 * 1000;
+		const timeRemained = this.state.startTime + time - now;
 		this.setState({
-			// remained: this.timer - elapsed,
-			// timer: Date.now()
-			elapsed: elaspsedSecond
+			remained: this.formatTime(timeRemained)
 		});
+	};
+
+	formatTime = timeRemained => {
+		const ms = timeRemained;
+		const minutes = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60));
+		const seconds = Math.floor((ms % (1000 * 60)) / 1000);
+		const humanized = [String(minutes), ' : ', String(seconds)];
+		return humanized;
 	};
 	render() {
 		return (
 			<div>
 				<h1>Time Remained</h1>
-				<h2>this is {this.state.elapsed}</h2>
+				<h2>{this.state.remained}</h2>
 			</div>
 		);
 	}
 }
 
 export default Clock;
+
+// getTime() returns the number of milliseconds between midnight of Jan 1, 1970 and the specified dates
+// hence, startTime is the current time in milliseconds format
+// By adding timer (i.e. 25 min ) to start Time, this becomes and endTime
+// and by updating now every second, remained time decreases
