@@ -1,0 +1,55 @@
+{
+	"name": "pomotris-vh",
+	"version": "1.0.0",
+	"description": "Pomodoro click with cool UI",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest",
+		"dev:start": "webpack-dev-server --watch"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Heathercoraje/pomotris-vh.git"
+	},
+	"keywords": ["timer"],
+	"author": "heathercoraje and veredrec",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Heathercoraje/pomotris-vh/issues"
+	},
+	"homepage": "https://github.com/Heathercoraje/pomotris-vh#readme",
+	"devDependencies": {
+		"babel-eslint": "^8.2.2",
+		"babel-plugin-transform-class-properties": "^6.24.1",
+		"babel-plugin-transform-object-rest-spread": "^6.26.0",
+		"babel-preset-stage-0": "^6.24.1",
+		"enzyme": "^3.3.0",
+		"eslint": "^4.19.1",
+		"eslint-config-airbnb": "^16.1.0",
+		"eslint-config-import": "^0.13.0",
+		"eslint-config-prettier": "^2.9.0",
+		"eslint-config-react": "^1.1.7",
+		"eslint-plugin-import": "^2.9.0",
+		"eslint-plugin-jsx-a11y": "^6.0.3",
+		"eslint-plugin-prettier": "^2.6.0",
+		"eslint-plugin-react": "^7.7.0",
+		"html-webpack-plugin": "^3.1.0",
+		"jest": "^22.4.3",
+		"prettier": "^1.11.1",
+		"webpack-cli": "^2.0.13",
+		"webpack-dev-server": "^3.1.1"
+	},
+	"dependencies": {
+		"babel-core": "^6.26.0",
+		"babel-loader": "^7.1.4",
+		"babel-preset-env": "^1.6.1",
+		"babel-preset-react": "^6.24.1",
+		"body-parser": "^1.18.2",
+		"path": "^0.12.7",
+		"react": "^16.2.0",
+		"react-dom": "^16.2.0",
+		"react-router-dom": "^4.2.2",
+		"styled-components": "^3.2.3",
+		"webpack": "^4.2.0"
+	}
+}
