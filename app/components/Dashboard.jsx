@@ -8,12 +8,7 @@ class Dashboard extends React.Component {
 	};
 
 	render() {
-		return (
-			<div>
-				<Clock />
-				{/* <Recordboard /> */}
-			</div>
-		);
+		return <Clock />;
 	}
 }
 
