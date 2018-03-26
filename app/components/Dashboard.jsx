@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
-import Clock from './Clock';
-// import RecordBoard from './Recordboard';
+import styled from 'styled-components';
+import Timer from './Timer';
+
+const Wrapper = styled.div`
+	width: 30vw;
+	margin: 0 auto;
+	text-align: center;
+`;
 
 class Dashboard extends React.Component {
 	state = {
 		record: []
 	};
-
 	render() {
-		return <Clock />;
+		return (
+			<Wrapper>
+				<h1>Pomotris</h1>
+				<Timer />
+			</Wrapper>
+		);
 	}
 }
 
