@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import formatTime from '../helper';
+import formatTime from '../js/helper';
 
 class Timer extends Component {
 	state = {
@@ -25,6 +25,18 @@ class Timer extends Component {
 			remained: remainedSeconds
 		});
 	};
+
+	handleActionButtonsClick = event => {
+		const btn = event.target.value;
+		if (btn === 'start') {
+			this.handleStartClick();
+		} else if (btn === 'stop') {
+			this.handleStopClick();
+		} else {
+			this.handleCancelClick();
+		}
+	};
+
 	handleStartClick = () => {
 		this.countDownID = setInterval(() => this.countDown(), 1000);
 		this.setState({
@@ -51,9 +63,7 @@ class Timer extends Component {
 				<TimeOptions optionClick={this.handleOptionClick} />
 				<ActionButtons
 					isTimerRunning={this.state.isTimerRunning}
-					onStartClick={this.handleStartClick}
-					onStopClick={this.handleStopClick}
-					onCancelClick={this.handleCancelClick}
+					onButtonClick={this.handleActionButtonsClick}
 				/>
 			</div>
 		);
@@ -81,18 +91,16 @@ class TimeOptions extends Component {
 	}
 }
 class ActionButtons extends Component {
-	onButtonClick = () => {
-		if (!this.props.isTimerRunning) {
-			return this.props.onStartClick();
-		}
-		return this.props.onStopClick();
-	};
 	render() {
-		const buttonText = this.props.isTimerRunning ? 'Stop' : 'Start';
+		const buttonText = this.props.isTimerRunning ? 'stop' : 'start';
 		return (
 			<div>
-				<button onClick={this.onButtonClick}>{buttonText}</button>
-				<button onClick={this.props.onCancelClick}>Cancel</button>
+				<button onClick={this.props.onButtonClick} value={buttonText}>
+					{buttonText}
+				</button>
+				<button onClick={this.props.onButtonClick} value="cancel">
+					Cancel
+				</button>
 			</div>
 		);
 	}
