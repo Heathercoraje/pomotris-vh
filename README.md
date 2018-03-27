@@ -12,3 +12,7 @@ We are in building process. Below is a prototype layout of pomotris.
 Below, there are prototype images created on Figma
 
 <img src="img/clock_myPage.png" width="600" display="inline">
+
+The idea for representation of "time blocks" for keeping track of daily work:
+
+<img src="img/cubes.png" width="600" display="inline">
