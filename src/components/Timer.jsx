@@ -32,6 +32,8 @@ class Timer extends Component {
 			this.handleStartClick();
 		} else if (btn === 'Stop') {
 			this.handleStopClick();
+		} else if (btn === 'Resume') {
+			this.handleResumeClick();
 		} else {
 			this.handleCancelClick();
 		}
@@ -41,6 +43,12 @@ class Timer extends Component {
 		this.countDownID = setInterval(() => this.countDown(), 1000);
 		this.setState({
 			startTime: Date.now(),
+			isTimerRunning: true
+		});
+	};
+	handleResumeClick = () => {
+		this.countDownID = setInterval(() => this.countDown(), 1000);
+		this.setState({
 			isTimerRunning: true
 		});
 	};
@@ -57,15 +65,15 @@ class Timer extends Component {
 		this.resetTimer(value);
 	};
 	render() {
-		if(!this.state.remained){
-			alert('Your timer is over');
-
+		if (!this.state.remained) {
+			alert('Your timer is over, your break will start now');
 		}
 		return (
 			<div className="timer">
 				<Clock time={formatTime(this.state.remained)} />
 				<TimeOptions optionClick={this.handleOptionClick} />
 				<ActionButtons
+					isNew={this.state.remained === this.state.duration * 60}
 					isTimerRunning={this.state.isTimerRunning}
 					onButtonClick={this.handleActionButtonsClick}
 				/>
@@ -77,6 +85,9 @@ class Timer extends Component {
 const Clock = props => <h1>{props.time}</h1>;
 
 class TimeOptions extends Component {
+	state = {
+		options: [25, 45, 60]
+	};
 	selectOption = event => {
 		this.props.optionClick(event.target.value);
 	};
@@ -84,19 +95,26 @@ class TimeOptions extends Component {
 	render() {
 		return (
 			<div>
-				<button onClick={this.selectOption} value="25">
-					25 min
-				</button>
-				<button onClick={this.selectOption} value="50">
-					50 min
-				</button>
+				<TimerOptionButtons
+					options={this.state.options}
+					selectOption={this.selectOption}
+				/>
 			</div>
 		);
 	}
 }
+const TimerOptionButtons = props =>
+	props.options.map((option, i) => (
+		<button key={i} onClick={props.selectOption} value={option}>
+			{option} min
+		</button>
+	));
 class ActionButtons extends Component {
 	render() {
-		const buttonText = this.props.isTimerRunning ? 'Stop' : 'Start';
+		const buttonText =
+			!this.props.isNew && !this.props.isTimerRunning
+				? 'Resume'
+				: !this.props.isTimerRunning ? 'Start' : 'Stop';
 		return (
 			<div>
 				<button onClick={this.props.onButtonClick} value={buttonText}>
