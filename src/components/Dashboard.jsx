@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Timer from './Timer';
 
 const Wrapper = styled.div`
-	width: 30vw;
+	width: 40vw;
 	margin: 0 auto;
 	text-align: center;
 `;
