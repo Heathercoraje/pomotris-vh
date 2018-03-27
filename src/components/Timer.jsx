@@ -4,8 +4,8 @@ import formatTime from '../js/helper';
 class Timer extends Component {
 	state = {
 		startTime: '',
-		duration: 1,
-		remained: 1 * 60,
+		duration: 25,
+		remained: 25 * 60,
 		isTimerRunning: false
 	};
 
@@ -59,7 +59,7 @@ class Timer extends Component {
 	render() {
 		if(!this.state.remained){
 			alert('Your timer is over');
-			
+
 		}
 		return (
 			<div className="timer">
