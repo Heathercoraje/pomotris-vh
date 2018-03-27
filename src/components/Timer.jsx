@@ -28,9 +28,9 @@ class Timer extends Component {
 
 	handleActionButtonsClick = event => {
 		const btn = event.target.value;
-		if (btn === 'start') {
+		if (btn === 'Start') {
 			this.handleStartClick();
-		} else if (btn === 'stop') {
+		} else if (btn === 'Stop') {
 			this.handleStopClick();
 		} else {
 			this.handleCancelClick();
@@ -92,7 +92,7 @@ class TimeOptions extends Component {
 }
 class ActionButtons extends Component {
 	render() {
-		const buttonText = this.props.isTimerRunning ? 'stop' : 'start';
+		const buttonText = this.props.isTimerRunning ? 'Stop' : 'Start';
 		return (
 			<div>
 				<button onClick={this.props.onButtonClick} value={buttonText}>
