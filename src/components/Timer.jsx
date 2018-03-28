@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { formatTime, alertMessage } from '../js/helper';
-
+import uuid from 'uuid-v4';
 // 25 min/ 10 min  is default setting
 class Timer extends Component {
 	state = {
+		title: '',
 		startTime: '',
-		duration: 25,
-		remained: 25 * 60,
+		duration: 0.1,
+		remained: 0.1 * 60,
 		breakTime: 10 * 60,
 		isTimerRunning: false,
 		isBreakRunning: false
@@ -40,7 +41,13 @@ class Timer extends Component {
 			isTimerRunning: false
 		});
 	};
-
+	handleRecordSubmit = (obj) => {
+		const title = obj.title;
+		const startTime = obj.startTime;
+		const duration = obj.duration;
+		const id = uuid();
+		this.props.onRecordSubmit({title, startTime, duration, id})
+	}
 	// handle button-clicks
 	handleActionButtonsClick = event => {
 		const btn = event.target.value;
@@ -113,6 +120,7 @@ class Timer extends Component {
 	handleComplete = () => {
 		alertMessage('break');
 		clearInterval(this.countDownID);
+		this.handleRecordSubmit({...this.state})
 		this.handleBreakStart()
 		this.setState({
 			isTimerRunning: false
@@ -133,6 +141,7 @@ class Timer extends Component {
 							: formatTime(this.state.breakTime)
 					}
 				/>
+				<Form />
 				<TimeOptions optionClick={this.handleOptionClick} />
 				<ActionButtons
 					isNew={this.state.remained === this.state.duration * 60}

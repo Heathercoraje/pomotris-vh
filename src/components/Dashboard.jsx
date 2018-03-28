@@ -10,13 +10,20 @@ const Wrapper = styled.div`
 
 class Dashboard extends React.Component {
 	state = {
-		record: []
+		records: []
 	};
+	// example { title: '', startTime: '', duration: '', id:''}
+	handleRecordSubmit = (newRecord) => {
+		const records  = [ ...this.state.records, newRecord ];
+		this.setState({
+			records
+		});
+	}
 	render() {
 		return (
 			<Wrapper>
 				<h1>Pomotris</h1>
-				<Timer />
+				<Timer onRecordSubmit={this.handleRecordSubmit}/>
 			</Wrapper>
 		);
 	}
