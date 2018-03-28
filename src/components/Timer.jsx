@@ -16,6 +16,9 @@ class Timer extends Component {
 		if (!this.state.remained && this.state.isTimerRunning) {
 			this.handleComplete();
 		}
+		if (this.state.breakTime < 0) {
+			this.handleBreakOver();
+		}
 	}
 	countDown = () => {
 		const remainedSeconds = this.state.remained - 1;
@@ -92,16 +95,25 @@ class Timer extends Component {
 		this.resetTimer(this.state.duration);
 	};
 
-	handleBreak = () => {
+	handleBreakStart = () => {
 		this.breakTimeCountDownID = setInterval(() => this.breakTimeCountDown(), 1000);
 		this.setState({
 			isBreakRunning: true
 		})
 	}
+	handleBreakOver = () => {
+		alertMessage('start')
+		clearInterval(this.breakTimeCountDownID);
+		this.resetTimer(this.state.duration);
+		this.setState({
+			isBreakRunning: false
+		})
+
+	}
 	handleComplete = () => {
-		alertMessage();
+		alertMessage('break');
 		clearInterval(this.countDownID);
-		this.handleBreak()
+		this.handleBreakStart()
 		this.setState({
 			isTimerRunning: false
 		});

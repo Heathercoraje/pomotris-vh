@@ -14,8 +14,9 @@ function pad(numberString, size) {
 	return padded;
 }
 
-function alertMessage() {
-	const message = 'Good job. Take a break.';
-	alert(message);
+function alertMessage(flag) {
+	const breakMsg = 'Good job. Take a break.';
+	const startMsg = 'Break is over. Click Start for new Pomotris';
+	flag === 'break' ? alert(breakMsg) : alert(startMsg);
 }
 module.exports = { formatTime, alertMessage };
