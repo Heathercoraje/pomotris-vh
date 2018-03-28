@@ -12,7 +12,7 @@ class Dashboard extends React.Component {
 	state = {
 		records: []
 	};
-	// example { title: '', startTime: '', duration: '', id:''}
+	// example { type: '',title: '', startTime: '', duration: '', id:''}
 	handleRecordSubmit = (newRecord) => {
 		const records  = [ ...this.state.records, newRecord ];
 		this.setState({
