@@ -77,7 +77,6 @@ class Timer extends Component {
 		this.setState({
 			startTime: Date.now(),
 			isTimerRunning: true,
-			isReset:false
 		});
 	};
 
