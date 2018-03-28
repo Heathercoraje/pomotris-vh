@@ -14,4 +14,8 @@ function pad(numberString, size) {
 	return padded;
 }
 
-module.exports = formatTime;
+function alertMessage() {
+	const message = 'Good job. Take a break.';
+	alert(message);
+}
+module.exports = { formatTime, alertMessage };
