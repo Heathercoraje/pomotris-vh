@@ -7,11 +7,11 @@ class Timer extends Component {
 		category: '',
 		title: '',
 		startTime: '',
-		duration: 25,
-		remained: 25 * 60,
+		duration: 0.1,
+		remained: 0.1 * 60,
 		breakTime: 10 * 60,
 		isTimerRunning: false,
-		isBreakRunning: false,
+		isBreakRunning: false
 	};
 	// breakTime will be passes as props from Dashboard in future
 	componentDidUpdate() {
@@ -41,7 +41,7 @@ class Timer extends Component {
 			duration: newDuration,
 			breakTime: 10 * 60,
 			remained: newDuration * 60,
-			isTimerRunning: false,
+			isTimerRunning: false
 		});
 	};
 	handleRecordSubmit = () => {
@@ -76,7 +76,7 @@ class Timer extends Component {
 		this.countDownID = setInterval(() => this.countDown(), 1000);
 		this.setState({
 			startTime: Date.now(),
-			isTimerRunning: true,
+			isTimerRunning: true
 		});
 	};
 
@@ -161,9 +161,10 @@ class Timer extends Component {
 				/>
 				<Fields
 					onFieldsSubmit={this.handleFieldsSubmit}
+					title={this.state.title}
 					category={this.state.category}
 				/>
-				<TimeOptions optionClick={this.handleOptionClick}  />
+				<TimeOptions optionClick={this.handleOptionClick} />
 				<ActionButtons
 					isNew={this.state.remained === this.state.duration * 60}
 					isCompleted={!this.state.remained}
@@ -185,26 +186,33 @@ class Fields extends Component {
 			title: ''
 		},
 		displayFields: {
-			category:'',
-			title:''
-		},
-		formOpen: true
-	}
+			category: '',
+			title: ''
+		}
+	};
 
-	// componentWillReceiveProps(nextProps) {
-	// 	console.log(nextProps)
-	// }
+	componentWillReceiveProps(nextProps) {
+		// (nextProps.title, nextProps.category);
+		this.setState({
+			inputFields: {
+				category: nextProps.category,
+				title:nextProps.title
+			}
+		})
+	}
+	// this will be called just to clear the input field
+
 
 	onFormSubmit = event => {
 		const fields = this.state.displayFields;
 		this.props.onFieldsSubmit(fields);
-		this.setState({
-			inputFields: {
-				category: '',
-				title: ''
-			},
-			formOpen: false
-		});
+		// this.setState({
+		// 	inputFields: {
+		// 		category: '',
+		// 		title: ''
+		// 	},
+		// 	formOpen: false
+		// });
 		event.preventDefault();
 	};
 
@@ -217,7 +225,7 @@ class Fields extends Component {
 	};
 
 	render() {
-		if (this.state.formOpen ) {
+		// if (this.state.formOpen) {
 			return (
 				<form onSubmit={this.onFormSubmit}>
 					<input
@@ -237,15 +245,14 @@ class Fields extends Component {
 					<input type="submit" />
 				</form>
 			);
-		}
-			const category = this.state.displayFields.category;
-			const title = this.state.displayFields.title;
-			return (
-				<p onClick={() => this.setState({ formOpen: true })}>
-					({category}) {title}{' '}
-				</p>
-			);
-
+		// }
+		// const category = this.state.displayFields.category;
+		// const title = this.state.displayFields.title;
+		// return (
+		// 	<p onClick={() => this.setState({ formOpen: true })}>
+		// 		({category}) {title}{' '}
+		// 	</p>
+		// );
 	}
 }
 
