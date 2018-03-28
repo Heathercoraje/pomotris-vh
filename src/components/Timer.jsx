@@ -4,7 +4,7 @@ import uuid from 'uuid-v4';
 // 25 min/ 10 min  is default setting
 class Timer extends Component {
 	state = {
-		type: '',
+		category: '',
 		title: '',
 		startTime: '',
 		duration: 25,
@@ -35,7 +35,7 @@ class Timer extends Component {
 	resetTimer = newDuration => {
 		clearInterval(this.countDownID);
 		this.setState({
-			type: '',
+			category: '',
 			title: '',
 			startTime: '',
 			duration: newDuration,
@@ -45,17 +45,17 @@ class Timer extends Component {
 		});
 	};
 	handleRecordSubmit = () => {
-		const type = this.state.type;
+		const category = this.state.category;
 		const title = this.state.title;
 		const startTime = this.state.startTime;
 		const duration = this.state.duration;
 		const id = uuid();
-		this.props.onRecordSubmit({ type, title, startTime, duration, id });
+		this.props.onRecordSubmit({ category, title, startTime, duration, id });
 	};
 	handleFieldsSubmit = fields => {
 		this.setState({
 			title: fields.title,
-			type: fields.type
+			category: fields.category
 		});
 	};
 	// handle button-clicks
@@ -161,8 +161,9 @@ class Timer extends Component {
 				/>
 				<Fields
 					onFieldsSubmit={this.handleFieldsSubmit}
+					category={this.state.category}
 				/>
-				<TimeOptions optionClick={this.handleOptionClick} />
+				<TimeOptions optionClick={this.handleOptionClick}  />
 				<ActionButtons
 					isNew={this.state.remained === this.state.duration * 60}
 					isCompleted={!this.state.remained}
@@ -180,26 +181,26 @@ const Clock = props => <h1>{props.time}</h1>;
 class Fields extends Component {
 	state = {
 		inputFields: {
-			type: '',
+			category: '',
 			title: ''
 		},
 		displayFields: {
-			type:'',
+			category:'',
 			title:''
 		},
 		formOpen: true
 	}
-//
-// 	componentWillReceiveProps() {
-// // do something...form needs to be unfold when its a new timer
-// 	}
+
+	// componentWillReceiveProps(nextProps) {
+	// 	console.log(nextProps)
+	// }
 
 	onFormSubmit = event => {
 		const fields = this.state.displayFields;
 		this.props.onFieldsSubmit(fields);
 		this.setState({
 			inputFields: {
-				type: '',
+				category: '',
 				title: ''
 			},
 			formOpen: false
@@ -221,9 +222,9 @@ class Fields extends Component {
 				<form onSubmit={this.onFormSubmit}>
 					<input
 						autoFocus
-						placeholder=" Type "
-						name="type"
-						value={this.state.inputFields.type}
+						placeholder=" category "
+						name="category"
+						value={this.state.inputFields.category}
 						onChange={this.onInputChange}
 					/>
 					<input
@@ -237,11 +238,11 @@ class Fields extends Component {
 				</form>
 			);
 		}
-			const type = this.state.displayFields.type;
+			const category = this.state.displayFields.category;
 			const title = this.state.displayFields.title;
 			return (
 				<p onClick={() => this.setState({ formOpen: true })}>
-					({type}) {title}{' '}
+					({category}) {title}{' '}
 				</p>
 			);
 
