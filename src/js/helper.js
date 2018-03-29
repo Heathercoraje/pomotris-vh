@@ -8,8 +8,8 @@ function formatTime(s) {
 		].join(':');
 		return humanized;
 	}
-	const hours = Math.floor(s / 3600);
-	const minutes = Math.floor(s % 3600);
+	const hours = Math.floor(s / 60 / 60);
+	const minutes = Math.floor((s / 60) % 60);
 	const humanized = [pad(hours.toString(), 2), pad(minutes.toString(), 2)].join(
 		':'
 	);
@@ -27,4 +27,5 @@ function alertMessage(flag) {
 	const startMsg = 'Break is over. Click Start for new Pomotris';
 	flag === 'break' ? alert(breakMsg) : alert(startMsg);
 }
+
 module.exports = { formatTime, alertMessage };

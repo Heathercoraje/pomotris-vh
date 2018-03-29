@@ -4,9 +4,9 @@ import uuid from 'uuid-v4';
 // 25 min/ 10 min  is default setting
 class Timer extends Component {
 	state = {
-		category: '',
-		title: '',
-		startTime: '',
+		category: null,
+		title: null,
+		startTime: null,
 		duration: 25,
 		remained: 25 * 60,
 		breakTime: 10 * 60,
@@ -36,9 +36,9 @@ class Timer extends Component {
 	resetTimer = newDuration => {
 		clearInterval(this.countDownID);
 		this.setState({
-			category: '',
-			title: '',
-			startTime: '',
+			category: null,
+			title: null,
+			startTime: null,
 			duration: newDuration,
 			breakTime: 10 * 60,
 			remained: newDuration * 60,
@@ -46,14 +46,7 @@ class Timer extends Component {
 			isBreakRunning: false
 		});
 	};
-	handleRecordSubmit = () => {
-		const category = this.state.category;
-		const title = this.state.title;
-		const startTime = this.state.startTime;
-		const duration = this.state.duration;
-		const id = uuid();
-		this.props.onRecordSubmit({ category, title, startTime, duration, id });
-	};
+
 	handleFieldsSubmit = fields => {
 		this.setState({
 			title: fields.title,
@@ -77,7 +70,7 @@ class Timer extends Component {
 	handleStartClick = () => {
 		this.countDownID = setInterval(() => this.countDown(), 1000);
 		this.setState({
-			startTime: Date.now(),
+			startTime: new Date(Date.now()).toLocaleString(),
 			isTimerRunning: true
 		});
 	};
@@ -146,7 +139,14 @@ class Timer extends Component {
 			isTimerRunning: false
 		});
 	};
-
+	handleRecordSubmit = () => {
+		const category = this.state.category;
+		const title = this.state.title;
+		const startTime = this.state.startTime;
+		const duration = this.state.duration;
+		const id = uuid();
+		this.props.onRecordSubmit({ category, title, startTime, duration, id });
+	};
 	handleOptionClick = value => {
 		this.resetTimer(value);
 	};
