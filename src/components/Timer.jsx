@@ -4,16 +4,17 @@ import uuid from 'uuid-v4';
 // 25 min/ 10 min  is default setting
 class Timer extends Component {
 	state = {
-		type: '',
+		category: '',
 		title: '',
 		startTime: '',
 		duration: 25,
 		remained: 25 * 60,
 		breakTime: 10 * 60,
 		isTimerRunning: false,
-		isBreakRunning: false,
+		isBreakRunning: false
 	};
-	// breakTime will be passes as props from Dashboard in future
+
+	// breakTime will be passes as props from Dashboard in future (from setting modal)
 	componentDidUpdate() {
 		if (!this.state.remained && this.state.isTimerRunning) {
 			this.handleComplete();
@@ -35,27 +36,28 @@ class Timer extends Component {
 	resetTimer = newDuration => {
 		clearInterval(this.countDownID);
 		this.setState({
-			type: '',
+			category: '',
 			title: '',
 			startTime: '',
 			duration: newDuration,
 			breakTime: 10 * 60,
 			remained: newDuration * 60,
 			isTimerRunning: false,
+			isBreakRunning: false
 		});
 	};
 	handleRecordSubmit = () => {
-		const type = this.state.type;
+		const category = this.state.category;
 		const title = this.state.title;
 		const startTime = this.state.startTime;
 		const duration = this.state.duration;
 		const id = uuid();
-		this.props.onRecordSubmit({ type, title, startTime, duration, id });
+		this.props.onRecordSubmit({ category, title, startTime, duration, id });
 	};
 	handleFieldsSubmit = fields => {
 		this.setState({
 			title: fields.title,
-			type: fields.type
+			category: fields.category
 		});
 	};
 	// handle button-clicks
@@ -76,7 +78,7 @@ class Timer extends Component {
 		this.countDownID = setInterval(() => this.countDown(), 1000);
 		this.setState({
 			startTime: Date.now(),
-			isTimerRunning: true,
+			isTimerRunning: true
 		});
 	};
 
@@ -161,6 +163,8 @@ class Timer extends Component {
 				/>
 				<Fields
 					onFieldsSubmit={this.handleFieldsSubmit}
+					title={this.state.title}
+					category={this.state.category}
 				/>
 				<TimeOptions optionClick={this.handleOptionClick} />
 				<ActionButtons
@@ -175,76 +179,68 @@ class Timer extends Component {
 	}
 }
 
-const Clock = props => <h1>{props.time}</h1>;
+const Clock = props => <div className='clock'>{props.time}</div>;
 
 class Fields extends Component {
 	state = {
-		inputFields: {
-			type: '',
+		fields: {
+			category: '',
 			title: ''
 		},
-		displayFields: {
-			type:'',
-			title:''
-		},
 		formOpen: true
-	}
-//
-// 	componentWillReceiveProps() {
-// // do something...form needs to be unfold when its a new timer
-// 	}
+	};
 
-	onFormSubmit = event => {
-		const fields = this.state.displayFields;
-		this.props.onFieldsSubmit(fields);
+	// when new title & cateroy props are empty ( aka, it is a new timer), then clear input
+	componentWillReceiveProps(nextProps) {
+		if (!nextProps.category && !nextProps.title) {
+			this.clearForm();
+		}
+	}
+
+	clearForm = () => {
 		this.setState({
-			inputFields: {
-				type: '',
+			fields: {
+				category: '',
 				title: ''
 			},
-			formOpen: false
+			formOpen: true
 		});
+	};
+
+	// input data remains after submit, clearing happens when current timer is over or timer is reset
+	onFormSubmit = event => {
+		const fields = this.state.fields;
+		this.props.onFieldsSubmit(fields);
 		event.preventDefault();
 	};
 
 	onInputChange = event => {
-		const inputFields = this.state.inputFields;
-		const displayFields = this.state.displayFields;
-		inputFields[event.target.name] = event.target.value;
-		displayFields[event.target.name] = event.target.value;
-		this.setState({ inputFields, displayFields });
+		const fields = this.state.fields;
+		fields[event.target.name] = event.target.value;
+		this.setState({ fields });
 	};
 
 	render() {
-		if (this.state.formOpen ) {
-			return (
-				<form onSubmit={this.onFormSubmit}>
-					<input
-						autoFocus
-						placeholder=" Type "
-						name="type"
-						value={this.state.inputFields.type}
-						onChange={this.onInputChange}
-					/>
-					<input
-						autoFocus
-						name="title"
-						placeholder=" Task name"
-						value={this.state.inputFields.title}
-						onChange={this.onInputChange}
-					/>
-					<input type="submit" />
-				</form>
-			);
-		}
-			const type = this.state.displayFields.type;
-			const title = this.state.displayFields.title;
-			return (
-				<p onClick={() => this.setState({ formOpen: true })}>
-					({type}) {title}{' '}
-				</p>
-			);
-
+		return (
+			<form onSubmit={this.onFormSubmit} onBlur={this.onFormSubmit}>
+				<input
+					size={15}
+					autoFocus
+					placeholder="  Category "
+					name="category"
+					value={this.state.fields.category}
+					onChange={this.onInputChange}
+				/>
+				<input
+					size={25}
+					name="title"
+					placeholder="Task"
+					value={this.state.fields.title}
+					onChange={this.onInputChange}
+				/>
+				<input style={{ display: 'none' }} type="submit" />
+			</form>
+		);
 	}
 }
 

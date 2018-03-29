@@ -2,14 +2,6 @@
 	font-family: 'IBM Plex Sans', sans-serif;
 	letter-spacing: 1.2px;
 }
-.timer {
-	font-size: 1.3vw;
-	background-color: black;
-	color: white;
-	border-radius: 5px;
-	padding: 1rem 1rem 2rem 1rem;
-}
-
 button {
 	width: 10vw;
 	height: 5vh;
@@ -21,4 +13,29 @@ button {
 	border: none;
 	cursor: pointer;
 	outline: none;
+}
+form > input {
+	border: none;
+	outline: none;
+	border-bottom: #fff 2px solid;
+	font-size: 1.3vw;
+	color: #fff;
+	background-color: transparent;
+	text-align: center;
+}
+.pomotris {
+	padding: 1.5vw;
+	font-size: 4vw;
+	font-weight: 700;
+}
+.timer {
+	background-color: black;
+	color: white;
+	border-radius: 5px;
+	padding: 1rem 1rem 2rem 1rem;
+}
+.clock {
+	padding: 1.5vw;
+	font-size: 4vw;
+	font-weight: 500;
 }
