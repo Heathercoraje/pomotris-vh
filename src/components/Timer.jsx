@@ -13,7 +13,8 @@ class Timer extends Component {
 		isTimerRunning: false,
 		isBreakRunning: false
 	};
-	// breakTime will be passes as props from Dashboard in future
+
+	// breakTime will be passes as props from Dashboard in future (from setting modal)
 	componentDidUpdate() {
 		if (!this.state.remained && this.state.isTimerRunning) {
 			this.handleComplete();
@@ -189,9 +190,7 @@ class Fields extends Component {
 		formOpen: true
 	};
 
-	// this will be called just to clear the input field
-	// this function needs more understanding and also explanation for vered
-	// add minimum style to see if the conditional rendering can be removed completely
+	// when new title & cateroy props are empty ( aka, it is a new timer), then clear input
 	componentWillReceiveProps(nextProps) {
 		if (!nextProps.category && !nextProps.title) {
 			this.clearForm();
@@ -207,12 +206,11 @@ class Fields extends Component {
 			formOpen: true
 		});
 	};
+
+	// input data remains after submit, clearing happens when current timer is over or timer is reset
 	onFormSubmit = event => {
 		const fields = this.state.fields;
 		this.props.onFieldsSubmit(fields);
-		this.setState({
-			formOpen: false
-		});
 		event.preventDefault();
 	};
 
@@ -223,33 +221,25 @@ class Fields extends Component {
 	};
 
 	render() {
-		if (this.state.formOpen) {
-			return (
-				<form onSubmit={this.onFormSubmit}>
-					<input
-						autoFocus
-						placeholder=" category "
-						name="category"
-						value={this.state.fields.category}
-						onChange={this.onInputChange}
-					/>
-					<input
-						autoFocus
-						name="title"
-						placeholder=" Task name"
-						value={this.state.fields.title}
-						onChange={this.onInputChange}
-					/>
-					<input type="submit" />
-				</form>
-			);
-		}
-		const category = this.state.fields.category;
-		const title = this.state.fields.title;
 		return (
-			<p onClick={() => this.setState({ formOpen: true })}>
-				({category}) {title}{' '}
-			</p>
+			<form onSubmit={this.onFormSubmit} onBlur={this.onFormSubmit}>
+				<input
+					size={15}
+					autoFocus
+					placeholder=" Category "
+					name="category"
+					value={this.state.fields.category}
+					onChange={this.onInputChange}
+				/>
+				<input
+					size={25}
+					name="title"
+					placeholder="Task"
+					value={this.state.fields.title}
+					onChange={this.onInputChange}
+				/>
+				<input style={{ display: 'none' }} type="submit" />
+			</form>
 		);
 	}
 }
