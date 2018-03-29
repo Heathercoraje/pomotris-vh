@@ -22,7 +22,7 @@ class Dashboard extends React.Component {
 	render() {
 		return (
 			<Wrapper>
-				<h1>Pomotris</h1>
+				<div className="pomotris">Pomotris</div>
 				<Timer onRecordSubmit={this.handleRecordSubmit}/>
 			</Wrapper>
 		);

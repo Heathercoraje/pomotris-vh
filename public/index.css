@@ -22,12 +22,20 @@ form > input {
 	color: #fff;
 	background-color: transparent;
 	text-align: center;
-	/* border-bottom: 2px gray solid; */
+}
+.pomotris {
+	padding: 1.5vw;
+	font-size: 4vw;
+	font-weight: 700;
 }
 .timer {
-	font-size: 1.3vw;
 	background-color: black;
 	color: white;
 	border-radius: 5px;
 	padding: 1rem 1rem 2rem 1rem;
+}
+.clock {
+	padding: 1.5vw;
+	font-size: 4vw;
+	font-weight: 500;
 }

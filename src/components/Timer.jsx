@@ -179,7 +179,7 @@ class Timer extends Component {
 	}
 }
 
-const Clock = props => <h1>{props.time}</h1>;
+const Clock = props => <div className='clock'>{props.time}</div>;
 
 class Fields extends Component {
 	state = {
@@ -226,7 +226,7 @@ class Fields extends Component {
 				<input
 					size={15}
 					autoFocus
-					placeholder=" Category "
+					placeholder="  Category "
 					name="category"
 					value={this.state.fields.category}
 					onChange={this.onInputChange}
