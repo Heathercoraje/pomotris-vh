@@ -8,7 +8,7 @@ li {
 button {
 	width: 10vw;
 	height: 5vh;
-	margin: 0.3vw;
+	margin: 0.3vw 1.2vw;
 	font-size: 1.1vw;
 	font-weight: 500;
 	background-color: MediumAquaMarine;
@@ -36,7 +36,7 @@ form > input {
 	color: white;
 	border-top-right-radius: 5px;
 	border-top-left-radius: 5px;
-	padding: 1rem 1rem 2rem 1rem;
+	padding: 1.3rem 1rem 1.3rem 1rem;
 }
 .clock {
 	padding: 1.5vw;
@@ -51,9 +51,4 @@ form > input {
 }
 .recordList {
 	padding: 0;
-}
-.recordItem {
-	/* padding: 0; */
-	/* text-align: left; */
-	/* border-bottom: 1px solid darkgray; */
 }

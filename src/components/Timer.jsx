@@ -166,7 +166,6 @@ class Timer extends Component {
 					title={this.state.title}
 					category={this.state.category}
 				/>
-				<TimeOptions optionClick={this.handleOptionClick} />
 				<ActionButtons
 					isNew={this.state.remained === this.state.duration * 60}
 					isCompleted={!this.state.remained}
