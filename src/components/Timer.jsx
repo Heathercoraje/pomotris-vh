@@ -41,7 +41,8 @@ class Timer extends Component {
 			duration: newDuration,
 			breakTime: 10 * 60,
 			remained: newDuration * 60,
-			isTimerRunning: false
+			isTimerRunning: false,
+			isBreakRunning: false
 		});
 	};
 	handleRecordSubmit = () => {
@@ -181,78 +182,75 @@ const Clock = props => <h1>{props.time}</h1>;
 
 class Fields extends Component {
 	state = {
-		inputFields: {
+		fields: {
 			category: '',
 			title: ''
 		},
-		displayFields: {
-			category: '',
-			title: ''
-		}
+		formOpen: true
 	};
 
-	componentWillReceiveProps(nextProps) {
-		// (nextProps.title, nextProps.category);
-		this.setState({
-			inputFields: {
-				category: nextProps.category,
-				title:nextProps.title
-			}
-		})
-	}
 	// this will be called just to clear the input field
+	// this function needs more understanding and also explanation for vered
+	// add minimum style to see if the conditional rendering can be removed completely
+	componentWillReceiveProps(nextProps) {
+		if (!nextProps.category && !nextProps.title) {
+			this.clearForm();
+		}
+	}
 
-
+	clearForm = () => {
+		this.setState({
+			fields: {
+				category: '',
+				title: ''
+			},
+			formOpen: true
+		});
+	};
 	onFormSubmit = event => {
-		const fields = this.state.displayFields;
+		const fields = this.state.fields;
 		this.props.onFieldsSubmit(fields);
-		// this.setState({
-		// 	inputFields: {
-		// 		category: '',
-		// 		title: ''
-		// 	},
-		// 	formOpen: false
-		// });
+		this.setState({
+			formOpen: false
+		});
 		event.preventDefault();
 	};
 
 	onInputChange = event => {
-		const inputFields = this.state.inputFields;
-		const displayFields = this.state.displayFields;
-		inputFields[event.target.name] = event.target.value;
-		displayFields[event.target.name] = event.target.value;
-		this.setState({ inputFields, displayFields });
+		const fields = this.state.fields;
+		fields[event.target.name] = event.target.value;
+		this.setState({ fields });
 	};
 
 	render() {
-		// if (this.state.formOpen) {
+		if (this.state.formOpen) {
 			return (
 				<form onSubmit={this.onFormSubmit}>
 					<input
 						autoFocus
 						placeholder=" category "
 						name="category"
-						value={this.state.inputFields.category}
+						value={this.state.fields.category}
 						onChange={this.onInputChange}
 					/>
 					<input
 						autoFocus
 						name="title"
 						placeholder=" Task name"
-						value={this.state.inputFields.title}
+						value={this.state.fields.title}
 						onChange={this.onInputChange}
 					/>
 					<input type="submit" />
 				</form>
 			);
-		// }
-		// const category = this.state.displayFields.category;
-		// const title = this.state.displayFields.title;
-		// return (
-		// 	<p onClick={() => this.setState({ formOpen: true })}>
-		// 		({category}) {title}{' '}
-		// 	</p>
-		// );
+		}
+		const category = this.state.fields.category;
+		const title = this.state.fields.title;
+		return (
+			<p onClick={() => this.setState({ formOpen: true })}>
+				({category}) {title}{' '}
+			</p>
+		);
 	}
 }
 
