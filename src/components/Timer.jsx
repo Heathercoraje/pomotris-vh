@@ -7,8 +7,8 @@ class Timer extends Component {
 		category: '',
 		title: '',
 		startTime: '',
-		duration: 0.1,
-		remained: 0.1 * 60,
+		duration: 25,
+		remained: 25 * 60,
 		breakTime: 10 * 60,
 		isTimerRunning: false,
 		isBreakRunning: false
