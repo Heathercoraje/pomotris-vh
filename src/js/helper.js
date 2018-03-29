@@ -1,10 +1,18 @@
 function formatTime(s) {
-	const seconds = Math.floor(s % 60);
-	const minutes = Math.floor(s / 60);
-	const humanized = [
-		pad(minutes.toString(), 2),
-		pad(seconds.toString(), 2)
-	].join(':');
+	if (s < 3600) {
+		const seconds = Math.floor(s % 60);
+		const minutes = Math.floor(s / 60);
+		const humanized = [
+			pad(minutes.toString(), 2),
+			pad(seconds.toString(), 2)
+		].join(':');
+		return humanized;
+	}
+	const hours = Math.floor(s / 60 / 60);
+	const minutes = Math.floor((s / 60) % 60);
+	const humanized = [pad(hours.toString(), 2), pad(minutes.toString(), 2)].join(
+		':'
+	);
 	return humanized;
 }
 
@@ -19,4 +27,5 @@ function alertMessage(flag) {
 	const startMsg = 'Break is over. Click Start for new Pomotris';
 	flag === 'break' ? alert(breakMsg) : alert(startMsg);
 }
+
 module.exports = { formatTime, alertMessage };

@@ -2,6 +2,9 @@
 	font-family: 'IBM Plex Sans', sans-serif;
 	letter-spacing: 1.2px;
 }
+li {
+	list-style: none;
+}
 button {
 	width: 10vw;
 	height: 5vh;
@@ -31,11 +34,26 @@ form > input {
 .timer {
 	background-color: black;
 	color: white;
-	border-radius: 5px;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
 	padding: 1rem 1rem 2rem 1rem;
 }
 .clock {
 	padding: 1.5vw;
 	font-size: 4vw;
 	font-weight: 500;
+}
+.RecordWrapper {
+	border: 2px solid Gainsboro;
+	min-height: 200px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+.recordList {
+	padding: 0;
+}
+.recordItem {
+	/* padding: 0; */
+	/* text-align: left; */
+	/* border-bottom: 1px solid darkgray; */
 }
