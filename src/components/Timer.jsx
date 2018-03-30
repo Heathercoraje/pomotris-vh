@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
-import { formatTime, alertMessage } from '../js/helper';
+import PropTypes from 'prop-types';
 import uuid from 'uuid-v4';
+import { formatTime, alertMessage } from '../js/helper';
+import Setting from './Setting';
+
 // 25 min/ 10 min  is default setting
 class Timer extends Component {
 	state = {
 		category: null,
 		title: null,
 		startTime: null,
-		duration: 25,
-		remained: 25 * 60,
+		duration: 0.1,
+		remained: 0.1 * 60,
 		breakTime: 10 * 60,
 		isTimerRunning: false,
 		isBreakRunning: false
@@ -147,13 +150,38 @@ class Timer extends Component {
 		const id = uuid();
 		this.props.onRecordSubmit({ category, title, startTime, duration, id });
 	};
+
 	handleOptionClick = value => {
-		this.resetTimer(value);
+		this.editOptions(value);
 	};
+
+	editOptions = value => {
+		// if this is timer option
+		if (Number(value) >= 25) {
+			this.editTimer(value);
+		} else {
+			this.editBreakTime(value);
+		}
+	};
+
+	editTimer = value => {
+		this.setState({
+			duration: value,
+			remained: value * 60
+		});
+	};
+
+	editBreakTime = value => {
+		this.setState({
+			breakTime: value * 60
+		});
+	};
+
 
 	render() {
 		return (
 			<div className="timer">
+				<Setting onOptionClick={this.handleOptionClick} onSettingOpen={this.handleStopClick} />
 				<Clock
 					time={
 						this.state.remained
@@ -166,7 +194,6 @@ class Timer extends Component {
 					title={this.state.title}
 					category={this.state.category}
 				/>
-				<TimeOptions optionClick={this.handleOptionClick} />
 				<ActionButtons
 					isNew={this.state.remained === this.state.duration * 60}
 					isCompleted={!this.state.remained}
@@ -179,7 +206,16 @@ class Timer extends Component {
 	}
 }
 
-const Clock = props => <div className='clock'>{props.time}</div>;
+Timer.propTypes = {
+	handleRecordSubmit: PropTypes.func
+};
+
+const Clock = props => <div className="clock">{props.time}</div>;
+
+Clock.propTypes = {
+	time: PropTypes.string,
+	formatTime: PropTypes.func
+};
 
 class Fields extends Component {
 	state = {
@@ -244,32 +280,11 @@ class Fields extends Component {
 	}
 }
 
-class TimeOptions extends Component {
-	state = {
-		options: [25, 45, 60]
-	};
-
-	selectOption = event => {
-		this.props.optionClick(event.target.value);
-	};
-
-	render() {
-		return (
-			<div>
-				<TimerOptionButtons
-					options={this.state.options}
-					onOptionClick={this.selectOption}
-				/>
-			</div>
-		);
-	}
-}
-const TimerOptionButtons = props =>
-	props.options.map((option, i) => (
-		<button key={i} onClick={props.onOptionClick} value={option}>
-			{option} min
-		</button>
-	));
+Fields.propTypes = {
+	title: PropTypes.string,
+	category: PropTypes.string,
+	onFieldsSubmit: PropTypes.func
+};
 
 class ActionButtons extends Component {
 	// prefer to have clean render function, so extract codes into button choice function
@@ -300,4 +315,13 @@ class ActionButtons extends Component {
 		);
 	}
 }
+
+ActionButtons.propTypes = {
+	props: PropTypes.object,
+	isNew: PropTypes.bool,
+	isCompleted: PropTypes.bool,
+	isTimerRunning: PropTypes.bool,
+	isBreakRunning: PropTypes.bool,
+	onButtonClick: PropTypes.func
+};
 export default Timer;

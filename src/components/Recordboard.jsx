@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { formatTime } from '../js/helper'
 
 const Recordboard = ({ records }) => {
@@ -19,4 +20,7 @@ const Recordboard = ({ records }) => {
 	);
 };
 
+Recordboard.propTypes = {
+    records: PropTypes.array
+}
 export default Recordboard;
