@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { formatTime, alertMessage } from '../js/helper';
 import uuid from 'uuid-v4';
+import { formatTime, alertMessage } from '../js/helper';
+import Setting from './Setting'
+
 
 // 25 min/ 10 min  is default setting
 class Timer extends Component {
@@ -156,6 +158,7 @@ class Timer extends Component {
 	render() {
 		return (
 			<div className="timer">
+				<Setting />
 				<Clock
 					time={
 						this.state.remained
