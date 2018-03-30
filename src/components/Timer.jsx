@@ -151,37 +151,37 @@ class Timer extends Component {
 		this.props.onRecordSubmit({ category, title, startTime, duration, id });
 	};
 
-	EditOptions = value => {
+	handleOptionClick = value => {
+		this.editOptions(value);
+	};
+
+	editOptions = value => {
 		// if this is timer option
 		if (Number(value) >= 25) {
-			this.EditTimer(value);
+			this.editTimer(value);
 		} else {
-			this.EditBreakTime(value);
+			this.editBreakTime(value);
 		}
 	};
 
-	EditTimer = value => {
+	editTimer = value => {
 		this.setState({
 			duration: value,
 			remained: value * 60
 		});
 	};
 
-	EditBreakTime = value => {
+	editBreakTime = value => {
 		this.setState({
 			breakTime: value * 60
 		});
 	};
 
-	handleOptionClick = value => {
-		console.log('hello world', value);
-		this.EditOptions(value);
-	};
 
 	render() {
 		return (
 			<div className="timer">
-				<Setting onOptionClick={this.handleOptionClick} />
+				<Setting onOptionClick={this.handleOptionClick} onSettingOpen={this.handleStopClick} />
 				<Clock
 					time={
 						this.state.remained

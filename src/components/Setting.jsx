@@ -10,6 +10,7 @@ class Setting extends React.Component {
 		this.setState({
 			isModalOpen: true
 		});
+    this.props.onSettingOpen('Stop');
 	};
 	closeModal = () => {
 		this.setState({
@@ -18,10 +19,10 @@ class Setting extends React.Component {
 	};
 	render() {
 		return (
-			<div>
-				<span onClick={this.openModal}>&#8709;</span>
+			<div className='wrapper-setting'>
+				<span className='setting-icon' onClick={this.openModal}><i className="fas fa-cog"></i></span>
 				<Modal isOpen={this.state.isModalOpen} onCloseClick={this.closeModal}>
-					<h1>I am a modal</h1>
+					<h1>Timer Setting</h1>
 					<p>Choose your timer options</p>
 					<TimerOptions optionClick={this.props.onOptionClick} />
 					<BreakTimeOptions optionClick={this.props.onOptionClick} />
@@ -87,7 +88,6 @@ Modal.propTypes = {
 
 const TimerOptions = ({ optionClick }) => {
   let options = [25, 45, 60];
-  console.log('wtf?');
   let selectOption = event => {
     optionClick(event.target.value);
   };
