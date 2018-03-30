@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { formatTime, alertMessage } from '../js/helper';
 import uuid from 'uuid-v4';
+
 // 25 min/ 10 min  is default setting
 class Timer extends Component {
 	state = {
@@ -178,7 +180,16 @@ class Timer extends Component {
 	}
 }
 
+Timer.propTypes = {
+	handleRecordSubmit: PropTypes.func
+}
+
 const Clock = props => <div className='clock'>{props.time}</div>;
+
+Clock.propTypes = {
+	time : PropTypes.string,
+	formatTime: PropTypes.func
+}
 
 class Fields extends Component {
 	state = {
@@ -243,6 +254,12 @@ class Fields extends Component {
 	}
 }
 
+Fields.propTypes = {
+	title: PropTypes.string,
+	category: PropTypes.string,
+	onFieldsSubmit: PropTypes.func
+}
+
 class TimeOptions extends Component {
 	state = {
 		options: [25, 45, 60]
@@ -263,12 +280,21 @@ class TimeOptions extends Component {
 		);
 	}
 }
+
+TimeOptions.PropTypes = {
+	optionClick: PropTypes.func
+}
+
 const TimerOptionButtons = props =>
 	props.options.map((option, i) => (
 		<button key={i} onClick={props.onOptionClick} value={option}>
 			{option} min
 		</button>
 	));
+
+TimerOptionButtons.propTypes = {
+	onOptionClick: PropTypes.func
+}
 
 class ActionButtons extends Component {
 	// prefer to have clean render function, so extract codes into button choice function
@@ -298,5 +324,14 @@ class ActionButtons extends Component {
 			</div>
 		);
 	}
+}
+
+ActionButtons.propTypes = {
+	props: PropTypes.object,
+	isNew: PropTypes.bool,
+	isCompleted: PropTypes.bool,
+	isTimerRunning: PropTypes.bool,
+	isBreakRunning: PropTypes.bool,
+	onButtonClick: PropTypes.func
 }
 export default Timer;
