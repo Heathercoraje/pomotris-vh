@@ -1,5 +1,5 @@
 function formatTime(s) {
-	if (s < 3600) {
+	if (s < 3601) {
 		const seconds = Math.floor(s % 60);
 		const minutes = Math.floor(s / 60);
 		const humanized = [

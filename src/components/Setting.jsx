@@ -22,16 +22,23 @@ class Setting extends React.Component {
 				<span onClick={this.openModal}>&#8709;</span>
 				<Modal isOpen={this.state.isModalOpen} onCloseClick={this.closeModal}>
 					<h1>I am a modal</h1>
-					<p>Hello world</p>
-					<button onClick={this.closeModal}>close</button>
+					<p>Choose your timer options</p>
+					<TimerOptions optionClick={this.props.onOptionClick} />
+					<BreakTimeOptions optionClick={this.props.onOptionClick} />
+					<button className='button-close' onClick={this.closeModal}>close</button>
 				</Modal>
 			</div>
 		);
 	}
 }
 
+Setting.propTypes = {
+	onOptionClick: PropTypes.func,
+	onBreakOptionClick: PropTypes.func
+}
+
 const modalStyle = {
-  color: '#000',
+	color: '#000',
 	width: '35%',
 	height: '40%',
 	position: 'absolute',
@@ -76,6 +83,59 @@ class Modal extends React.Component {
 Modal.propTypes = {
 	isOpen: PropTypes.bool,
 	onCloseClick: PropTypes.func
+};
+
+const TimerOptions = ({ optionClick }) => {
+  let options = [25, 45, 60];
+  console.log('wtf?');
+  let selectOption = event => {
+    optionClick(event.target.value);
+  };
+
+  let TimerOptionButtons = options.map((option, i) => (
+  		<button
+  			key={i}
+  			className="button-modal button-timer"
+        onClick={selectOption}
+  			value={option}>
+  			{option} min
+  		</button>
+  	));
+
+  return (
+    <div>
+    {TimerOptionButtons}
+    </div>
+  );
+}
+
+TimerOptions.propTypes = {
+	optionClick: PropTypes.func
+};
+
+const BreakTimeOptions = ({ optionClick }) => {
+	let options = [10, 15, 20];
+	let selectOption = event => {
+		optionClick(event.target.value);
+	};
+	const breakTimeOptionButtons = options.map((option, i) => (
+		<button
+			key={i}
+			className="button-modal button-breakTime"
+			onClick={selectOption}
+			value={option}>
+			{option} min
+		</button>
+	));
+	return (
+    <div>
+    {breakTimeOptionButtons}
+    </div>
+  )
+};
+
+BreakTimeOptions.propTypes = {
+	optionClick: PropTypes.func
 };
 
 export default Setting;
