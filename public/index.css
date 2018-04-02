@@ -1,12 +1,29 @@
+/* preset */
+
+body {
+	width: 100vw;
+	height: 100vh;
+	padding: 0;
+	margin: 0;
+}
+#root {
+	width: 100%;
+	height: 100%;
+}
 * {
+	box-sizing: border-box;
 	font-family: 'IBM Plex Sans', sans-serif;
 	letter-spacing: 1.2px;
 }
 li {
 	list-style: none;
 }
+a {
+	text-decoration: none;
+	color: inherit;
+}
 
-/* lots of buttons */
+/* lots of buttons/icons */
 
 .setting-icon {
 	text-align: left;
@@ -54,35 +71,96 @@ form > input {
 	background-color: transparent;
 	text-align: center;
 }
+
 /* container or wrapper  */
 
+.parent-container {
+	width: 100%;
+	height: 100%;
+}
+.children-container {
+	height: 75%;
+	width: 42vw;
+	margin: 2.5% auto;
+	text-align: center;
+}
 .wrapper-setting {
 	display: flex;
 }
-
-.pomotris {
-	padding: 1.5vw;
-	font-size: 4vw;
-	font-weight: 700;
-}
 .timer {
-	background-color: black;
+	height: 45%;
 	color: white;
+	background-color: black;
 	border-top-right-radius: 5px;
 	border-top-left-radius: 5px;
 	padding: 1.3rem 1rem 1.3rem 1rem;
 }
 .clock {
-	padding: 1.5vw;
-	font-size: 4vw;
+	padding-bottom: 1.5vw;
+	font-size: 5vw;
 	font-weight: 500;
 }
 .RecordWrapper {
+	height: 55%;
 	border: 2px solid Gainsboro;
-	min-height: 200px;
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px;
 }
 .recordList {
 	padding: 0;
+}
+
+/* elements */
+
+/* header */
+
+header {
+	height: 8%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem;
+}
+.primary-header > ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+}
+.primary-header > ul > li {
+	font-weight: 500;
+	float: right;
+	margin: 1rem;
+}
+.logo {
+	display: inline;
+	font-size: 2vw;
+	font-weight: 700;
+	cursor: pointer;
+}
+.logo-icon {
+	width: 1rem;
+	vertical-align: bottom;
+	margin-left: 0.3vw;
+	cursor: pointer;
+}
+.primary-header > ul > a {
+	text-decoration: none;
+	cursor: pointer;
+}
+.primary-header > ul > li > a:hover {
+	color: gray;
+}
+
+/* footer */
+
+footer {
+	width: 100%;
+	height: 6%;
+	position: fixed;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-top: 2px lightgray solid;
 }

@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import PrimaryHeader from './PrimaryHeader';
 import Timer from './Timer';
 import Recordboard from './Recordboard';
 
-const Wrapper = styled.div`
-	width: 40vw;
-	margin: 0 auto;
-	text-align: center;
-`;
 
 class Dashboard extends React.Component {
 	state = {
@@ -44,11 +40,10 @@ class Dashboard extends React.Component {
 	};
 	render() {
 		return (
-			<Wrapper>
-				<div className="pomotris">Pomotris</div>
-				<Timer onRecordSubmit={this.handleRecordSubmit} />
-				<Recordboard records={this.state.records} />
-			</Wrapper>
+				<div className='children-container'>
+					<Timer onRecordSubmit={this.handleRecordSubmit} />
+					<Recordboard records={this.state.records} />
+				</div>
 		);
 	}
 }
