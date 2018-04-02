@@ -164,3 +164,18 @@ footer {
 	justify-content: center;
 	border-top: 2px lightgray solid;
 }
+.timer-setting {
+	clear: both;
+}
+
+.list-setting {
+	list-style: none;
+	padding: 0.1vw;
+	margin: 0;
+}
+.list-setting > li {
+	padding: 1vw;
+	float: left;
+	border: solid;
+	border-width: 1px 1px 0 1px;
+}
