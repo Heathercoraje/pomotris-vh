@@ -4,7 +4,6 @@ import PrimaryHeader from './PrimaryHeader';
 import Timer from './Timer';
 import Recordboard from './Recordboard';
 
-
 class Dashboard extends React.Component {
 	state = {
 		records: [
@@ -38,12 +37,16 @@ class Dashboard extends React.Component {
 			records
 		});
 	};
+	// handleSettingSubmit
 	render() {
 		return (
-				<div className='children-container'>
-					<Timer onRecordSubmit={this.handleRecordSubmit} />
-					<Recordboard records={this.state.records} />
-				</div>
+			<div className="children-container">
+				<Timer
+					onRecordSubmit={this.handleRecordSubmit}
+					onSettingSubmit={this.handleSettingSubmit}
+				/>
+				<Recordboard records={this.state.records} />
+			</div>
 		);
 	}
 }

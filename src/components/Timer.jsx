@@ -177,11 +177,14 @@ class Timer extends Component {
 		});
 	};
 
-
 	render() {
 		return (
 			<div className="timer">
-				<Setting onOptionClick={this.handleOptionClick} onSettingOpen={this.handleStopClick} />
+				<Setting
+					onOptionClick={this.handleOptionClick}
+					onSettingOpen={this.handleStopClick}
+					onSettingSubmit={this.props.onSettingSubmit}
+				/>
 				<Clock
 					time={
 						this.state.remained
@@ -207,7 +210,9 @@ class Timer extends Component {
 }
 
 Timer.propTypes = {
-	handleRecordSubmit: PropTypes.func
+	onRecordSubmit: PropTypes.func,
+	onSettingSubmit: PropTypes.func
+
 };
 
 const Clock = props => <div className="clock">{props.time}</div>;

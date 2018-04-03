@@ -27,6 +27,7 @@ class Setting extends React.Component {
 					isOpen={this.state.isModalOpen}
 					onCloseClick={this.closeModal}
 					optionClick={this.props.onOptionClick}
+					onCategorySubmit={this.props.onSettingSubmit}
 				/>
 			</div>
 		);
@@ -73,10 +74,11 @@ class Modal extends React.Component {
 		}
 	};
 
-	switchSetting = (event) => {
-		// this.setState({
-		// 	timerOpen:
-		// });
+	switchSetting = val => {
+		const update = val === 'timer';
+		this.setState({
+			timerOpen: update
+		});
 	};
 
 	render() {
@@ -85,17 +87,24 @@ class Modal extends React.Component {
 			return null;
 		}
 		if (this.state.timerOpen) {
-			content = <TimerSetting optionClick={this.props.optionClick} closeModal={this.close}/>
+			content = (
+				<TimerSetting
+					optionClick={this.props.optionClick}
+					closeModal={this.close}
+				/>
+			);
 		} else {
-			content = <CategorySetting />
+			content = <CategorySetting onSave={this.props.onCategorySubmit} />;
 		}
 
 		return (
 			<div>
 				<div style={modalStyle}>
-					<ul className='list-setting'>
-						<li onClick={this.switchSetting}>Timer</li>
-						<li onClick={this.switchSetting}>Category</li>
+					<ul className="list-setting">
+						<li onClick={this.switchSetting.bind(this, 'timer')}>Timer</li>
+						<li onClick={this.switchSetting.bind(this, 'category')}>
+							Category
+						</li>
 					</ul>
 					{content}
 				</div>
@@ -111,8 +120,9 @@ Modal.propTypes = {
 };
 
 const TimerSetting = props => (
-	<div className='timer-setting'>
+	<div className="setting">
 		<h1>Timer Setting</h1>
+		<hr />
 		<p>Choose your timer options</p>
 		<TimerOptions optionClick={props.optionClick} />
 		<BreakTimeOptions optionClick={props.optionClick} />
@@ -121,7 +131,6 @@ const TimerSetting = props => (
 		</button>
 	</div>
 );
-
 
 const TimerOptions = ({ optionClick }) => {
 	const options = [25, 45, 60];
@@ -167,8 +176,57 @@ BreakTimeOptions.propTypes = {
 	optionClick: PropTypes.func
 };
 
-const CategorySetting = () => (<h1>Category Setting!</h1>)
-
-
+class CategorySetting extends Component {
+	state = {
+		data: [{ name: 'work', color: 'pink' }],
+		fields: {
+			name: '',
+			color: ''
+		}
+	};
+	onSaveClick = obj => {
+		const newData = obj;
+		// push this new data to the array
+	};
+	colorChange = (event) => {
+		console.log(event.target.value)
+	}
+	render() {
+		return (
+			<div className="setting">
+				<h1>Category Setting</h1>
+				<hr />
+				<input
+					placeholder="Name"
+					name="name"
+					onChange={this.onInputChange}
+				/>
+				<input onChange ={this.colorChange} type="color"/>
+				<input type='submit' />
+				<input
+					placeholder="Name"
+					name="name"
+					value={this.state.fields.name}
+					// onChange={this.onInputChange}
+				/>
+				<input type='submit' />
+				<input
+					placeholder="Name"
+					name="name"
+					value={this.state.fields.name}
+					// onChange={this.onInputChange}
+				/>
+				<input type='submit' />
+				<input
+					placeholder="Name"
+					name="name"
+					value={this.state.fields.name}
+					// onChange={this.onInputChange}
+				/>
+				<input type='submit' />
+			</div>
+		);
+	}
+}
 
 export default Setting;
