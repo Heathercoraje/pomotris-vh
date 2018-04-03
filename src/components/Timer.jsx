@@ -263,7 +263,7 @@ class Fields extends Component {
 
 	render() {
 		return (
-			<form onSubmit={this.onFormSubmit} onBlur={this.onFormSubmit}>
+			<form className='timer-form' onSubmit={this.onFormSubmit} onBlur={this.onFormSubmit}>
 				<input
 					size={15}
 					autoFocus

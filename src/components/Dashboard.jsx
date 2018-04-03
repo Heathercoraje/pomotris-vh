@@ -28,7 +28,8 @@ class Dashboard extends React.Component {
 				startTime: '3/29/2018, 9:47:48 PM',
 				title: 'YDKJS book 6 '
 			}
-		]
+		],
+		categories: []
 	};
 	// example { category: '',title: '', duration: '', startTime: '', id:''}
 	handleRecordSubmit = newRecord => {
@@ -37,7 +38,11 @@ class Dashboard extends React.Component {
 			records
 		});
 	};
-	// handleSettingSubmit
+	handleSettingSubmit = data => {
+		this.setState({
+			categories: [ {...data} ]
+		})
+	}
 	render() {
 		return (
 			<div className="children-container">

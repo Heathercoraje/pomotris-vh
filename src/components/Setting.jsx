@@ -17,6 +17,10 @@ class Setting extends React.Component {
 			isModalOpen: false
 		});
 	};
+
+	onCategorySubmit = data => {
+		this.props.onSettingSubmit(data);
+	};
 	render() {
 		return (
 			<div className="wrapper-setting">
@@ -27,7 +31,7 @@ class Setting extends React.Component {
 					isOpen={this.state.isModalOpen}
 					onCloseClick={this.closeModal}
 					optionClick={this.props.onOptionClick}
-					onCategorySubmit={this.props.onSettingSubmit}
+					onCategorySubmit={this.onCategorySubmit}
 				/>
 			</div>
 		);
@@ -42,7 +46,7 @@ Setting.propTypes = {
 const modalStyle = {
 	color: '#000',
 	width: '35%',
-	height: '45%',
+	height: '50%',
 	position: 'absolute',
 	top: '50%',
 	left: '50%',
@@ -119,6 +123,8 @@ Modal.propTypes = {
 	onCloseClick: PropTypes.func
 };
 
+// TimerSetting Modal
+
 const TimerSetting = props => (
 	<div className="setting">
 		<h1>Timer Setting</h1>
@@ -176,55 +182,96 @@ BreakTimeOptions.propTypes = {
 	optionClick: PropTypes.func
 };
 
+// CategorySetting Modal
+
 class CategorySetting extends Component {
 	state = {
-		data: [{ name: 'work', color: 'pink' }],
-		fields: {
-			name: '',
-			color: ''
-		}
+		fields: [
+			{
+				category: null,
+				color: '#000000'
+			},
+			{
+				category: null,
+				color: '#000000'
+			},
+			{
+				category: null,
+				color: '#000000'
+			},
+			{
+				category: null,
+				color: '#000000'
+			}
+		]
 	};
-	onSaveClick = obj => {
-		const newData = obj;
-		// push this new data to the array
+
+	onInputChange = event => {
+		const categoryID = event.target.id;
+		const fields = this.state.fields.slice();
+		const field = this.state.fields[categoryID];
+		field[event.target.name] = event.target.value;
+		fields.splice(categoryID, 1, field);
+		this.setState({ fields });
 	};
-	colorChange = (event) => {
-		console.log(event.target.value)
-	}
+
+	onSaveClick = () => {
+		const data = this.state.fields;
+		this.props.onSave(data);
+	};
+
 	render() {
 		return (
-			<div className="setting">
-				<h1>Category Setting</h1>
+			<div>
+				<h1 className="setting">Category Setting</h1>
 				<hr />
-				<input
-					placeholder="Name"
-					name="name"
-					onChange={this.onInputChange}
+				<Field
+					id="0"
+					placeholder="category 1"
+					onInputChange={this.onInputChange}
+					onSubmit={this.onSubmit}
 				/>
-				<input onChange ={this.colorChange} type="color"/>
-				<input type='submit' />
-				<input
-					placeholder="Name"
-					name="name"
-					value={this.state.fields.name}
-					// onChange={this.onInputChange}
+				<Field
+					id="1"
+					placeholder="category 2"
+					onInputChange={this.onInputChange}
 				/>
-				<input type='submit' />
-				<input
-					placeholder="Name"
-					name="name"
-					value={this.state.fields.name}
-					// onChange={this.onInputChange}
+				<Field
+					id="2"
+					placeholder="category 3"
+					onInputChange={this.onInputChange}
 				/>
-				<input type='submit' />
-				<input
-					placeholder="Name"
-					name="name"
-					value={this.state.fields.name}
-					// onChange={this.onInputChange}
+				<Field
+					id="3"
+					placeholder="category 4"
+					onInputChange={this.onInputChange}
 				/>
-				<input type='submit' />
+				<button className='button-save' onClick={this.onSaveClick}>Save</button>
 			</div>
+		);
+	}
+}
+
+class Field extends Component {
+	render() {
+		return (
+			<form className="category-color-form" onSubmit={e => e.preventDefault()}>
+				<input
+					name="color"
+					className="input-color"
+					id={this.props.id}
+					onChange={this.props.onInputChange}
+					type="color"
+				/>
+				<input
+					name="category"
+					className='input-category'
+					id={this.props.id}
+					placeholder={this.props.placeholder}
+					onChange={this.props.onInputChange}
+				/>
+				<input style={{ display: 'none' }} type="submit" />
+			</form>
 		);
 	}
 }

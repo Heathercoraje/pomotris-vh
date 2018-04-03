@@ -53,6 +53,11 @@ button:hover {
 	background-color: #000;
 	color: #fff;
 }
+.button-save {
+	width: 22vw;
+	background-color: MediumAquaMarine;
+	color: #fff;
+}
 .button-close:hover {
 	background-color: #373737;
 }
@@ -62,7 +67,7 @@ button:hover {
 .button-breakTime:hover {
 	background-color: #14951a;
 }
-form > input {
+.timer-form > input {
 	border: none;
 	outline: none;
 	border-bottom: #fff 2px solid;
@@ -164,6 +169,7 @@ footer {
 	justify-content: center;
 	border-top: 2px lightgray solid;
 }
+/* modal */
 .setting {
 	clear: both;
 }
@@ -178,4 +184,25 @@ footer {
 	float: left;
 	border: solid;
 	border-width: 1px 1px 0 1px;
+}
+.category-color-form {
+	margin-top: 1rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.input-category {
+	text-align: center;
+	height: 3.8vh;
+	width: 45%;
+	outline: none;
+	border: 1px solid gray;
+	border-radius: 3px;
+}
+.input-color {
+	margin-right: 3%;
+	height: 4.2vh;
+	width: 12%;
+	border: none;
+	outline: none;
 }
