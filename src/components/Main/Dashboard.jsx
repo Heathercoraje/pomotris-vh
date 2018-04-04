@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import PrimaryHeader from './PrimaryHeader';
 import Timer from './Timer';
 import Recordboard from './Recordboard';
 

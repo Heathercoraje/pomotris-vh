@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import uuid from 'uuid-v4';
-import { formatTime, alertMessage } from '../js/helper';
-import Setting from './Setting';
+import { formatTime, alertMessage } from '../../js/helper';
+import Setting from './Setting/Setting';
 
 // 25 min/ 10 min  is default setting
 class Timer extends Component {
@@ -10,9 +10,9 @@ class Timer extends Component {
 		category: null,
 		title: null,
 		startTime: null,
-		duration: 0.1,
-		remained: 0.1 * 60,
-		breakTime: 10 * 60,
+		duration: 25,
+		remained: 25 * 60,
+		breakTime: 5 * 60,
 		isTimerRunning: false,
 		isBreakRunning: false
 	};
@@ -151,20 +151,18 @@ class Timer extends Component {
 		this.props.onRecordSubmit({ category, title, startTime, duration, id });
 	};
 
-	handleOptionClick = value => {
-		this.editOptions(value);
+	timeData = () => {
+		const duration = this.state.duration;
+		const breakTime = this.state.breakTime;
+		return { duration, breakTime }
+	}
+
+	handleOptionClick = obj => {
+		this.editDuration(obj.duration);
+		this.editBreakTime(obj.breakTime);
 	};
 
-	editOptions = value => {
-		// if this is timer option
-		if (Number(value) >= 25) {
-			this.editTimer(value);
-		} else {
-			this.editBreakTime(value);
-		}
-	};
-
-	editTimer = value => {
+	editDuration = value => {
 		this.setState({
 			duration: value,
 			remained: value * 60
@@ -181,6 +179,7 @@ class Timer extends Component {
 		return (
 			<div className="timer">
 				<Setting
+					timeData={this.timeData()}
 					onOptionClick={this.handleOptionClick}
 					onSettingOpen={this.handleStopClick}
 					onSettingSubmit={this.props.onSettingSubmit}

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { formatTime } from '../js/helper'
+import { formatTime } from '../../js/helper'
 
 const Recordboard = ({ records }) => {
   const timeArray = records.map(record => Number(record.duration));
