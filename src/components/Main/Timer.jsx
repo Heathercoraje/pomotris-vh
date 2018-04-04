@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import uuid from 'uuid-v4';
-import { formatTime, alertMessage } from '../js/helper';
-import Setting from './Setting';
+import { formatTime, alertMessage } from '../../js/helper';
+import Setting from './Setting/Setting';
 
-// 25 min/ 10 min  is default setting
+// 25 min/ 5 min  is default setting
 class Timer extends Component {
 	state = {
 		category: null,
 		title: null,
 		startTime: null,
-		duration: 0.1,
-		remained: 0.1 * 60,
-		breakTime: 10 * 60,
+		duration: 25,
+		remained: 25 * 60,
+		breakTime: 5 * 60,
 		isTimerRunning: false,
 		isBreakRunning: false
 	};
@@ -38,12 +38,13 @@ class Timer extends Component {
 	};
 	resetTimer = newDuration => {
 		clearInterval(this.countDownID);
+		const breakTime = this.state.breakTime;
 		this.setState({
 			category: null,
 			title: null,
 			startTime: null,
 			duration: newDuration,
-			breakTime: 10 * 60,
+			breakTime:  breakTime,
 			remained: newDuration * 60,
 			isTimerRunning: false,
 			isBreakRunning: false
@@ -151,20 +152,18 @@ class Timer extends Component {
 		this.props.onRecordSubmit({ category, title, startTime, duration, id });
 	};
 
-	handleOptionClick = value => {
-		this.editOptions(value);
+	timeData = () => {
+		const duration = this.state.duration;
+		const breakTime = this.state.breakTime;
+		return { duration, breakTime };
 	};
 
-	editOptions = value => {
-		// if this is timer option
-		if (Number(value) >= 25) {
-			this.editTimer(value);
-		} else {
-			this.editBreakTime(value);
-		}
+	handleOptionClick = obj => {
+		this.editDuration(obj.duration);
+		this.editBreakTime(obj.breakTime);
 	};
 
-	editTimer = value => {
+	editDuration = value => {
 		this.setState({
 			duration: value,
 			remained: value * 60
@@ -177,11 +176,15 @@ class Timer extends Component {
 		});
 	};
 
-
 	render() {
 		return (
 			<div className="timer">
-				<Setting onOptionClick={this.handleOptionClick} onSettingOpen={this.handleStopClick} />
+				<Setting
+					timeData={this.timeData()}
+					onOptionClick={this.handleOptionClick}
+					onSettingOpen={this.handleStopClick}
+					onCategorySubmit={this.props.onCategorySubmit}
+				/>
 				<Clock
 					time={
 						this.state.remained
@@ -207,7 +210,8 @@ class Timer extends Component {
 }
 
 Timer.propTypes = {
-	handleRecordSubmit: PropTypes.func
+	onRecordSubmit: PropTypes.func,
+	onSettingSubmit: PropTypes.func
 };
 
 const Clock = props => <div className="clock">{props.time}</div>;
@@ -258,7 +262,10 @@ class Fields extends Component {
 
 	render() {
 		return (
-			<form onSubmit={this.onFormSubmit} onBlur={this.onFormSubmit}>
+			<form
+				className="timer-form"
+				onSubmit={this.onFormSubmit}
+				onBlur={this.onFormSubmit}>
 				<input
 					size={15}
 					autoFocus
@@ -266,6 +273,7 @@ class Fields extends Component {
 					name="category"
 					value={this.state.fields.category}
 					onChange={this.onInputChange}
+					autoComplete="off"
 				/>
 				<input
 					size={25}
@@ -273,6 +281,7 @@ class Fields extends Component {
 					placeholder="Task"
 					value={this.state.fields.title}
 					onChange={this.onInputChange}
+					autoComplete="off"
 				/>
 				<input style={{ display: 'none' }} type="submit" />
 			</form>

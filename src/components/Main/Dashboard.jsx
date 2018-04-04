@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import PrimaryHeader from './PrimaryHeader';
 import Timer from './Timer';
 import Recordboard from './Recordboard';
-
 
 class Dashboard extends React.Component {
 	state = {
@@ -29,7 +27,8 @@ class Dashboard extends React.Component {
 				startTime: '3/29/2018, 9:47:48 PM',
 				title: 'YDKJS book 6 '
 			}
-		]
+		],
+		categories: []
 	};
 	// example { category: '',title: '', duration: '', startTime: '', id:''}
 	handleRecordSubmit = newRecord => {
@@ -38,12 +37,20 @@ class Dashboard extends React.Component {
 			records
 		});
 	};
+	handleCategorySubmit = data => {
+		this.setState({
+			categories: [ {...data} ]
+		})
+	}
 	render() {
 		return (
-				<div className='children-container'>
-					<Timer onRecordSubmit={this.handleRecordSubmit} />
-					<Recordboard records={this.state.records} />
-				</div>
+			<div className="children-container">
+				<Timer
+					onRecordSubmit={this.handleRecordSubmit}
+					onCategorySubmit={this.handleCategorySubmit}
+				/>
+				<Recordboard records={this.state.records} />
+			</div>
 		);
 	}
 }

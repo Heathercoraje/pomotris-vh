@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import Dashboard from '../components/Dashboard';
+import Dashboard from '../components/Main/Dashboard';
 import PrimaryHeader from '../components/PrimaryHeader';
 import Footer from '../components/Footer';
 
