@@ -29,6 +29,7 @@ const backStyle = {
 class Modal extends React.Component {
 	state = {
 		timerOpen: true,
+		selected: 'timer',
 		selectedOption: {
 			duration: this.props.timeData.duration,
 			breakTime: this.props.timeData.breakTime,
@@ -46,12 +47,18 @@ class Modal extends React.Component {
 	switchSetting = val => {
 		const update = val === 'timer';
 		this.setState({
-			timerOpen: update
+			timerOpen: update,
+			selected: val
 		});
 	};
 
-	// control options
+	isActive = val => {
+		const selected = this.state.selected;
+		const className = val === selected ? 'active-modal' : '';
+		return className;
+	};
 
+	// control options
 	// this send new timer setting to Timer component
 	onTimerSubmit = (duration, breakTime) => {
 		const newOption = this.state.selectedOption;
@@ -60,12 +67,12 @@ class Modal extends React.Component {
 		this.setState({
 			selectedOption: newOption
 		});
-		this.props.onOptionClick({ duration, breakTime })
+		this.props.onOptionClick({ duration, breakTime });
 	};
 
 	onCategorySubmit = array => {
 		const newOption = this.state.selectedOption;
-		newOption.categories= array;
+		newOption.categories = array;
 		this.setState({
 			selectedOption: newOption
 		});
@@ -73,16 +80,22 @@ class Modal extends React.Component {
 	};
 
 	// send categories/color setting up to Dashboard, attached to onCategorySubmit
- 	submitCategorySetting = () => {
+	submitCategorySetting = () => {
 		const data = this.state.selectedOption.categories;
 		this.props.onCategorySubmit(data);
 	};
 
 	render() {
 		if (!this.props.isOpen) return null;
-		const categories = this.state.selectedOption.categories.length ? this.state.selectedOption.categories : null;
+		const categories = this.state.selectedOption.categories.length
+			? this.state.selectedOption.categories
+			: null;
 		const content = this.state.timerOpen ? (
-			<TimerSetting onSave={this.onTimerSubmit} closeModal={this.closeModal} {...this.state.selectedOption}/>
+			<TimerSetting
+				onSave={this.onTimerSubmit}
+				closeModal={this.closeModal}
+				{...this.state.selectedOption}
+			/>
 		) : (
 			<CategorySetting
 				onSave={this.onCategorySubmit}
@@ -94,14 +107,20 @@ class Modal extends React.Component {
 			<div>
 				<div style={modalStyle}>
 					<ul className="list-setting">
-						<li onClick={this.switchSetting.bind(this, 'timer')}>Timer</li>
-						<li onClick={this.switchSetting.bind(this, 'category')}>
+						<li
+							className={this.isActive('timer')}
+							onClick={this.switchSetting.bind(this, 'timer')}>
+							Timer
+						</li>
+						<li
+							className={this.isActive('category')}
+							onClick={this.switchSetting.bind(this, 'category')}>
 							Category
 						</li>
 					</ul>
 					{content}
 				</div>
-				<div style={backStyle} onClick={this.close} />
+				<div style={backStyle} onClick={this.closeModal} />
 			</div>
 		);
 	}

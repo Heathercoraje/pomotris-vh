@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import ClassNames from 'classnames';
+// var ClassNames = require('classnames');
 
 const TimerSetting = props => (
 	<div className="setting">
@@ -18,46 +20,93 @@ TimerSetting.propTypes = {
 	closeModal: PropTypes.func
 };
 
-const TimerOptions = props => {
-	const options = [25, 45, 60];
-	const breakTime = props.breakTime;
-	const selectOption = event => {
-		props.onSave(event.target.value, breakTime);
+class TimerOptions extends Component {
+	state = {
+		selected: this.props.duration
 	};
-	const TimerOptionButtons = options.map((option, i) => (
-		<button
-			key={i}
-			className="button-modal button-timer"
-			onClick={selectOption}
-			value={option}>
-			{option} min
-		</button>
-	));
-	return <div>{TimerOptionButtons}</div>;
-};
+	setActive = btn => {
+		this.setState({
+			selected: btn
+		});
+	};
+	isActive = btn => {
+		const selected = this.state.selected;
+		const classNames =
+			Number(btn) === Number(selected)
+				? ClassNames('button-modal', 'button-timer', 'active', 'active-time')
+				: ClassNames('button-modal', 'button-timer');
+		return classNames;
+	};
+	selectOption = event => {
+		const breakTime = this.props.breakTime;
+		this.setActive(event.target.value);
+		this.props.onSave(event.target.value, breakTime);
+	};
+
+	render() {
+		const options = [25, 45, 60];
+		const TimerOptionButtons = options.map((option, i) => (
+			<button
+				key={i}
+				className={this.isActive(option)}
+				onClick={this.selectOption}
+				value={option}>
+				{option} min
+			</button>
+		));
+		return <div>{TimerOptionButtons}</div>;
+	}
+}
 
 TimerOptions.propTypes = {
 	breakTime: PropTypes.any,
 	onSave: PropTypes.func
 };
 
-const BreakTimeOptions = props => {
-	const options = [5, 15, 20];
-	const time = props.duration;
-	const selectOption = event => {
-		props.onSave(time, event.target.value);
+class BreakTimeOptions extends Component {
+	state = {
+		selected: this.props.breakTime > 20 ? 5 : this.props.breakTime
 	};
-	const breakTimeOptionButtons = options.map((option, i) => (
-		<button
-			key={i}
-			className="button-modal button-breakTime"
-			onClick={selectOption}
-			value={option}>
-			{option} min
-		</button>
-	));
-	return <div>{breakTimeOptionButtons}</div>;
-};
+	
+	setActive = btn => {
+		this.setState({
+			selected: btn
+		});
+	};
+
+	isActive = btn => {
+		const selected = this.state.selected;
+		const classNames =
+			Number(btn) === Number(selected)
+				? ClassNames(
+						'button-modal',
+						'button-breakTime',
+						'active',
+						'active-breakTime'
+				  )
+				: ClassNames('button-modal', 'button-breakTime');
+		return classNames;
+	};
+
+	selectOption = event => {
+		const duration = this.props.duration;
+		this.setActive(event.target.value);
+		this.props.onSave(duration, event.target.value);
+	};
+	render() {
+		const options = [5, 15, 20];
+		const breakTimeOptionButtons = options.map((option, i) => (
+			<button
+				key={i}
+				className={this.isActive(option)}
+				onClick={this.selectOption}
+				value={option}>
+				{option} min
+			</button>
+		));
+		return <div>{breakTimeOptionButtons}</div>;
+	}
+}
 
 BreakTimeOptions.propTypes = {
 	duration: PropTypes.any,

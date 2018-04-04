@@ -10,7 +10,7 @@ class CategorySetting extends Component {
 					: '',
 				color: this.props.categories
 					? this.props.categories[0].color
-					: '#000000'
+					: '#31D843'
 			},
 			{
 				category: this.props.categories
@@ -18,7 +18,7 @@ class CategorySetting extends Component {
 					: '',
 				color: this.props.categories
 					? this.props.categories[1].color
-					: '#000000'
+					: '#38A700'
 			},
 			{
 				category: this.props.categories
@@ -26,7 +26,7 @@ class CategorySetting extends Component {
 					: '',
 				color: this.props.categories
 					? this.props.categories[2].color
-					: '#000000'
+					: '#386C0B'
 			},
 			{
 				category: this.props.categories
@@ -34,7 +34,7 @@ class CategorySetting extends Component {
 					: '',
 				color: this.props.categories
 					? this.props.categories[3].color
-					: '#000000'
+					: '#293F14'
 			}
 		]
 	};
@@ -64,7 +64,7 @@ class CategorySetting extends Component {
 		return (
 			<div className="setting">
 				<hr />
-				<h1>Category Setting</h1>
+				<h1 style={{ margin: '1rem 0'}}>Category Setting</h1>
 				{categoryFields}
 				<button className="button-modal-save" onClick={this.onSaveClick}>
 					Save

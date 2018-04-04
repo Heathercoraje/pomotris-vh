@@ -40,11 +40,15 @@ button {
 	cursor: pointer;
 	outline: none;
 }
-button:hover {
+button:hover,
+.active-time {
 	background-color: #0fb27b;
 }
-
+.active {
+	border: 2px solid #20212245;
+}
 .button-modal {
+	color: #000;
 	width: 8vw;
 	margin: 0.4vw 0.6vw;
 }
@@ -53,6 +57,13 @@ button:hover {
 	margin: 1rem;
 	background-color: #373737;
 	color: #fff;
+}
+.button-breakTime {
+	background-color: #70c774;
+}
+.button-breakTime:hover,
+.active-breakTime {
+	background-color: #28b12e;
 }
 .button-modal-save {
 	background-color: MediumAquaMarine;
@@ -65,12 +76,6 @@ button:hover {
 .button-close:hover,
 .button-modal-cancel:hover {
 	background-color: #000;
-}
-.button-breakTime {
-	background-color: #70c774;
-}
-.button-breakTime:hover {
-	background-color: #14951a;
 }
 .timer-form > input {
 	border: none;
@@ -186,9 +191,11 @@ footer {
 	margin-top: 1rem;
 }
 .list-setting > li {
-	font-weight: 600;
+	border-top-left-radius: 7px;
+	border-top-right-radius: 7px;
 	color: gray;
-	padding: 0.5vw;
+	font-weight: 500;
+	padding: 0.8vw;
 	float: left;
 	cursor: pointer;
 }
@@ -223,4 +230,10 @@ footer {
 	border: none;
 	outline: none;
 	cursor: pointer;
+}
+
+/* optional */
+
+.active-modal {
+	background-color: #f0f0f0;
 }

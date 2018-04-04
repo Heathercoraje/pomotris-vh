@@ -38,12 +38,13 @@ class Timer extends Component {
 	};
 	resetTimer = newDuration => {
 		clearInterval(this.countDownID);
+		const breakTime = this.state.breakTime;
 		this.setState({
 			category: null,
 			title: null,
 			startTime: null,
 			duration: newDuration,
-			breakTime: 10 * 60,
+			breakTime:  breakTime,
 			remained: newDuration * 60,
 			isTimerRunning: false,
 			isBreakRunning: false
