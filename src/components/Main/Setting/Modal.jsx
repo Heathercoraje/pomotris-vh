@@ -25,7 +25,7 @@ const backStyle = {
 	background: 'rgba(0, 0, 0, 0.6)'
 };
 
-// this component should have state to store selected options for (timerSetting/Category setting)
+// Modal is a stateful component with entire setting data
 class Modal extends React.Component {
 	state = {
 		timerOpen: true,
@@ -37,8 +37,7 @@ class Modal extends React.Component {
 	};
 
 	// control display
-	closeModal = event => {
-		event.preventDefault();
+	closeModal = () => {
 		if (this.props.onCloseClick) {
 			this.props.onCloseClick();
 		}
@@ -50,7 +49,10 @@ class Modal extends React.Component {
 			timerOpen: update
 		});
 	};
+
 	// control options
+
+	// this send new timer setting to Timer component
 	onTimerSubmit = (duration, breakTime) => {
 		const newOption = this.state.selectedOption;
 		newOption.duration = duration;
@@ -63,28 +65,29 @@ class Modal extends React.Component {
 
 	onCategorySubmit = array => {
 		const newOption = this.state.selectedOption;
-		newOption[categories] = array;
+		newOption.categories= array;
 		this.setState({
 			selectedOption: newOption
 		});
+		this.submitCategorySetting();
 	};
 
-	// then collect and send this entire data (this.state to Timer)
-	// here we send all data inside this.state.selectedOption to timer
-	onSettingSubmit = () => {
-		const data = this.state.selectedOption; // object
-		this.props.onSettingSubmit(data);
-		// {this.props.onCategorySubmit} do something about this
+	// send categories/color setting up to Dashboard, attached to onCategorySubmit
+ 	submitCategorySetting = () => {
+		const data = this.state.selectedOption.categories;
+		this.props.onCategorySubmit(data);
 	};
 
 	render() {
 		if (!this.props.isOpen) return null;
+		const categories = this.state.selectedOption.categories.length ? this.state.selectedOption.categories : null;
 		const content = this.state.timerOpen ? (
 			<TimerSetting onSave={this.onTimerSubmit} closeModal={this.closeModal} {...this.state.selectedOption}/>
 		) : (
 			<CategorySetting
-				onSave={this.onTimerSubmit}
+				onSave={this.onCategorySubmit}
 				closeModal={this.closeModal}
+				categories={categories}
 			/>
 		);
 		return (
@@ -106,7 +109,9 @@ class Modal extends React.Component {
 
 Modal.propTypes = {
 	isOpen: PropTypes.bool,
-	onCloseClick: PropTypes.func
+	onCloseClick: PropTypes.func,
+	onOptionClick: PropTypes.func,
+	onCategorySubmit: PropTypes.func
 };
 
 export default Modal;

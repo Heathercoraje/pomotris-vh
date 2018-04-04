@@ -37,7 +37,7 @@ class Dashboard extends React.Component {
 			records
 		});
 	};
-	handleSettingSubmit = data => {
+	handleCategorySubmit = data => {
 		this.setState({
 			categories: [ {...data} ]
 		})
@@ -47,7 +47,7 @@ class Dashboard extends React.Component {
 			<div className="children-container">
 				<Timer
 					onRecordSubmit={this.handleRecordSubmit}
-					onSettingSubmit={this.handleSettingSubmit}
+					onCategorySubmit={this.handleCategorySubmit}
 				/>
 				<Recordboard records={this.state.records} />
 			</div>

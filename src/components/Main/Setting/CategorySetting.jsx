@@ -5,20 +5,36 @@ class CategorySetting extends Component {
 	state = {
 		fields: [
 			{
-				category: null,
-				color: '#000000'
+				category: this.props.categories
+					? this.props.categories[0].category
+					: '',
+				color: this.props.categories
+					? this.props.categories[0].color
+					: '#000000'
 			},
 			{
-				category: null,
-				color: '#000000'
+				category: this.props.categories
+					? this.props.categories[1].category
+					: '',
+				color: this.props.categories
+					? this.props.categories[1].color
+					: '#000000'
 			},
 			{
-				category: null,
-				color: '#000000'
+				category: this.props.categories
+					? this.props.categories[2].category
+					: '',
+				color: this.props.categories
+					? this.props.categories[2].color
+					: '#000000'
 			},
 			{
-				category: null,
-				color: '#000000'
+				category: this.props.categories
+					? this.props.categories[3].category
+					: '',
+				color: this.props.categories
+					? this.props.categories[3].color
+					: '#000000'
 			}
 		]
 	};
@@ -26,7 +42,7 @@ class CategorySetting extends Component {
 	onInputChange = event => {
 		const categoryID = event.target.id;
 		const fields = this.state.fields.slice();
-		const field = this.state.fields[categoryID];
+		const field = fields[categoryID];
 		field[event.target.name] = event.target.value;
 		fields.splice(categoryID, 1, field);
 		this.setState({ fields });
@@ -35,65 +51,71 @@ class CategorySetting extends Component {
 	onSaveClick = () => {
 		const data = this.state.fields;
 		this.props.onSave(data);
+		this.props.closeModal();
 	};
 
+	onCancelClick = () => {
+		this.props.closeModal();
+	};
 	render() {
+		const categoryFields = this.state.fields.map((field, i) => (
+			<Field key={i} id={i} data={field} onInputChange={this.onInputChange} />
+		));
 		return (
-			<div>
-				<h1 className="setting">Category Setting</h1>
+			<div className="setting">
 				<hr />
-				<Field
-					id="0"
-					placeholder="category 1"
-					data={this.state.fields[0]}
-					onInputChange={this.onInputChange}
-					onSubmit={this.onSubmit}
-				/>
-				<Field
-					id="1"
-					placeholder="category 2"
-					onInputChange={this.onInputChange}
-				/>
-				<Field
-					id="2"
-					placeholder="category 3"
-					onInputChange={this.onInputChange}
-				/>
-				<Field
-					id="3"
-					placeholder="category 4"
-					onInputChange={this.onInputChange}
-				/>
-				<button className='button-save' onClick={this.onSaveClick}>Save</button>
+				<h1>Category Setting</h1>
+				{categoryFields}
+				<button className="button-modal-save" onClick={this.onSaveClick}>
+					Save
+				</button>
+				<button className="button-modal-cancel" onClick={this.onCancelClick}>
+					Cancel
+				</button>
 			</div>
 		);
 	}
 }
 
+CategorySetting.propTypes = {
+	categories: PropTypes.any,
+	closeModal: PropTypes.func,
+	onSave: PropTypes.func
+};
+
 class Field extends Component {
 	render() {
+		const ID = this.props.id;
+		const category = this.props.data.category;
+		const color = this.props.data.color;
 		return (
 			<form className="category-color-form" onSubmit={e => e.preventDefault()}>
 				<input
+					id={ID}
 					name="color"
 					type="color"
+					value={color}
 					className="input-color"
-					value={this.props.data ? this.props.data.color: ' '}
-					id={this.props.id}
 					onChange={this.props.onInputChange}
 				/>
 				<input
+					id={ID}
 					name="category"
-					className='input-category'
-					value={this.props.data ? this.props.data.category: ' '}
-					id={this.props.id}
-					placeholder={this.props.placeholder}
+					value={category}
+					className="input-category"
+					placeholder="new category"
 					onChange={this.props.onInputChange}
+					autoComplete="off"
 				/>
-				<input style={{ display: 'none' }} type="submit" />
 			</form>
 		);
 	}
+}
+
+Field.propTypes = {
+	id: PropTypes.number,
+	data: PropTypes.object,
+	onInputChange: PropTypes.func
 }
 
 export default CategorySetting;

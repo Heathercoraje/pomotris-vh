@@ -51,16 +51,20 @@ button:hover {
 .button-close {
 	width: 26vw;
 	margin: 1rem;
-	background-color: #000;
+	background-color: #373737;
 	color: #fff;
 }
-.button-save {
-	width: 22vw;
+.button-modal-save {
 	background-color: MediumAquaMarine;
 	color: #fff;
 }
-.button-close:hover {
+.button-modal-cancel {
 	background-color: #373737;
+	color: #fff;
+}
+.button-close:hover,
+.button-modal-cancel:hover {
+	background-color: #000;
 }
 .button-breakTime {
 	background-color: #70c774;
@@ -178,27 +182,39 @@ footer {
 .list-setting {
 	list-style: none;
 	padding: 0.1vw;
-	margin: 0;
+	margin-left: 1rem;
+	margin-top: 1rem;
 }
 .list-setting > li {
-	padding: 1vw;
+	font-weight: 600;
+	color: gray;
+	padding: 0.5vw;
 	float: left;
-	border: solid;
-	border-width: 1px 1px 0 1px;
+	cursor: pointer;
+}
+.list-setting > li:hover {
+	color: #434343;
 }
 .category-color-form {
-	margin-top: 1rem;
+	margin-top: 0.7rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 .input-category {
+	color: #434343;
+	font-size: 1.2vw;
 	text-align: center;
 	height: 3.8vh;
 	width: 45%;
 	outline: none;
-	border: 1px solid gray;
+	border: 1px solid #dedede;
 	border-radius: 3px;
+	cursor: pointer;
+	font-weight: 500;
+}
+.input-category::placeholder {
+	color: #dedede;
 }
 .input-color {
 	margin-right: 3%;
@@ -206,4 +222,5 @@ footer {
 	width: 12%;
 	border: none;
 	outline: none;
+	cursor: pointer;
 }

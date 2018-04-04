@@ -3,20 +3,24 @@ import PropTypes from 'prop-types';
 
 const TimerSetting = props => (
 	<div className="setting">
-		<h1>Timer Setting</h1>
 		<hr />
+		<h1>Timer Setting</h1>
 		<p>Choose your timer options</p>
-		<TimerOptions {...props}/>
-		<BreakTimeOptions {...props}/>
+		<TimerOptions {...props} />
+		<BreakTimeOptions {...props} />
 		<button className="button-close" onClick={props.closeModal}>
 			Close
 		</button>
 	</div>
 );
 
-const TimerOptions = (props) => {
-	const breakTime = props.breakTime;
+TimerSetting.propTypes = {
+	closeModal: PropTypes.func
+};
+
+const TimerOptions = props => {
 	const options = [25, 45, 60];
+	const breakTime = props.breakTime;
 	const selectOption = event => {
 		props.onSave(event.target.value, breakTime);
 	};
@@ -33,12 +37,13 @@ const TimerOptions = (props) => {
 };
 
 TimerOptions.propTypes = {
-	optionClick: PropTypes.func
+	breakTime: PropTypes.any,
+	onSave: PropTypes.func
 };
 
-const BreakTimeOptions = (props) => {
-	const time = props.duration;
+const BreakTimeOptions = props => {
 	const options = [5, 15, 20];
+	const time = props.duration;
 	const selectOption = event => {
 		props.onSave(time, event.target.value);
 	};
@@ -55,7 +60,8 @@ const BreakTimeOptions = (props) => {
 };
 
 BreakTimeOptions.propTypes = {
-	optionClick: PropTypes.func
+	duration: PropTypes.any,
+	onSave: PropTypes.func
 };
 
 export default TimerSetting;

@@ -4,7 +4,7 @@ import uuid from 'uuid-v4';
 import { formatTime, alertMessage } from '../../js/helper';
 import Setting from './Setting/Setting';
 
-// 25 min/ 10 min  is default setting
+// 25 min/ 5 min  is default setting
 class Timer extends Component {
 	state = {
 		category: null,
@@ -154,8 +154,8 @@ class Timer extends Component {
 	timeData = () => {
 		const duration = this.state.duration;
 		const breakTime = this.state.breakTime;
-		return { duration, breakTime }
-	}
+		return { duration, breakTime };
+	};
 
 	handleOptionClick = obj => {
 		this.editDuration(obj.duration);
@@ -182,7 +182,7 @@ class Timer extends Component {
 					timeData={this.timeData()}
 					onOptionClick={this.handleOptionClick}
 					onSettingOpen={this.handleStopClick}
-					onSettingSubmit={this.props.onSettingSubmit}
+					onCategorySubmit={this.props.onCategorySubmit}
 				/>
 				<Clock
 					time={
@@ -211,7 +211,6 @@ class Timer extends Component {
 Timer.propTypes = {
 	onRecordSubmit: PropTypes.func,
 	onSettingSubmit: PropTypes.func
-
 };
 
 const Clock = props => <div className="clock">{props.time}</div>;
@@ -262,7 +261,10 @@ class Fields extends Component {
 
 	render() {
 		return (
-			<form className='timer-form' onSubmit={this.onFormSubmit} onBlur={this.onFormSubmit}>
+			<form
+				className="timer-form"
+				onSubmit={this.onFormSubmit}
+				onBlur={this.onFormSubmit}>
 				<input
 					size={15}
 					autoFocus
@@ -270,6 +272,7 @@ class Fields extends Component {
 					name="category"
 					value={this.state.fields.category}
 					onChange={this.onInputChange}
+					autoComplete="off"
 				/>
 				<input
 					size={25}
@@ -277,6 +280,7 @@ class Fields extends Component {
 					placeholder="Task"
 					value={this.state.fields.title}
 					onChange={this.onInputChange}
+					autoComplete="off"
 				/>
 				<input style={{ display: 'none' }} type="submit" />
 			</form>
