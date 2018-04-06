@@ -181,6 +181,7 @@ class Timer extends Component {
 			<div className="timer">
 				<Setting
 					timeData={this.timeData()}
+					categories={this.props.categories}
 					onOptionClick={this.handleOptionClick}
 					onSettingOpen={this.handleStopClick}
 					onCategorySubmit={this.props.onCategorySubmit}
