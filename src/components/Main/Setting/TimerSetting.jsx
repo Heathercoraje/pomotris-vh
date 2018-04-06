@@ -6,9 +6,10 @@ import ClassNames from 'classnames';
 const TimerSetting = props => (
 	<div className="setting">
 		<hr />
-		<h1>Timer Setting</h1>
-		<p>Choose your timer options</p>
+		<h2 style={{ margin: '1rem 0'}}>Timer Setting</h2>
+		<p style={{ margin: '0.5rem 0'}}>Choose your timer option</p>
 		<TimerOptions {...props} />
+		<p style={{ margin: '0.5rem 0'}}>Choose your break time option</p>
 		<BreakTimeOptions {...props} />
 		<button className="button-close" onClick={props.closeModal}>
 			Close
@@ -67,7 +68,7 @@ class BreakTimeOptions extends Component {
 	state = {
 		selected: this.props.breakTime > 20 ? 5 : this.props.breakTime
 	};
-	
+
 	setActive = btn => {
 		this.setState({
 			selected: btn

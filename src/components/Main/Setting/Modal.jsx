@@ -33,7 +33,7 @@ class Modal extends React.Component {
 		selectedOption: {
 			duration: this.props.timeData.duration,
 			breakTime: this.props.timeData.breakTime,
-			categories: []
+			categories: this.props.categories
 		}
 	};
 
@@ -87,8 +87,8 @@ class Modal extends React.Component {
 
 	render() {
 		if (!this.props.isOpen) return null;
-		const categories = this.state.selectedOption.categories.length
-			? this.state.selectedOption.categories
+		const categories = this.props.categories.length
+			? this.props.categories[0]
 			: null;
 		const content = this.state.timerOpen ? (
 			<TimerSetting
