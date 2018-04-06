@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Timer from './Timer';
 import Recordboard from './Recordboard';
+import apiLocalStorage from '../../js/apiLocalStorage';
 
 class Dashboard extends React.Component {
 	state = {
@@ -30,24 +31,64 @@ class Dashboard extends React.Component {
 		],
 		categories: []
 	};
-	// example { category: '',title: '', duration: '', startTime: '', id:''}
-	handleRecordSubmit = newRecord => {
-		const records = [...this.state.records, newRecord];
-		this.setState({
-			records
+
+	// I am leaving log statements for us to make sure things are working
+	// these log statements need to be removed before deployment
+
+	componentWillMount() {
+		apiLocalStorage.loadRecords().then(records => {
+			this.setState({records});
+			console.log('success loading records');
 		});
-	};
-	handleCategorySubmit = data => {
-		this.setState({
-			categories: [ {...data} ]
+		apiLocalStorage.loadCategories().then(categories => {
+			this.setState({categories})
 		})
 	}
+	handleRecordSubmit = newRecord => {
+		const records = [...this.state.records, newRecord];
+		console.log('success saving a new record');
+		apiLocalStorage
+			.saveRecords(records)
+			.then(() => {
+				console.log('success saving a new record');
+				this.setState({
+					records
+				});
+				console.log('success updating records state');
+			})
+			.catch(err => {
+				console.error(
+					'Sorry, Are you sure your localStorage is currently available?'
+				);
+			});
+	};
+
+	handleCategorySubmit = data => {
+		const categories = [{ ...data }];
+		this.setState({ categories });
+		apiLocalStorage
+			.saveCategories(categories)
+			.then(() => {
+				console.log('success saving a new categories');
+				this.setState({
+					categories
+				});
+				console.log('success updating categories state');
+			})
+			.catch(err => {
+				console.error(
+					'Sorry, Are you sure your localStorage is currently available?'
+				);
+			});
+	};
+
 	render() {
 		return (
 			<div className="children-container">
 				<Timer
 					onRecordSubmit={this.handleRecordSubmit}
 					onCategorySubmit={this.handleCategorySubmit}
+					categories={this.state.categories}
 				/>
 				<Recordboard records={this.state.records} />
 			</div>
