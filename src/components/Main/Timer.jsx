@@ -263,7 +263,6 @@ class Fields extends Component {
 	};
 
 	render() {
-		console.log(this.props.categories[0]);
 		return (
 			<form
 				className="timer-form"
@@ -287,7 +286,7 @@ class Fields extends Component {
 				<input
 					size={25}
 					name="title"
-					placeholder="Task"
+					placeholder="Enter your task"
 					value={this.state.fields.title}
 					onChange={this.onInputChange}
 					autoComplete="off"
