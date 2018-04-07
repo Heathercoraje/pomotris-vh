@@ -54,7 +54,7 @@ button:hover,
 }
 .button-close {
 	width: 26vw;
-	margin: 1rem;
+	margin: 2vh;
 	background-color: #373737;
 	color: #fff;
 }
@@ -117,6 +117,9 @@ button:hover,
 	font-size: 5vw;
 	font-weight: 500;
 }
+.wrapper-actionButtons {
+	margin: 2vh;
+}
 .RecordWrapper {
 	height: 55%;
 	border: 2px solid Gainsboro;
@@ -127,8 +130,53 @@ button:hover,
 	padding: 0;
 }
 
-/* elements */
+/* forms, inputs */
+.timer-form {
+	margin-bottom: 2vh;
+}
 
+/* settings */
+.category-color-form {
+	margin: 1.3vh 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.input-category {
+	color: #434343;
+	font-size: 1.1vw;
+	text-align: center;
+	height: 3.8vh;
+	width: 45%;
+	outline: none;
+	border: 1px solid #dedede;
+	border-radius: 3px;
+	cursor: pointer;
+	font-weight: 500;
+}
+.input-category::placeholder {
+	color: #dedede;
+}
+.input-color {
+	margin-right: 3%;
+	height: 4.2vh;
+	width: 12%;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+.setting-title {
+	font-size: 2vw;
+	font-weight: 600;
+	margin: 2vh 0;
+}
+.setting-sub-title {
+	font-size: 1.1vw;
+	margin: 0.3rem 0;
+}
+.timer-options {
+	margin-bottom: 2vh;
+}
 /* header */
 
 header {
@@ -176,6 +224,7 @@ footer {
 	height: 6%;
 	position: fixed;
 	bottom: 0;
+	font-size: 1.8vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -204,35 +253,6 @@ footer {
 .list-setting > li:hover {
 	color: #434343;
 }
-.category-color-form {
-	margin-top: 0.7rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-.input-category {
-	color: #434343;
-	font-size: 1.1vw;
-	text-align: center;
-	height: 3.8vh;
-	width: 45%;
-	outline: none;
-	border: 1px solid #dedede;
-	border-radius: 3px;
-	cursor: pointer;
-	font-weight: 500;
-}
-.input-category::placeholder {
-	color: #dedede;
-}
-.input-color {
-	margin-right: 3%;
-	height: 4.2vh;
-	width: 12%;
-	border: none;
-	outline: none;
-	cursor: pointer;
-}
 
 /* optional */
 
@@ -240,5 +260,28 @@ footer {
 	background-color: #f0f0f0;
 }
 
-@media screen (max-height: 700px) {
+@media screen and (max-height: 700px) {
+	.clock {
+		font-size: 10vh;
+		padding-bottom: 1vh;
+	}
+	.timer-form {
+		margin-bottom: 1vh;
+	}
+	.wrapper-actionButtons {
+		margin: 1vh;
+	}
+	.setting-title {
+		font-size: 3.5vh;
+	}
+	.setting-sub-title {
+		font-size: 2vh;
+		margin: 0.1rem 0;
+	}
+	.timer-options {
+		margin-bottom: 1vh;
+	}
+	.category-color-form {
+		margin: 1vh 0;
+	}
 }

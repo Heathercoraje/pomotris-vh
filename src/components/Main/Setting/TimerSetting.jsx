@@ -6,10 +6,10 @@ import ClassNames from 'classnames';
 const TimerSetting = props => (
 	<div className="setting">
 		<hr />
-		<h2 style={{ margin: '1rem 0'}}>Timer Setting</h2>
-		<p style={{ margin: '0.5rem 0'}}>Choose your timer option</p>
+		<p className='setting-title'>Timer Setting</p>
+		<p className='setting-sub-title'>Choose your timer option</p>
 		<TimerOptions {...props} />
-		<p style={{ margin: '0.5rem 0'}}>Choose your break time option</p>
+		<p className='setting-sub-title'>Choose your break time option</p>
 		<BreakTimeOptions {...props} />
 		<button className="button-close" onClick={props.closeModal}>
 			Close
@@ -55,7 +55,7 @@ class TimerOptions extends Component {
 				{option} min
 			</button>
 		));
-		return <div>{TimerOptionButtons}</div>;
+		return <div className='timer-options'>{TimerOptionButtons}</div>;
 	}
 }
 

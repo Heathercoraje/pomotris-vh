@@ -4,9 +4,9 @@ import powderblue from '../../img/powderblue.png'
 
 const Footer = () => (
   <footer>
-    <img style={{ width: '3rem', margin: '1.5rem' }}  src={powderblue} />
+    <img style={{ width: '5.5vh', margin: '1vh' }}  src={powderblue} />
     <p> Veredrec and Heathercoraje are in building process </p>
-    <img style={{ width: '2rem', margin: '1.5rem'}}  src={green} />
+    <img style={{ width: '4vh', margin: '1vh' }}  src={green} />
 	</footer>
 );
 

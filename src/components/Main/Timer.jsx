@@ -320,7 +320,7 @@ class ActionButtons extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className='wrapper-actionButtons'>
 				<button
 					onClick={this.props.onButtonClick}
 					value={this.renderButton(this.props)}>
