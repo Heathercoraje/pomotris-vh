@@ -103,6 +103,8 @@ button:hover,
 	display: flex;
 }
 .timer {
+	display: flex;
+	flex-direction: column;
 	height: 45%;
 	color: white;
 	background-color: black;
@@ -236,4 +238,7 @@ footer {
 
 .active-modal {
 	background-color: #f0f0f0;
+}
+
+@media screen (max-height: 700px) {
 }

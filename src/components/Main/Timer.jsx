@@ -44,7 +44,7 @@ class Timer extends Component {
 			title: null,
 			startTime: null,
 			duration: newDuration,
-			breakTime:  breakTime,
+			breakTime,
 			remained: newDuration * 60,
 			isTimerRunning: false,
 			isBreakRunning: false
@@ -195,6 +195,7 @@ class Timer extends Component {
 				/>
 				<Fields
 					onFieldsSubmit={this.handleFieldsSubmit}
+					categories={this.props.categories}
 					title={this.state.title}
 					category={this.state.category}
 				/>
@@ -262,13 +263,15 @@ class Fields extends Component {
 	};
 
 	render() {
+		console.log(this.props.categories[0]);
 		return (
 			<form
 				className="timer-form"
 				onSubmit={this.onFormSubmit}
 				onBlur={this.onFormSubmit}>
 				<input
-					size={15}
+					list="categories"
+					size={16}
 					autoFocus
 					placeholder="  Category "
 					name="category"
@@ -276,6 +279,11 @@ class Fields extends Component {
 					onChange={this.onInputChange}
 					autoComplete="off"
 				/>
+				<datalist id="categories">
+					{this.props.categories.map((category, i ) =>
+						<option key={i} value={category.category} />
+					)}
+				</datalist>
 				<input
 					size={25}
 					name="title"

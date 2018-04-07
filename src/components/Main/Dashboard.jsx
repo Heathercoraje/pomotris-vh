@@ -64,7 +64,7 @@ class Dashboard extends React.Component {
 	};
 
 	handleCategorySubmit = data => {
-		const categories = [{ ...data }];
+		const categories = data;
 		this.setState({ categories });
 		apiLocalStorage
 			.saveCategories(categories)
