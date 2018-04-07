@@ -1,6 +1,6 @@
 import React from 'react';
-import { withFauxDOM } from 'react-faux-dom';
 import * as d3 from 'd3';
+import { withFauxDOM } from 'react-faux-dom';
 
 class Visual extends React.Component {
   // static propTypes = {...}
@@ -14,15 +14,33 @@ class Visual extends React.Component {
       .select(visual)
       .append('svg')
       .attr('width', 400)
-      .attr('height', 400);
+      .attr('height', 400)
+      .attr('stroke-width', 2)
+      .attr('stroke', 'grey');
     shape
       .append('rect')
-      .attr('width', '80')
-      .attr('height', '80')
-      .attr('x', '160')
-      .attr('w', '160')
+      .attr('width', '50')
+      .attr('height', '50')
+      .attr('x', '100')
+      .attr('y', '60')
       .text('H')
       .style('fill', 'orange');
+    shape
+      .append('rect')
+      .attr('width', '50')
+      .attr('height', '50')
+      .attr('x', '200')
+      .attr('y', '60')
+      .text('H')
+      .style('fill', 'pink');
+    shape
+      .append('rect')
+      .attr('width', '50')
+      .attr('height', '50')
+      .attr('x', '300')
+      .attr('y', '60')
+      .text('H')
+      .style('fill', 'green');
   }
 
   render() {
