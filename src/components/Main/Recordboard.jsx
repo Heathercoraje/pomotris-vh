@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as d3 from 'd3';
-import ReactFauxDOM from 'react-faux-dom';
+// import * as d3 from 'd3';
+// import ReactFauxDOM from 'react-faux-dom';
 import { formatTime } from '../../js/helper';
+import Visual from './Visual';
 
 const Recordboard = ({ records }) => {
   const timeArray = records.map(record => Number(record.duration));
@@ -22,6 +23,7 @@ const Recordboard = ({ records }) => {
       <h2>
         {totalTime ? 'Total' : ''} {totalTime}
       </h2>
+      <Visual />
       <ul className="recordList">{RecordList}</ul>
     </div>
   );
