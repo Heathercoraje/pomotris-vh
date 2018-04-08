@@ -64,7 +64,7 @@ class CategorySetting extends Component {
 		return (
 			<div className="setting">
 				<hr />
-				<h2 style={{ margin: '1rem 0'}}>Category Setting</h2>
+				<p className='setting-title'>Category Setting</p>
 				{categoryFields}
 				<button className="button-modal-save" onClick={this.onSaveClick}>
 					Save

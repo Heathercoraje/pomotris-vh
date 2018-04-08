@@ -88,7 +88,7 @@ class Modal extends React.Component {
 	render() {
 		if (!this.props.isOpen) return null;
 		const categories = this.props.categories.length
-			? this.props.categories[0]
+			? this.props.categories
 			: null;
 		const content = this.state.timerOpen ? (
 			<TimerSetting
