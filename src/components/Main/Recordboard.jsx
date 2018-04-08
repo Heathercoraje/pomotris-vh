@@ -23,7 +23,7 @@ const Recordboard = ({ records }) => {
       <h2>
         {totalTime ? 'Total' : ''} {totalTime}
       </h2>
-      <Visual />
+      <Visual records={records}/>
       <ul className="recordList">{RecordList}</ul>
     </div>
   );
