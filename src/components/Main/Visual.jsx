@@ -7,7 +7,6 @@ class Visual extends React.Component {
 
 	componentDidMount() {
 		const visual = this.props.connectFauxDOM('div', 'chart');
-		const records = this.props.records;
 		// D3 Code to create the shape
 		// using faux as container
 		const shape = d3
@@ -18,7 +17,6 @@ class Visual extends React.Component {
 			.attr('stroke-width', 2)
 			.attr('stroke', 'grey');
 		shape
-      .data(records)
 			.append('rect')
 			.attr('width', '50')
 			.attr('height', '50')
@@ -43,7 +41,16 @@ class Visual extends React.Component {
 			.text('H')
 			.style('fill', 'green');
 	}
-
+  componentDidUpdate() {
+    // this is the place where you get data being fetched from localStorage or from parent.
+    // componentDidMount only does initial render
+    const records = this.props.records;
+    const categories = this.props.categories;
+    console.log('after update');
+    console.log('Records : ', records);
+    console.log('Categories :', categories);
+  }
+  
 	render() {
 		return <div className="line-container">{this.props.chart}</div>;
 	}

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { formatTime } from '../../js/helper';
 import Visual from './Visual';
 
-const Recordboard = ({ records }) => {
+const Recordboard = ({ records, categories }) => {
   const timeArray = records.map(record => Number(record.duration));
   const totalTime = records.length
     ? formatTime(timeArray.reduce((a, b) => a + b) * 60)
@@ -23,7 +23,7 @@ const Recordboard = ({ records }) => {
       <h2>
         {totalTime ? 'Total' : ''} {totalTime}
       </h2>
-      <Visual records={records}/>
+      <Visual records={records} categories={categories}/>
       <ul className="recordList">{RecordList}</ul>
     </div>
   );
