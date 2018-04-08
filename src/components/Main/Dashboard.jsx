@@ -20,13 +20,6 @@ class Dashboard extends React.Component {
 				id: '310d95c1-783f-5655-9113-a6481c832061',
 				startTime: '3/29/2018, 7:00:48 PM',
 				title: 'Run 7 miles'
-			},
-			{
-				category: 'Reading',
-				duration: 50,
-				id: '323d95c1-783f-4459-9113-a6481c832061',
-				startTime: '3/29/2018, 9:47:48 PM',
-				title: 'YDKJS book 6 '
 			}
 		],
 		categories: []
@@ -90,7 +83,7 @@ class Dashboard extends React.Component {
 					onCategorySubmit={this.handleCategorySubmit}
 					categories={this.state.categories}
 				/>
-				<Recordboard records={this.state.records} />
+				<Recordboard records={this.state.records} categories={this.state.categories} />
 			</div>
 		);
 	}
