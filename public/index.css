@@ -255,10 +255,9 @@ footer {
 }
 
 /* visual */
-.container {
-  border: 2px solid grey;
-  width: 450px;
-  height: 250px;
+.visual-wrapper {
+  /*border: 1px solid grey;*/
+  width: 80%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -270,10 +269,9 @@ footer {
   height: 40px;
   width: 40px;
   color: #434213;
-  margin: 10px;
+  margin: 5px;
   line-height: 40px;
   text-align: center;
-  border: 2px solid red;
 }
 
 /* optional */

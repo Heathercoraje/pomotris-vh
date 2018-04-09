@@ -3,45 +3,42 @@ import * as d3 from 'd3';
 import { withFauxDOM } from 'react-faux-dom';
 
 class Visual extends React.Component {
-  // static propTypes = {...}
+  state = {
+    categories: this.props.categories,
+    records: this.props.records
+  };
 
   componentDidMount() {
-    // createBox() {
-    const visual = this.props.connectFauxDOM('div', 'chart');
-    // D3 Code to create the shape
-    // using faux as container
-    console.log(this.props.categories);
-    console.log(this.props.records);
+    const categories = this.props.categories;
+    console.log('DidMount ', categories);
 
+    const data = [
+      { time: 25, category: 'D3', color: '#2180B7' },
+      { time: 45, category: 'Pomotris', color: '#BB8FCE' },
+      { time: 25, category: 'Extension', color: '#B0FC4F' }
+    ];
+    const visual = this.props.connectFauxDOM('div', 'box');
     d3
-      .select('visual')
+      .select(visual)
+      .attr('class', 'visual-wrapper')
       .selectAll('div')
-      .data(categories) // bind our data
+      .data(data) // bind our data
+      .enter()
+      .selectAll('div') // inner selection
+      .data(d => d3.range(d.time / 5).map(() => d)) // rebind our data as an array length to num with repeating elements
       .enter()
       .append('div')
-      // .selectAll('div') // inner selection
-      // .data(d => d3.range(d.time / 5).map(() => d))
-      // .enter()
-      .text(d => d.category)
       .attr('class', 'block')
       .style('background-color', d => d.color);
   }
+
   componentDidUpdate() {
-    // this is the place where you get data being fetched from localStorage or from parent.
-    // componentDidMount only does initial render
-    const records = this.props.records;
     const categories = this.props.categories;
-
-    console.log('after update');
-    console.log('Records : ', records);
-    console.log('Categories :', categories);
-    // return visual.toReact();
+    console.log('DidUpdate ', categories);
   }
-  // }
-  render() {
-    // return <div className="line-container">{this.createBox()}</div>;
 
-    return <div className="line-container">{this.props.chart}</div>;
+  render() {
+    return <div className="line-container">{this.props.box}</div>;
   }
 }
 
