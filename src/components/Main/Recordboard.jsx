@@ -24,7 +24,6 @@ const Recordboard = ({ records, categories }) => {
         {totalTime ? 'Total' : ''} {totalTime}
       </h2>
       <Visual records={records} categories={categories}/>
-      <ul className="recordList">{RecordList}</ul>
     </div>
   );
 };

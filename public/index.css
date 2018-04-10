@@ -254,6 +254,26 @@ footer {
 	color: #434343;
 }
 
+/* visual */
+.visual-wrapper {
+	/*border: 1px solid grey;*/
+	width: 90%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	flex-wrap: wrap-reverse;
+	margin: 1rem auto;
+}
+.block {
+	background-color: #eee;
+	height: 2vw;
+	width: 2vw;
+	color: #434213;
+	margin: 0.2vw;
+	line-height: 40px;
+	text-align: center;
+}
+
 /* optional */
 
 .active-modal {
