@@ -2,20 +2,21 @@
 const apiLocalStorage = {
 	loadRecords() {
 		return new Promise((resolve, reject) => {
-			const records = JSON.parse(localStorage.records || '[]');
+			const records = JSON.parse(localStorage.pomotrisRecords || '[]');
 			return resolve(records);
 		});
 	},
 	loadCategories() {
 		return new Promise((resolve, reject) => {
-			const categories = JSON.parse(localStorage.categories || '[]');
+			// const defaultCategories =
+			const categories = JSON.parse(localStorage.PomotrisCategories || '[]');
 			return resolve(categories);
 		});
 	},
 	saveRecords(records) {
 		return new Promise((resolve, reject) => {
 			setTimeout(() => {
-				localStorage.records = JSON.stringify(records);
+				localStorage.pomotrisRecords = JSON.stringify(records);
 				return resolve({ success: true });
 			}, 1000);
 		});
@@ -23,7 +24,7 @@ const apiLocalStorage = {
 	saveCategories(categories) {
 		return new Promise((resolve, reject) => {
 			setTimeout(() => {
-				localStorage.categories = JSON.stringify(categories);
+				localStorage.pomotrisCategories = JSON.stringify(categories);
 				return resolve({ success: true });
 			}, 1000);
 		});
