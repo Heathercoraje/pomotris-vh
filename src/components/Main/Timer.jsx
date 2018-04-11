@@ -8,7 +8,8 @@ import Setting from './Setting/Setting';
 class Timer extends Component {
 	state = {
 		category: null,
-		title: null,
+		task: null,
+		color:'',
 		startTime: null,
 		duration: 25,
 		remained: 25 * 60,
@@ -41,7 +42,7 @@ class Timer extends Component {
 		const breakTime = this.state.breakTime;
 		this.setState({
 			category: null,
-			title: null,
+			task: null,
 			startTime: null,
 			duration: newDuration,
 			breakTime,
@@ -53,7 +54,7 @@ class Timer extends Component {
 
 	handleFieldsSubmit = fields => {
 		this.setState({
-			title: fields.title,
+			task: fields.task,
 			category: fields.category
 		});
 	};
@@ -145,11 +146,11 @@ class Timer extends Component {
 	};
 	handleRecordSubmit = () => {
 		const category = this.state.category;
-		const title = this.state.title;
+		const task = this.state.task;
 		const startTime = this.state.startTime;
 		const duration = this.state.duration;
 		const id = uuid();
-		this.props.onRecordSubmit({ category, title, startTime, duration, id });
+		this.props.onRecordSubmit({ category, task, startTime, duration, id });
 	};
 
 	timeData = () => {
@@ -196,7 +197,7 @@ class Timer extends Component {
 				<Fields
 					onFieldsSubmit={this.handleFieldsSubmit}
 					categories={this.props.categories}
-					title={this.state.title}
+					task={this.state.task}
 					category={this.state.category}
 				/>
 				<ActionButtons
@@ -227,14 +228,14 @@ class Fields extends Component {
 	state = {
 		fields: {
 			category: '',
-			title: ''
+			task: ''
 		},
 		formOpen: true
 	};
 
-	// when new title & cateroy props are empty ( aka, it is a new timer), then clear input
+	// when new task & cateroy props are empty ( aka, it is a new timer), then clear input
 	componentWillReceiveProps(nextProps) {
-		if (!nextProps.category && !nextProps.title) {
+		if (!nextProps.category && !nextProps.task) {
 			this.clearForm();
 		}
 	}
@@ -243,7 +244,7 @@ class Fields extends Component {
 		this.setState({
 			fields: {
 				category: '',
-				title: ''
+				task: ''
 			},
 			formOpen: true
 		});
@@ -285,9 +286,9 @@ class Fields extends Component {
 				</datalist>
 				<input
 					size={25}
-					name="title"
+					name="task"
 					placeholder="Enter your task"
-					value={this.state.fields.title}
+					value={this.state.fields.task}
 					onChange={this.onInputChange}
 					autoComplete="off"
 				/>
@@ -298,7 +299,7 @@ class Fields extends Component {
 }
 
 Fields.propTypes = {
-	title: PropTypes.string,
+	task: PropTypes.string,
 	category: PropTypes.string,
 	onFieldsSubmit: PropTypes.func
 };

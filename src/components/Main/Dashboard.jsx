@@ -3,25 +3,11 @@ import styled from 'styled-components';
 import Timer from './Timer';
 import Recordboard from './Recordboard';
 import apiLocalStorage from '../../js/apiLocalStorage';
+import { addColorDetail } from '../../js/helper';
 
 class Dashboard extends React.Component {
   state = {
-    records: [
-      {
-        category: 'Coding',
-        duration: 25,
-        id: '310d95c1-783f-4459-9113-a6481c832061',
-        startTime: '3/29/2018, 5:47:48 PM',
-        title: 'Learning React'
-      },
-      {
-        category: 'Workout',
-        duration: 50,
-        id: '310d95c1-783f-5655-9113-a6481c832061',
-        startTime: '3/29/2018, 7:00:48 PM',
-        title: 'Run 7 miles'
-      }
-    ],
+    records: [],
     categories: []
   };
 
@@ -31,11 +17,13 @@ class Dashboard extends React.Component {
   componentWillMount() {
     apiLocalStorage.loadRecords().then(records => {
       this.setState({ records });
-      console.log('success loading records');
+    }).catch(err=>{
+      console.log('Failed to retrieve records');
     });
     apiLocalStorage.loadCategories().then(categories => {
       this.setState({ categories });
-      console.log('success loading categories');
+    }).catch(err=>{
+      console.log('Failed to retrieve category data');
     });
   }
   handleRecordSubmit = newRecord => {
@@ -57,6 +45,20 @@ class Dashboard extends React.Component {
       });
   };
 
+  updateRecordsDetails = (data) => {
+    const prevRecords = this.state.records.slice();
+    const categories = data;
+    const records = addColorDetail(prevRecords, categories);
+    apiLocalStorage.saveRecords(records).then(()=>{
+      this.setState({records});
+    })
+  }
+
+  // if category is no longer valid, remove colors
+  // this will be coming along soon after fixing updating d3 issue
+  // validateColors =() => {
+  // }
+
   handleCategorySubmit = data => {
     const categories = data;
     this.setState({ categories });
@@ -74,6 +76,7 @@ class Dashboard extends React.Component {
           'Sorry, Are you sure your localStorage is currently available?'
         );
       });
+    this.updateRecordsDetails(data);
   };
 
   render() {

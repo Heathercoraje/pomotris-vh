@@ -11,9 +11,9 @@ const Recordboard = ({ records, categories }) => {
     ? formatTime(timeArray.reduce((a, b) => a + b) * 60)
     : null;
   const RecordList = records.map(
-    ({ category, title, duration, startTime, id }, i) => (
+    ({ category, task, duration, startTime, id }, i) => (
       <li className="recordItem" key={i} id={id}>
-        {[category, title, duration, startTime].join(' | ')}
+        {[category, task, duration, startTime].join(' | ')}
       </li>
     )
   );
