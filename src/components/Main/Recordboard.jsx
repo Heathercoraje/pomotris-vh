@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import * as d3 from 'd3';
-// import ReactFauxDOM from 'react-faux-dom';
 import { formatTime } from '../../js/helper';
 import Visual from './Visual';
 
@@ -23,7 +21,7 @@ const Recordboard = ({ records, categories }) => {
       <h2>
         {totalTime ? 'Total' : ''} {totalTime}
       </h2>
-      <Visual records={records} categories={categories}/>
+      <Visual records={records} categories={categories} />
     </div>
   );
 };
@@ -33,5 +31,3 @@ Recordboard.propTypes = {
 };
 
 export default Recordboard;
-
-// D3 --------------------
