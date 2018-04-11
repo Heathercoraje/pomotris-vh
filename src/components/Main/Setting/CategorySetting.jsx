@@ -10,7 +10,7 @@ class CategorySetting extends Component {
 					: '',
 				color: this.props.categories
 					? this.props.categories[0].color
-					: '#31D843'
+					: '#afe6b1'
 			},
 			{
 				category: this.props.categories
@@ -18,7 +18,7 @@ class CategorySetting extends Component {
 					: '',
 				color: this.props.categories
 					? this.props.categories[1].color
-					: '#38A700'
+					: '#7dbd7f'
 			},
 			{
 				category: this.props.categories
@@ -26,7 +26,7 @@ class CategorySetting extends Component {
 					: '',
 				color: this.props.categories
 					? this.props.categories[2].color
-					: '#386C0B'
+					: '#328335'
 			},
 			{
 				category: this.props.categories
@@ -34,7 +34,7 @@ class CategorySetting extends Component {
 					: '',
 				color: this.props.categories
 					? this.props.categories[3].color
-					: '#293F14'
+					: '#1f6236'
 			}
 		]
 	};

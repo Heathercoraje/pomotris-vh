@@ -1,26 +1,15 @@
 import React from 'react';
 import * as d3 from 'd3';
 import { withFauxDOM } from 'react-faux-dom';
+import { generateRandomColor } from '../../js/helper';
 
 class Visual extends React.Component {
-	componentDidUpdate() {
-    // at initial state, both don't have anything (if you have your localStoarge clear);
-    // once you submit category form && finish one timer, this will appear
-    let categories = this.props.categories;
-    let records = this.props.records;
-    console.log(categories);
-    console.log(records);
-    // manipuate data failed :( so hard-coding it
-		const data = [
-      { duration: 45, category: 'yoga',color: '#84dce9'},
-      { duration: 60, category: 'code', color: '#eca7e9'},
-      { duration: 65, category: 'joy',color: '#aab8ed' },
-			{ duration: 60, category: 'code', color: '#eca7e9'},
-      { duration: 65, category: 'joy',color: '#aab8ed' },
-      { duration: 45, category: 'code', color: '#ee759f'},
-      { duration: 45, category: 'yoga',color: '#84dce9'},
-		];
-		const visual = this.props.connectFauxDOM('div', 'box');
+	addRandomColor = (records) => {
+		return generateRandomColor(records)
+	}
+	renderD3 = (records, selector) => {
+		const data = this.addRandomColor(records);
+		const visual = this.props.connectFauxDOM('div', selector);
 		d3
 			.select(visual)
 			.attr('class', 'visual-wrapper')
@@ -34,8 +23,27 @@ class Visual extends React.Component {
 			.attr('class', 'block')
 			.style('background-color', d => d.color);
 	}
+
+	componentDidMount() {
+		this.renderD3([{duration: 300, color: '#e6e6e6'}], 'defaultBox')
+    // here generating gray grids for background setting
+    // these two different components will have to be position:absolute
+    // to make them stacked on top of each others
+	}
+
+	componentDidUpdate() {
+		console.log(this.props.records); // we get the most updated props.
+		this.renderD3(this.props.records, 'box');
+	}
+
+
 	render() {
-		return <div className="line-container">{this.props.box}</div>;
+		return (
+			<div>
+				<div className="line-container">{this.props.defaultBox}</div>
+				<div className="line-container">{this.props.box}</div>
+			</div>
+		);
 	}
 }
 

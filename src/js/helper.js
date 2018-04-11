@@ -28,4 +28,30 @@ function alertMessage(flag) {
 	flag === 'break' ? alert(breakMsg) : alert(startMsg);
 }
 
-module.exports = { formatTime, alertMessage };
+// this should be called on save for color setting being submitted
+function addColorDetail(records, categories) {
+	const newRecords = records.map(record => {
+		categories.forEach(category => {
+			if (category.category === record.category) {
+				record.color = category.color;
+			}
+		});
+		return record;
+	});
+	return newRecords;
+}
+
+function generateRandomColor(prevRecords) {
+	const records = prevRecords.map(record => {
+		record.color = record.color ? record.color : '#434343';
+		return record;
+	});
+	return records;
+}
+
+module.exports = {
+	formatTime,
+	alertMessage,
+	generateRandomColor,
+	addColorDetail
+};
