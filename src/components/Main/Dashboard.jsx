@@ -26,6 +26,7 @@ class Dashboard extends React.Component {
       console.log('Failed to retrieve category data');
     });
   }
+  
   handleRecordSubmit = newRecord => {
     const records = [...this.state.records, newRecord];
     console.log('success saving a new record');

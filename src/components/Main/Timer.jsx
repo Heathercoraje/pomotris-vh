@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import uuid from 'uuid-v4';
-import { formatTime, alertMessage } from '../../js/helper';
+import { formatTime, alertMessage, generateRandomColor, generateID, addColorDetail } from '../../js/helper';
+
 import Setting from './Setting/Setting';
 
 // 25 min/ 5 min  is default setting
@@ -11,9 +11,10 @@ class Timer extends Component {
 		task: null,
 		color:'',
 		startTime: null,
-		duration: 25,
-		remained: 25 * 60,
-		breakTime: 5 * 60,
+		duration: 0.1,
+		remained: 0.1 * 60,
+		breakTime: 0.1,
+		breakTimeRemained: 0.1 * 60,
 		isTimerRunning: false,
 		isBreakRunning: false
 	};
@@ -23,7 +24,7 @@ class Timer extends Component {
 		if (!this.state.remained && this.state.isTimerRunning) {
 			this.handleComplete();
 		}
-		if (this.state.breakTime < 0) {
+		if (this.state.breakTimeRemained < 0) {
 			this.handleBreakOver();
 		}
 	}
@@ -34,19 +35,21 @@ class Timer extends Component {
 		});
 	};
 	breakTimeCountDown = () => {
-		const breakTime = this.state.breakTime - 1;
-		this.setState({ breakTime });
+		const breakTimeRemained = this.state.breakTimeRemained - 1;
+		this.setState({ breakTimeRemained});
 	};
 	resetTimer = newDuration => {
 		clearInterval(this.countDownID);
 		const breakTime = this.state.breakTime;
+		const breakTimeRemained = this.state.breakTime * 60;
 		this.setState({
 			category: null,
 			task: null,
 			startTime: null,
 			duration: newDuration,
-			breakTime,
 			remained: newDuration * 60,
+			breakTime,
+			breakTimeRemained,
 			isTimerRunning: false,
 			isBreakRunning: false
 		});
@@ -129,8 +132,8 @@ class Timer extends Component {
 	};
 	handleBreakOver = () => {
 		alertMessage('start');
-		clearInterval(this.breakTimeCountDownID);
 		this.resetTimer(this.state.duration);
+		clearInterval(this.breakTimeCountDownID);
 		this.setState({
 			isBreakRunning: false
 		});
@@ -149,7 +152,9 @@ class Timer extends Component {
 		const task = this.state.task;
 		const startTime = this.state.startTime;
 		const duration = this.state.duration;
-		const id = uuid();
+		const color = generateRandomColor(task, categories)
+		const id = generateID();
+		console.log(color, id);
 		this.props.onRecordSubmit({ category, task, startTime, duration, id });
 	};
 
@@ -173,7 +178,8 @@ class Timer extends Component {
 
 	editBreakTime = value => {
 		this.setState({
-			breakTime: value * 60
+			breakTime: value,
+			breakTimeRemained: value * 60
 		});
 	};
 
@@ -191,7 +197,7 @@ class Timer extends Component {
 					time={
 						this.state.remained
 							? formatTime(this.state.remained)
-							: formatTime(this.state.breakTime)
+							: formatTime(this.state.breakTimeRemained)
 					}
 				/>
 				<Fields

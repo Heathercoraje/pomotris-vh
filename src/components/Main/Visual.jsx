@@ -1,16 +1,9 @@
 import React from 'react';
 import * as d3 from 'd3';
 import ReactFauxDOM from 'react-faux-dom';
-import { generateRandomColor } from '../../js/helper';
 
 class Visual extends React.Component {
-  // addRandomColor = records => {
-  //   return generateRandomColor(records);
-  // };
-
   renderD3 = data => {
-    console.log('inside renderD3', data);
-
     const el = ReactFauxDOM.createElement('div');
 
     d3
