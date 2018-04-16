@@ -152,10 +152,9 @@ class Timer extends Component {
 		const task = this.state.task;
 		const startTime = this.state.startTime;
 		const duration = this.state.duration;
-		const color = generateRandomColor(task, categories)
+		const color = generateRandomColor(task, this.props.categories)
 		const id = generateID();
-		console.log(color, id);
-		this.props.onRecordSubmit({ category, task, startTime, duration, id });
+		this.props.onRecordSubmit({ category, task, startTime, duration, color, id });
 	};
 
 	timeData = () => {

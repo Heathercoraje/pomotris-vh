@@ -49,14 +49,19 @@ function generateID() {
 
 function generateRandomColor(task, categories) {
 	let color = '#afe6b1';
+	if (!categories.length) {
+		return color;
+	}
 	const categoriesArray = categories.map(c => c.category);
-	if (!categories || categoriesArray.indexOf(task) < 0) {
+	// categories data exist but task does not match any of tasks
+	if (categoriesArray.indexOf(task) < 0) {
 		return color;
 	}
 	color = categories.forEach(c => {
 		if (c.category === task) {
 			color = c.color;
 		}
+		return color;
 	});
 }
 

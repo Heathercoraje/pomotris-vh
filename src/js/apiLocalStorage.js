@@ -10,14 +10,6 @@ const apiLocalStorage = {
 				startTime: '3/29/2018, 5:47:48 PM',
 				task: 'Welcome to Pomotris',
 				color: 'powderblue'
-			},
-			{
-				category: 'coding',
-				duration: 20,
-				id: '310d95c1-783f-4459-9113-a6481c832061',
-				startTime: '3/29/2018, 5:47:48 PM',
-				task: 'Welcome to Pomotris',
-				color: 'blue'
 			}
 		];
 		return new Promise((resolve, reject) => {
