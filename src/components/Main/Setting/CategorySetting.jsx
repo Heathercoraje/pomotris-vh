@@ -48,8 +48,8 @@ class CategorySetting extends Component {
 		this.setState({ categories });
 	};
 
-	onSaveClick = () => {
-		console.log('hello world')
+	onSaveClick = (event) => {
+		event.preventDefault();
 		const data = this.state.categories;
 		this.props.onSave(data);
 		this.props.closeModal();
@@ -63,7 +63,9 @@ class CategorySetting extends Component {
 			<div className="setting">
 				<hr />
 				<p className="setting-title">Category Setting</p>
-				<form onSubmit={this.onSaveClick}>
+				{/* <form onSubmit={this.onSaveClick}> */}
+				<form onSubmit={()=> {console.log('wtf?')}}>
+				
 					{this.state.categories.map((category, i) => (
 						<CategoryColorGroup
 						key={i}
@@ -72,13 +74,14 @@ class CategorySetting extends Component {
 						onInputChange={this.onInputChange}
 						/>
 					))}
-				</form>
+				
 				<button className="button-modal-save" onClick={this.onSaveClick}>
 					Save
 				</button>
 				<button className="button-modal-cancel" onClick={this.onCancelClick}>
 					Cancel
 				</button>
+				</form>
 			</div>
 		);
 	}
