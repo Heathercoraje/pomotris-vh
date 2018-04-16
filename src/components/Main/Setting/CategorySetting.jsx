@@ -63,9 +63,7 @@ class CategorySetting extends Component {
 			<div className="setting">
 				<hr />
 				<p className="setting-title">Category Setting</p>
-				{/* <form onSubmit={this.onSaveClick}> */}
-				<form onSubmit={()=> {console.log('wtf?')}}>
-				
+				<form onSubmit={this.onSaveClick}>				
 					{this.state.categories.map((category, i) => (
 						<CategoryColorGroup
 						key={i}
@@ -74,7 +72,6 @@ class CategorySetting extends Component {
 						onInputChange={this.onInputChange}
 						/>
 					))}
-				
 				<button className="button-modal-save" onClick={this.onSaveClick}>
 					Save
 				</button>
