@@ -4,12 +4,12 @@ import ReactFauxDOM from 'react-faux-dom';
 
 class Grid extends React.Component {
   renderD3 = () => {
-    const gridData = [320];
+    const gridData = [315];
 
-    const greyEl = ReactFauxDOM.createElement('div');
+    const gridEl = ReactFauxDOM.createElement('div');
 
     d3
-      .select(greyEl)
+      .select(gridEl)
       .attr('class', 'grid-wrapper')
       .selectAll('div')
       .data(gridData)
@@ -18,16 +18,16 @@ class Grid extends React.Component {
       .data(d => d3.range(d / 5).map(() => d))
       .enter()
       .append('div')
-      .attr('class', 'block')
-      .style('background-color', '#eee');
+      .style('background-color', '#eee')
+      .attr('class', 'block');
 
-    return greyEl.toReact();
+    return gridEl.toReact();
   };
 
   render() {
     return (
       <div>
-        <div className="line-container">{this.renderD3()}</div>
+        <div>{this.renderD3()}</div>
       </div>
     );
   }

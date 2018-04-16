@@ -258,7 +258,8 @@ footer {
 .d3-wrapper {
   position: relative;
 }
-.visual-wrapper {
+.visual-wrapper,
+.grid-wrapper {
   width: 40vw;
   height: 25vh;
   display: flex;
@@ -270,21 +271,13 @@ footer {
   z-index: 1;
 }
 .grid-wrapper {
-  width: 40vw;
-  height: 25vh;
-  display: flex;
-  justify-content: flex-end;
-  align-content: flex-end;
   flex-wrap: wrap;
-  margin: 1rem auto;
-  position: absolute;
+  z-index: -1;
 }
 .block {
-  background-color: #eee;
   height: 1.5vw;
   width: 1.5vw;
   margin: 0.2vw;
-  text-align: center;
 }
 .small-block {
   height: 0.8vw;
