@@ -1,25 +1,29 @@
 // using localStorage in place of Server for now
 const apiLocalStorage = {
 	// do something about default
+
 	loadRecords() {
 		const defaultRecords = [
 			{
 				category: 'welcome',
 				duration: 10,
 				id: '310d95c1-783f-4459-9113-a6481c832061',
-				startTime: '3/29/2018, 5:47:48 PM',
+				startTime: new Date(Date.now()).toLocaleString(),
 				task: 'Welcome to Pomotris',
 				color: 'powderblue'
 			}
 		];
 		return new Promise((resolve, reject) => {
 			const status = true;
+			const max_num = 20;
 			let records = JSON.parse(localStorage.pomotrisRecords || null);
 			if (!records) {
 				records = defaultRecords;
 				localStorage.pomotrisRecords = JSON.stringify(records);
+				return records;
 			}
-			return resolve(records);
+			const recordsFiltered = records.slice(0, 20);
+			return resolve(recordsFiltered);
 		});
 	},
 	loadCategories() {
