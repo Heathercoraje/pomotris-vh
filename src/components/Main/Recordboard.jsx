@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import * as d3 from 'd3';
-// import ReactFauxDOM from 'react-faux-dom';
 import { formatTime } from '../../js/helper';
 import Visual from './Visual';
+import Grid from './Grid';
 
 const Recordboard = ({ records, categories }) => {
   const timeArray = records.map(record => Number(record.duration));
@@ -23,7 +22,10 @@ const Recordboard = ({ records, categories }) => {
       <h2>
         {totalTime ? 'Total' : ''} {totalTime}
       </h2>
-      <Visual records={records} categories={categories}/>
+      <div className="d3-wrapper">
+        <Visual records={records} categories={categories} />
+        <Grid />
+      </div>
     </div>
   );
 };
@@ -33,5 +35,3 @@ Recordboard.propTypes = {
 };
 
 export default Recordboard;
-
-// D3 --------------------
