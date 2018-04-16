@@ -49,6 +49,7 @@ class CategorySetting extends Component {
 	};
 
 	onSaveClick = () => {
+		console.log('hello world')
 		const data = this.state.categories;
 		this.props.onSave(data);
 		this.props.closeModal();
