@@ -22,7 +22,8 @@ const apiLocalStorage = {
 				localStorage.pomotrisRecords = JSON.stringify(records);
 				return records;
 			}
-			const recordsFiltered = records.slice(0, 20);
+			const toStart = records.length - 20;
+			const recordsFiltered = records.slice(toStart, records.length);
 			return resolve(recordsFiltered);
 		});
 	},
