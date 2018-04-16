@@ -1,38 +1,35 @@
 // using localStorage in place of Server for now
 const apiLocalStorage = {
 	// do something about default
+
 	loadRecords() {
 		const defaultRecords = [
 			{
 				category: 'welcome',
 				duration: 10,
 				id: '310d95c1-783f-4459-9113-a6481c832061',
-				startTime: '3/29/2018, 5:47:48 PM',
+				startTime: new Date(Date.now()).toLocaleString(),
 				task: 'Welcome to Pomotris',
 				color: 'powderblue'
-			},
-			{
-				category: 'coding',
-				duration: 20,
-				id: '310d95c1-783f-4459-9113-a6481c832061',
-				startTime: '3/29/2018, 5:47:48 PM',
-				task: 'Welcome to Pomotris',
-				color: 'blue'
 			}
 		];
 		return new Promise((resolve, reject) => {
 			const status = true;
+			const max_num = 20;
 			let records = JSON.parse(localStorage.pomotrisRecords || null);
 			if (!records) {
 				records = defaultRecords;
 				localStorage.pomotrisRecords = JSON.stringify(records);
+				return records;
 			}
-			return resolve(records);
+			const toStart = records.length - 20;
+			const recordsFiltered = records.slice(toStart, records.length);
+			return resolve(recordsFiltered);
 		});
 	},
 	loadCategories() {
 		return new Promise((resolve, reject) => {
-			const categories = JSON.parse(localStorage.PomotrisCategories || '[]');
+			const categories = JSON.parse(localStorage.pomotrisCategories || '[]');
 			return resolve(categories);
 		});
 	},

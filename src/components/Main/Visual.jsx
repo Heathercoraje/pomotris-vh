@@ -1,16 +1,9 @@
 import React from 'react';
 import * as d3 from 'd3';
 import ReactFauxDOM from 'react-faux-dom';
-import { generateRandomColor } from '../../js/helper';
 
 class Visual extends React.Component {
-  // addRandomColor = records => {
-  //   return generateRandomColor(records);
-  // };
-
   renderD3 = data => {
-    console.log('inside renderD3', data);
-
     const el = ReactFauxDOM.createElement('div');
 
     d3
@@ -38,17 +31,6 @@ class Visual extends React.Component {
       </div>
     );
   }
-
-  // componentDidMount() {
-  //   this.renderD3([{ duration: 30, color: '#e6e6e6' }], 'defaultBox');
-  //   // here generating gray grids for background setting
-  //   // these two different components will have to be position:absolute
-  //   // to make them stacked on top of each others
-  // }
-  //
-  // componentDidUpdate() {
-  //   this.renderD3(this.props.records, 'box');
-  // }
 }
 
 export default Visual;

@@ -1,3 +1,5 @@
+import uuid from 'uuid-v4';
+
 function formatTime(s) {
 	if (s < 3601) {
 		const seconds = Math.floor(s % 60);
@@ -41,17 +43,32 @@ function addColorDetail(records, categories) {
 	return newRecords;
 }
 
-function generateRandomColor(prevRecords) {
-	const records = prevRecords.map(record => {
-		record.color = record.color ? record.color : '#434343';
-		return record;
+function generateID() {
+	return uuid();
+}
+
+function generateRandomColor(task, categories) {
+	let color = '#afe6b1';
+	if (!categories.length) {
+		return color;
+	}
+	const categoriesArray = categories.map(c => c.category);
+	// categories data exist but task does not match any of tasks
+	if (categoriesArray.indexOf(task) < 0) {
+		return color;
+	}
+	categories.forEach(c => {
+		if (c.category === task) {
+			color = c.color;
+		}
 	});
-	return records;
+	return color;
 }
 
 module.exports = {
 	formatTime,
 	alertMessage,
 	generateRandomColor,
-	addColorDetail
+	addColorDetail,
+	generateID
 };
