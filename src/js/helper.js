@@ -57,12 +57,12 @@ function generateRandomColor(task, categories) {
 	if (categoriesArray.indexOf(task) < 0) {
 		return color;
 	}
-	color = categories.forEach(c => {
+	categories.forEach(c => {
 		if (c.category === task) {
 			color = c.color;
 		}
-		return color;
 	});
+	return color;
 }
 
 module.exports = {

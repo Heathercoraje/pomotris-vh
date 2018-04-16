@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class CategorySetting extends Component {
 	state = {
-		fields: [
+		categories: [
 			{
 				category: this.props.categories
 					? this.props.categories[0].category
@@ -41,15 +41,15 @@ class CategorySetting extends Component {
 
 	onInputChange = event => {
 		const categoryID = event.target.id;
-		const fields = this.state.fields.slice();
-		const field = fields[categoryID];
-		field[event.target.name] = event.target.value;
-		fields.splice(categoryID, 1, field);
-		this.setState({ fields });
+		const categories = this.state.categories.slice();
+		const targetCategory = categories[categoryID];
+		targetCategory[event.target.name] = event.target.value;
+		categories.splice(categoryID, 1, targetCategory);
+		this.setState({ categories });
 	};
 
 	onSaveClick = () => {
-		const data = this.state.fields;
+		const data = this.state.categories;
 		this.props.onSave(data);
 		this.props.closeModal();
 	};
@@ -58,14 +58,20 @@ class CategorySetting extends Component {
 		this.props.closeModal();
 	};
 	render() {
-		const categoryFields = this.state.fields.map((field, i) => (
-			<Field key={i} id={i} data={field} onInputChange={this.onInputChange} />
-		));
 		return (
 			<div className="setting">
 				<hr />
-				<p className='setting-title'>Category Setting</p>
-				{categoryFields}
+				<p className="setting-title">Category Setting</p>
+				<form onSubmit={this.onSaveClick}>
+					{this.state.categories.map((category, i) => (
+						<CategoryColorGroup
+						key={i}
+						id={i}
+						data={category}
+						onInputChange={this.onInputChange}
+						/>
+					))}
+				</form>
 				<button className="button-modal-save" onClick={this.onSaveClick}>
 					Save
 				</button>
@@ -83,13 +89,13 @@ CategorySetting.propTypes = {
 	onSave: PropTypes.func
 };
 
-class Field extends Component {
+class CategoryColorGroup extends Component {
 	render() {
 		const ID = this.props.id;
 		const category = this.props.data.category;
 		const color = this.props.data.color;
 		return (
-			<form className="category-color-form" onSubmit={e => e.preventDefault()}>
+			<div className="category-color-form">
 				<input
 					id={ID}
 					name="color"
@@ -107,15 +113,15 @@ class Field extends Component {
 					onChange={this.props.onInputChange}
 					autoComplete="off"
 				/>
-			</form>
+			</div>
 		);
 	}
 }
 
-Field.propTypes = {
+CategoryColorGroup.propTypes = {
 	id: PropTypes.number,
 	data: PropTypes.object,
 	onInputChange: PropTypes.func
-}
+};
 
 export default CategorySetting;

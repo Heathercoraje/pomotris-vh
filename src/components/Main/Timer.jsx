@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { formatTime, alertMessage, generateRandomColor, generateID, addColorDetail } from '../../js/helper';
+import { formatTime, alertMessage, generateRandomColor, generateID } from '../../js/helper';
 
 import Setting from './Setting/Setting';
 
@@ -148,18 +148,14 @@ class Timer extends Component {
 		});
 	};
 	handleRecordSubmit = () => {
-		const category = this.state.category;
-		const task = this.state.task;
-		const startTime = this.state.startTime;
-		const duration = this.state.duration;
-		const color = generateRandomColor(task, this.props.categories)
+		const { category, task, startTime, duration, onRecordSubmit} = this.state;
+		const color = generateRandomColor(category, this.props.categories);
 		const id = generateID();
 		this.props.onRecordSubmit({ category, task, startTime, duration, color, id });
 	};
 
 	timeData = () => {
-		const duration = this.state.duration;
-		const breakTime = this.state.breakTime;
+		const { duration, breakTime } = this.state;
 		return { duration, breakTime };
 	};
 
@@ -218,6 +214,7 @@ class Timer extends Component {
 }
 
 Timer.propTypes = {
+	categories: PropTypes.array,
 	onRecordSubmit: PropTypes.func,
 	onSettingSubmit: PropTypes.func
 };

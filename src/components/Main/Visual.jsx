@@ -31,17 +31,6 @@ class Visual extends React.Component {
       </div>
     );
   }
-
-  // componentDidMount() {
-  //   this.renderD3([{ duration: 30, color: '#e6e6e6' }], 'defaultBox');
-  //   // here generating gray grids for background setting
-  //   // these two different components will have to be position:absolute
-  //   // to make them stacked on top of each others
-  // }
-  //
-  // componentDidUpdate() {
-  //   this.renderD3(this.props.records, 'box');
-  // }
 }
 
 export default Visual;

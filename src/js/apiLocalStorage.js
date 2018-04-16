@@ -28,7 +28,7 @@ const apiLocalStorage = {
 	},
 	loadCategories() {
 		return new Promise((resolve, reject) => {
-			const categories = JSON.parse(localStorage.PomotrisCategories || '[]');
+			const categories = JSON.parse(localStorage.pomotrisCategories || '[]');
 			return resolve(categories);
 		});
 	},
