@@ -1,6 +1,12 @@
 // using localStorage in place of Server for now
+import { filterByToday } from './helper';
+
 const apiLocalStorage = {
-	// do something about default
+	deleteOldRecords() {
+		const records = JSON.parse(localStorage.pomotrisRecords || null);
+		if (!records) return;
+		localStorage.pomotrisRecords = JSON.stringify(filterByToday(records));
+	},
 
 	loadRecords() {
 		const defaultRecords = [
@@ -15,16 +21,11 @@ const apiLocalStorage = {
 		];
 		return new Promise((resolve, reject) => {
 			const status = true;
-			const max_num = 20;
 			let records = JSON.parse(localStorage.pomotrisRecords || null);
 			if (!records) {
 				records = defaultRecords;
-				localStorage.pomotrisRecords = JSON.stringify(records);
-				return records;
 			}
-			const toStart = records.length - 20;
-			const recordsFiltered = records.slice(toStart, records.length);
-			return resolve(recordsFiltered);
+			return resolve(records);
 		});
 	},
 	loadCategories() {
@@ -48,6 +49,11 @@ const apiLocalStorage = {
 				return resolve({ success: true });
 			}, 1000);
 		});
+	},
+	deleleItem(id) {
+		const prevRecords = JSON.parse(localStorage.pomotrisRecords);
+		const newRecords = prevRecords.filter(r => r.id !== id);
+		localStorage.pomotrisRecords = JSON.stringify(newRecords);
 	}
 };
 

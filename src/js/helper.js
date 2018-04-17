@@ -65,10 +65,20 @@ function generateRandomColor(task, categories) {
 	return color;
 }
 
+function filterByToday(records) {
+	const today = new Date(Date.now()).toLocaleString();
+	const matcher = today.slice(0, 10);
+	const todayRecords = records.filter(record =>
+		record.startTime.includes(matcher)
+	);
+	return todayRecords;
+}
+
 module.exports = {
 	formatTime,
 	alertMessage,
 	generateRandomColor,
 	addColorDetail,
-	generateID
+	generateID,
+	filterByToday
 };
