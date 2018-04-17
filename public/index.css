@@ -120,15 +120,6 @@ button:hover,
 .wrapper-actionButtons {
 	margin: 2vh;
 }
-.RecordWrapper {
-	height: 55%;
-	border: 2px solid Gainsboro;
-	border-bottom-right-radius: 5px;
-	border-bottom-left-radius: 5px;
-}
-.recordList {
-	padding: 0;
-}
 
 /* forms, inputs */
 .timer-form {
@@ -253,7 +244,37 @@ footer {
 .list-setting > li:hover {
 	color: #434343;
 }
-
+/* recordboard */
+.RecordWrapper {
+	height: 55%;
+	border: 1px solid Gainsboro;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+.recordHelper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.helerItem {
+	height: 2.5vw;
+	width: 8vw;
+	font-size: 1vw;
+}
+.totalTimeContainer {
+	background-color: powderblue;
+	color: #000;
+	font-weight: 500;
+	padding: 8px 2px;
+}
+.toggleButton {
+	border-radius: 1px;
+	padding: 0;
+	margin: 0;
+}
+.recordItem {
+	font-size: 1vw;
+}
 /* visual */
 .visual-wrapper {
 	/*border: 1px solid grey;*/
