@@ -4,7 +4,7 @@ import ReactFauxDOM from 'react-faux-dom';
 
 class Grid extends React.Component {
   renderD3 = () => {
-    const gridData = [315];
+    const gridData = [300];
 
     const gridEl = ReactFauxDOM.createElement('div');
 

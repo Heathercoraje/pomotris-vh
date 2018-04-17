@@ -16,14 +16,7 @@ class Visual extends React.Component {
 
     d3
       .select(el)
-      .attr('class', function() {
-        if (totalTime > 105) {
-          return 'visual-wrapper-reverse';
-        } else {
-          return 'visual-wrapper';
-        }
-      })
-
+      .attr('class', 'visual-wrapper')
       .selectAll('div')
       .data(data)
       .enter()
@@ -32,7 +25,7 @@ class Visual extends React.Component {
       .enter()
       .append('div')
       .attr('class', function() {
-        if (totalTime > 1100) {
+        if (totalTime > 700) {
           return 'small-block';
         } else {
           return 'block';
@@ -45,6 +38,9 @@ class Visual extends React.Component {
           return tooltip.style('visibility', 'visible');
         } else if (!d.task) {
           tooltip.text(d.category);
+          return tooltip.style('visibility', 'visible');
+        } else if (!d.category) {
+          tooltip.text(d.task);
           return tooltip.style('visibility', 'visible');
         } else {
           tooltip.text(d.category + ', ' + d.task);
