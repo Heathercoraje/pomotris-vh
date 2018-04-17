@@ -257,16 +257,19 @@ footer {
 /* visual */
 .d3-wrapper {
   position: relative;
-}
-.visual-wrapper,
-.grid-wrapper {
   width: 40vw;
-  height: 25vh;
+  height: 30vh;
+  padding: 1vh;
+}
+.grid-wrapper,
+.visual-wrapper,
+.visual-wrapper-reverse {
+  width: 40vw;
+  height: 30vh;
   display: flex;
-  justify-content: flex-end;
   align-content: flex-end;
   flex-wrap: wrap-reverse;
-  margin: 1rem auto;
+  margin: 0 auto;
   position: absolute;
   z-index: 1;
 }
@@ -274,14 +277,18 @@ footer {
   flex-wrap: wrap;
   z-index: -1;
 }
+.visual-wrapper-reverse {
+  flex-wrap: wrap;
+}
 .block {
   height: 1.5vw;
   width: 1.5vw;
   margin: 0.2vw;
 }
 .small-block {
-  height: 0.8vw;
-  width: 0.8vw;
+  height: 1.2vw;
+  width: 1.2vw;
+  margin: 0.2vw;
 }
 .tooltip {
   position: absolute;

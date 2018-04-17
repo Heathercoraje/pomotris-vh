@@ -22,7 +22,7 @@ const Recordboard = ({ records, categories }) => {
       <h2>
         {totalTime ? 'Total' : ''} {totalTime}
       </h2>
-      <div class="d3-wrapper">
+      <div className="d3-wrapper">
         <Visual records={records} categories={categories} />
         <Grid />
       </div>
