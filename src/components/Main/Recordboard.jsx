@@ -29,22 +29,52 @@ class Recordboard extends React.Component {
 		const buttonText = isCubeMode ? 'Show list' : 'Show cubes';
 		return buttonText;
 	};
+	removeItem = event => {
+		this.props.removeRecord(event);
+	};
 
 	render() {
 		const totalTime = this.GetTotalTime(this.props.records);
 		const { records, categories } = this.props;
-		const RecordList = records.map(
-			({ category, task, duration, startTime, id }, i) => (
-				<li className="recordItem" key={i} id={id}>
-					{[category, task, duration, startTime].join(' | ')}
-				</li>
-			)
-		);
+		const RecordList = records.map(({ category, task, duration, id }, i) => (
+			<tr className="record-item" key={i} id={id}>
+				<td>
+					<span className="recordItem">{category}</span>
+				</td>
+				<td>
+					<span>{task}</span>
+				</td>
+				<td className="time-trashIcon-container">
+					<span>{duration}</span>
+					<button
+						type="button"
+						className="trashIcon"
+						id={id}
+						onClick={this.removeItem}
+					>
+						<i className="far fa-trash-alt" />
+					</button>
+				</td>
+			</tr>
+		));
 		let content;
 		if (this.state.cubeMode) {
 			content = <Visual records={records} categories={categories} />;
 		} else {
-			content = RecordList;
+			content = (
+				<div className="list-container">
+					<table className="table" align="center">
+						<thead>
+							<tr>
+								<th className="tableHead">Category</th>
+								<th className="tableHead">Task</th>
+								<th className="tableHead">Time</th>
+							</tr>
+						</thead>
+						<tbody>{RecordList}</tbody>
+					</table>
+				</div>
+			);
 		}
 		return (
 			<div className="RecordWrapper">

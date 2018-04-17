@@ -49,6 +49,11 @@ const apiLocalStorage = {
 				return resolve({ success: true });
 			}, 1000);
 		});
+	},
+	deleleItem(id) {
+		const prevRecords = JSON.parse(localStorage.pomotrisRecords);
+		const newRecords = prevRecords.filter(r => r.id !== id);
+		localStorage.pomotrisRecords = JSON.stringify(newRecords);
 	}
 };
 

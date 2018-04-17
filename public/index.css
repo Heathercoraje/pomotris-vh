@@ -248,24 +248,24 @@ footer {
 .RecordWrapper {
 	height: 55%;
 	border: 1px solid Gainsboro;
-	border-top: none;
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px;
+	overflow: scroll;
 }
 .recordHelper {
-	/* margin: 1vw; */
+	margin: 1vw;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
 }
 .helerItem {
+	color: #1b1b1b;
 	height: 3vw;
 	width: 9vw;
 	font-size: 1.1vw;
 }
 .totalTimeContainer {
 	background-color: #84bcea;
-	color: #000;
 	font-weight: 500;
 	padding: 0.8vw 2px;
 	margin-right: -1px;
@@ -279,9 +279,46 @@ footer {
 .toggleButton:hover {
 	background-color: #6bc6d1;
 }
-.recordItem {
-	font-size: 1vw;
+
+/* table */
+.list-container {
+	margin-top: 1.5vh;
 }
+.table {
+	color: #434343;
+	width: 90%;
+	border-collapse: collapse;
+}
+.table > thead > tr {
+	display: table-row;
+	border-bottom: 1px solid #ddd;
+}
+.tableHead {
+	font-size: 2vmin;
+}
+.record-item {
+	font-size: 1.7vmin;
+	height: 3.5vmin;
+	border-top: 1px solid #ddd;
+}
+.time-trashIcon-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+}
+.trashIcon {
+	background-color: transparent;
+	color: #434343;
+	float: right;
+	width: 5vmin;
+	height: 4vmin;
+	margin: 0;
+}
+.trashIcon:hover {
+	background-color: #ddd;
+}
+
 /* visual */
 .visual-wrapper {
 	/*border: 1px solid grey;*/

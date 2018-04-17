@@ -79,7 +79,15 @@ class Dashboard extends React.Component {
 			});
 		this.updateRecordsDetails(data);
 	};
-
+	removeRecord = event => {
+		const prevRecords = this.state.records.slice();
+		const target = event.target.id;
+		const records = prevRecords.filter(record => record.id !== target);
+		apiLocalStorage.deleleItem(target);
+		this.setState({
+			records
+		});
+	};
 	render() {
 		return (
 			<div className="children-container">
@@ -91,6 +99,7 @@ class Dashboard extends React.Component {
 				<Recordboard
 					records={this.state.records}
 					categories={this.state.categories}
+					removeRecord={this.removeRecord}
 				/>
 			</div>
 		);
