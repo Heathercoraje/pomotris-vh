@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
-// var ClassNames = require('classnames');
 
 const TimerSetting = props => (
 	<div className="setting">
 		<hr />
-		<p className='setting-title'>Timer Setting</p>
-		<p className='setting-sub-title'>Choose your timer option</p>
+		<p className="setting-title">Timer Setting</p>
+		<p className="setting-sub-title">Choose your timer option</p>
 		<TimerOptions {...props} />
-		<p className='setting-sub-title'>Choose your break time option</p>
+		<p className="setting-sub-title">Choose your break time option</p>
 		<BreakTimeOptions {...props} />
 		<button className="button-close" onClick={props.closeModal}>
 			Close
@@ -51,11 +50,12 @@ class TimerOptions extends Component {
 				key={i}
 				className={this.isActive(option)}
 				onClick={this.selectOption}
-				value={option}>
+				value={option}
+			>
 				{option} min
 			</button>
 		));
-		return <div className='timer-options'>{TimerOptionButtons}</div>;
+		return <div className="timer-options">{TimerOptionButtons}</div>;
 	}
 }
 
@@ -101,7 +101,8 @@ class BreakTimeOptions extends Component {
 				key={i}
 				className={this.isActive(option)}
 				onClick={this.selectOption}
-				value={option}>
+				value={option}
+			>
 				{option} min
 			</button>
 		));

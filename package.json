@@ -11,7 +11,9 @@
 		"type": "git",
 		"url": "git+https://github.com/Heathercoraje/pomotris-vh.git"
 	},
-	"keywords": ["timer"],
+	"keywords": [
+		"timer"
+	],
 	"author": "heathercoraje and veredrec",
 	"license": "ISC",
 	"bugs": {

@@ -13,8 +13,8 @@ class Dashboard extends React.Component {
 
 	// I am leaving log statements for us to make sure things are working
 	// these log statements need to be removed before deployment
-
 	componentWillMount() {
+		apiLocalStorage.deleteOldRecords();
 		apiLocalStorage
 			.loadRecords()
 			.then(records => {
@@ -35,7 +35,6 @@ class Dashboard extends React.Component {
 
 	handleRecordSubmit = newRecord => {
 		const records = [...this.state.records, newRecord];
-		console.log('success saving a new record');
 		apiLocalStorage
 			.saveRecords(records)
 			.then(() => {
@@ -67,7 +66,7 @@ class Dashboard extends React.Component {
 		apiLocalStorage
 			.saveCategories(categories)
 			.then(() => {
-				console.log('success saving a new categories');
+				console.log('success saving new categories');
 				this.setState({
 					categories
 				});

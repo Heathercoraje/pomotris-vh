@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { formatTime, alertMessage, generateRandomColor, generateID } from '../../js/helper';
+import {
+	formatTime,
+	alertMessage,
+	generateRandomColor,
+	generateID
+} from '../../js/helper';
 
 import Setting from './Setting/Setting';
 
@@ -9,7 +14,7 @@ class Timer extends Component {
 	state = {
 		category: null,
 		task: null,
-		color:'',
+		color: '',
 		startTime: null,
 		duration: 0.1,
 		remained: 0.1 * 60,
@@ -36,7 +41,7 @@ class Timer extends Component {
 	};
 	breakTimeCountDown = () => {
 		const breakTimeRemained = this.state.breakTimeRemained - 1;
-		this.setState({ breakTimeRemained});
+		this.setState({ breakTimeRemained });
 	};
 	resetTimer = newDuration => {
 		clearInterval(this.countDownID);
@@ -148,10 +153,17 @@ class Timer extends Component {
 		});
 	};
 	handleRecordSubmit = () => {
-		const { category, task, startTime, duration, onRecordSubmit} = this.state;
+		const { category, task, startTime, duration, onRecordSubmit } = this.state;
 		const color = generateRandomColor(category, this.props.categories);
 		const id = generateID();
-		this.props.onRecordSubmit({ category, task, startTime, duration, color, id });
+		this.props.onRecordSubmit({
+			category,
+			task,
+			startTime,
+			duration,
+			color,
+			id
+		});
 	};
 
 	timeData = () => {
@@ -200,6 +212,7 @@ class Timer extends Component {
 					categories={this.props.categories}
 					task={this.state.task}
 					category={this.state.category}
+					isBreakRunning={this.state.isBreakRunning}
 				/>
 				<ActionButtons
 					isNew={this.state.remained === this.state.duration * 60}
@@ -270,7 +283,8 @@ class Fields extends Component {
 			<form
 				className="timer-form"
 				onSubmit={this.onFormSubmit}
-				onBlur={this.onFormSubmit}>
+				onBlur={this.onFormSubmit}
+			>
 				<input
 					list="categories"
 					size={16}
@@ -280,11 +294,12 @@ class Fields extends Component {
 					value={this.state.fields.category}
 					onChange={this.onInputChange}
 					autoComplete="off"
+					disabled={this.props.isBreakRunning}
 				/>
 				<datalist id="categories">
-					{this.props.categories.map((category, i ) =>
+					{this.props.categories.map((category, i) => (
 						<option key={i} value={category.category} />
-					)}
+					))}
 				</datalist>
 				<input
 					size={25}
@@ -293,6 +308,7 @@ class Fields extends Component {
 					value={this.state.fields.task}
 					onChange={this.onInputChange}
 					autoComplete="off"
+					disabled={this.props.isBreakRunning}
 				/>
 				<input style={{ display: 'none' }} type="submit" />
 			</form>
@@ -306,8 +322,8 @@ Fields.propTypes = {
 	onFieldsSubmit: PropTypes.func
 };
 
+// prefer to have clean render function, so extract codes into button choice function
 class ActionButtons extends Component {
-	// prefer to have clean render function, so extract codes into button choice function
 	renderButton = () => {
 		let buttonText;
 		if (this.props.isBreakRunning && !this.props.isTimerRunning)
@@ -322,10 +338,11 @@ class ActionButtons extends Component {
 
 	render() {
 		return (
-			<div className='wrapper-actionButtons'>
+			<div className="wrapper-actionButtons">
 				<button
 					onClick={this.props.onButtonClick}
-					value={this.renderButton(this.props)}>
+					value={this.renderButton(this.props)}
+				>
 					{this.renderButton(this.props)}
 				</button>
 				<button onClick={this.props.onButtonClick} value="cancel">
