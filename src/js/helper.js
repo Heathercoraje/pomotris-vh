@@ -74,7 +74,7 @@ function filterByToday(records) {
 	return todayRecords;
 }
 
-export default {
+module.exports = {
 	formatTime,
 	alertMessage,
 	generateRandomColor,

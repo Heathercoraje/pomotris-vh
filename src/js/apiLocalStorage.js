@@ -2,7 +2,6 @@
 import { filterByToday } from './helper';
 
 const apiLocalStorage = {
-	// do something about default
 	deleteOldRecords() {
 		const records = JSON.parse(localStorage.pomotrisRecords || null);
 		if (!records) return;
