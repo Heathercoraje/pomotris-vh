@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import * as d3 from 'd3';
-// import ReactFauxDOM from 'react-faux-dom';
 import { formatTime } from '../../js/helper';
 import Visual from './Visual';
+import Grid from './Grid';
 
 class Recordboard extends React.Component {
 	state = {
@@ -100,5 +99,3 @@ Recordboard.propTypes = {
 };
 
 export default Recordboard;
-
-// D3 --------------------
