@@ -29,8 +29,8 @@ class Recordboard extends React.Component {
 		const buttonText = isCubeMode ? 'Show list' : 'Show cubes';
 		return buttonText;
 	};
-	removeItem = event => {
-		this.props.removeRecord(event);
+	deleteItem = event => {
+		this.props.deleteRecord(event);
 	};
 
 	render() {
@@ -50,7 +50,7 @@ class Recordboard extends React.Component {
 						type="button"
 						className="trashIcon"
 						id={id}
-						onClick={this.removeItem}
+						onClick={this.deleteItem}
 					>
 						<i className="far fa-trash-alt" />
 					</button>
