@@ -29,13 +29,13 @@ a {
 	text-align: left;
 }
 button {
-	width: 10vw;
-	height: 5vh;
+	width: 9vw;
+	height: 4vh;
 	margin: 0.3vw 1.2vw;
 	font-size: 1.1vw;
 	font-weight: 500;
 	background-color: MediumAquaMarine;
-	border-radius: 8px;
+	border-radius: 4px;
 	border: none;
 	cursor: pointer;
 	outline: none;
@@ -248,29 +248,36 @@ footer {
 .RecordWrapper {
 	height: 55%;
 	border: 1px solid Gainsboro;
+	border-top: none;
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px;
 }
 .recordHelper {
+	/* margin: 1vw; */
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: flex-end;
 }
 .helerItem {
-	height: 2.5vw;
-	width: 8vw;
-	font-size: 1vw;
+	height: 3vw;
+	width: 9vw;
+	font-size: 1.1vw;
 }
 .totalTimeContainer {
-	background-color: powderblue;
+	background-color: #84bcea;
 	color: #000;
 	font-weight: 500;
-	padding: 8px 2px;
+	padding: 0.8vw 2px;
+	margin-right: -1px;
 }
 .toggleButton {
+	background-color: #96d7df;
 	border-radius: 1px;
 	padding: 0;
 	margin: 0;
+}
+.toggleButton:hover {
+	background-color: #6bc6d1;
 }
 .recordItem {
 	font-size: 1vw;
@@ -324,5 +331,16 @@ footer {
 	}
 	.category-color-form {
 		margin: 1vh 0;
+	}
+}
+@media (max-width: 1100px) {
+	.children-container {
+		width: 50vw;
+	}
+	.timer {
+		height: 38%;
+	}
+	.RecordWrapper {
+		height: 62%;
 	}
 }
