@@ -29,16 +29,16 @@ a {
   text-align: left;
 }
 button {
-	width: 9vw;
-	height: 4vh;
-	margin: 0.3vw 1.2vw;
-	font-size: 1.1vw;
-	font-weight: 500;
-	background-color: MediumAquaMarine;
-	border-radius: 4px;
-	border: none;
-	cursor: pointer;
-	outline: none;
+  width: 9vw;
+  height: 4vh;
+  margin: 0.3vw 1.2vw;
+  font-size: 1.1vw;
+  font-weight: 500;
+  background-color: MediumAquaMarine;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  outline: none;
 }
 button:hover,
 .active-time {
@@ -246,104 +246,101 @@ footer {
 }
 /* recordboard */
 .RecordWrapper {
-	height: 55%;
-	border: 1px solid Gainsboro;
-	border-bottom-right-radius: 5px;
-	border-bottom-left-radius: 5px;
-	overflow: scroll;
+  height: 55%;
+  border: 1px solid Gainsboro;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  overflow: scroll;
 }
 .recordHelper {
-	margin: 1vw;
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-end;
+  margin: 1vw;
+  margin-bottom: 4vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 .helerItem {
-	color: #1b1b1b;
-	height: 3vw;
-	width: 9vw;
-	font-size: 1.1vw;
+  color: #1b1b1b;
+  height: 3vw;
+  width: 9vw;
+  font-size: 1.1vw;
 }
 .totalTimeContainer {
-	background-color: #84bcea;
-	font-weight: 500;
-	padding: 0.8vw 2px;
-	margin-right: -1px;
+  background-color: #84bcea;
+  font-weight: 500;
+  padding: 0.8vw 2px;
+  margin-right: -1px;
 }
 .toggleButton {
-	background-color: #96d7df;
-	border-radius: 1px;
-	padding: 0;
-	margin: 0;
+  background-color: #96d7df;
+  border-radius: 1px;
+  padding: 0;
+  margin: 0;
 }
 .toggleButton:hover {
-	background-color: #6bc6d1;
+  background-color: #6bc6d1;
 }
 
 /* table */
 .list-container {
-	margin-top: 1.5vh;
+  margin-top: 1.5vh;
 }
 .table {
-	color: #434343;
-	width: 90%;
-	border-collapse: collapse;
+  color: #434343;
+  width: 90%;
+  border-collapse: collapse;
 }
 .table > thead > tr {
-	display: table-row;
-	border-bottom: 1px solid #ddd;
+  display: table-row;
+  border-bottom: 1px solid #ddd;
 }
 .tableHead {
-	font-size: 2vmin;
+  font-size: 2vmin;
 }
 .record-item {
-	font-size: 1.7vmin;
-	height: 3.5vmin;
-	border-top: 1px solid #ddd;
+  font-size: 1.7vmin;
+  height: 3.5vmin;
+  border-top: 1px solid #ddd;
 }
 .time-trashIcon-container {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
 }
 .trashIcon {
-	background-color: transparent;
-	color: #434343;
-	float: right;
-	width: 5vmin;
-	height: 4vmin;
-	margin: 0;
+  background-color: transparent;
+  color: #434343;
+  float: right;
+  width: 5vmin;
+  height: 4vmin;
+  margin: 0;
 }
 .trashIcon:hover {
-	background-color: #ddd;
+  background-color: #ddd;
 }
 
 /* visual */
 .d3-wrapper {
   position: relative;
-  width: 40vw;
+  width: 38vw;
   height: 30vh;
-  padding: 1vh;
+  margin: 0 auto;
+  bottom: 2vh;
 }
 .grid-wrapper,
 .visual-wrapper,
 .visual-wrapper-reverse {
-  width: 40vw;
-  height: 30vh;
+  width: 38vw;
   display: flex;
   align-content: flex-end;
-  flex-wrap: wrap-reverse;
+  flex-wrap: wrap;
   margin: 0 auto;
   position: absolute;
   z-index: 1;
 }
 .grid-wrapper {
-  flex-wrap: wrap;
   z-index: -1;
-}
-.visual-wrapper-reverse {
-  flex-wrap: wrap;
 }
 .block {
   height: 1.5vw;
@@ -397,13 +394,13 @@ footer {
   }
 }
 @media (max-width: 1100px) {
-	.children-container {
-		width: 50vw;
-	}
-	.timer {
-		height: 38%;
-	}
-	.RecordWrapper {
-		height: 62%;
-	}
+  .children-container {
+    width: 50vw;
+  }
+  .timer {
+    height: 38%;
+  }
+  .RecordWrapper {
+    height: 62%;
+  }
 }
