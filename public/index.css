@@ -271,7 +271,8 @@ footer {
 	padding: 0.8vw 2px;
 	margin-right: -1px;
 }
-.toggleButton {
+.toggleButton,
+.clearButton {
 	background-color: #96d7df;
 	border-radius: 1px;
 	padding: 0;
@@ -281,6 +282,13 @@ footer {
 	background-color: #6bc6d1;
 }
 
+.clearButton {
+	background-color: #f46f9c;
+	width: 4vw;
+}
+.clearButton:hover {
+	background-color: #f60e5d;
+}
 /* table */
 .list-container {
 	margin-top: 1.5vh;

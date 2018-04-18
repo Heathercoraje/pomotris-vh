@@ -78,6 +78,11 @@ class Dashboard extends React.Component {
 			records
 		});
 	};
+	clearAllRecords = () => {
+		const records = [];
+		this.setState({ records });
+		apiLocalStorage.clearAllRecords();
+	};
 	render() {
 		return (
 			<div className="children-container">
@@ -90,6 +95,7 @@ class Dashboard extends React.Component {
 					records={this.state.records}
 					categories={this.state.categories}
 					deleteRecord={this.deleteRecord}
+					clearAll={this.clearAllRecords}
 				/>
 			</div>
 		);

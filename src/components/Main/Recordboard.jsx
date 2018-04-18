@@ -31,6 +31,9 @@ class Recordboard extends React.Component {
 	deleteItem = event => {
 		this.props.deleteRecord(event);
 	};
+	clearAll = () => {
+		this.props.clearAll();
+	};
 
 	render() {
 		const totalTime = this.GetTotalTime(this.props.records);
@@ -92,6 +95,9 @@ class Recordboard extends React.Component {
 					<span className="totalTimeContainer helerItem ">
 						{totalTime ? 'Total' : '00:00'} {totalTime}
 					</span>
+					<button className="clearButton helerItem " onClick={this.clearAll}>
+						Clear
+					</button>
 				</div>
 				{content}
 			</div>

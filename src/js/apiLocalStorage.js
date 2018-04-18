@@ -55,6 +55,9 @@ const apiLocalStorage = {
 		const prevRecords = JSON.parse(localStorage.pomotrisRecords);
 		const newRecords = prevRecords.filter(r => r.id !== id);
 		localStorage.pomotrisRecords = JSON.stringify(newRecords);
+	},
+	clearAllRecords() {
+		localStorage.removeItem('pomotrisRecords');
 	}
 };
 
