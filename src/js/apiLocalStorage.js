@@ -24,22 +24,18 @@ const apiLocalStorage = {
 			let records = JSON.parse(localStorage.pomotrisRecords || null);
 			if (!records) {
 				records = defaultRecords;
+				localStorage.pomotrisRecords = JSON.stringify(defaultRecords);
 			}
 			return resolve(records);
 		});
+	},
+	updateRecords(records) {
+		localStorage.pomotrisRecords = JSON.stringify(records);
 	},
 	loadCategories() {
 		return new Promise((resolve, reject) => {
 			const categories = JSON.parse(localStorage.pomotrisCategories || '[]');
 			return resolve(categories);
-		});
-	},
-	saveRecords(records) {
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
-				localStorage.pomotrisRecords = JSON.stringify(records);
-				return resolve({ success: true });
-			}, 1000);
 		});
 	},
 	saveCategories(categories) {
@@ -50,10 +46,18 @@ const apiLocalStorage = {
 			}, 1000);
 		});
 	},
+	saveItem(record) {
+		const records = JSON.parse(localStorage.pomotrisRecords || '[]');
+		records.unshift(record);
+		localStorage.pomotrisRecords = JSON.stringify(records);
+	},
 	deleleItem(id) {
 		const prevRecords = JSON.parse(localStorage.pomotrisRecords);
 		const newRecords = prevRecords.filter(r => r.id !== id);
 		localStorage.pomotrisRecords = JSON.stringify(newRecords);
+	},
+	clearAllRecords() {
+		localStorage.removeItem('pomotrisRecords');
 	}
 };
 
