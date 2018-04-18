@@ -34,30 +34,20 @@ class Dashboard extends React.Component {
 	}
 
 	handleRecordSubmit = newRecord => {
-		const records = [...this.state.records, newRecord];
-		apiLocalStorage
-			.saveRecords(records)
-			.then(() => {
-				console.log('success saving a new record');
-				this.setState({
-					records
-				});
-				console.log('success updating records state');
-			})
-			.catch(err => {
-				console.error(
-					'Sorry, Are you sure your localStorage is currently available?'
-				);
-			});
+		const records = this.state.records.slice();
+		records.unshift(newRecord);
+		apiLocalStorage.saveItem(newRecord);
+		this.setState({
+			records
+		});
 	};
 
 	updateRecordsDetails = data => {
 		const prevRecords = this.state.records.slice();
 		const categories = data;
 		const records = addColorDetail(prevRecords, categories);
-		apiLocalStorage.saveRecords(records).then(() => {
-			this.setState({ records });
-		});
+		this.setState({ records });
+		apiLocalStorage.updateRecords(records);
 	};
 
 	handleCategorySubmit = data => {
