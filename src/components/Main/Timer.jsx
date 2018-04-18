@@ -8,7 +8,7 @@ import {
 } from '../../js/helper';
 
 import Setting from './Setting/Setting';
-
+import ButtonsContainer from './ButtonsContainer';
 // 25 min/ 5 min  is default setting
 class Timer extends Component {
 	state = {
@@ -214,12 +214,18 @@ class Timer extends Component {
 					category={this.state.category}
 					isBreakRunning={this.state.isBreakRunning}
 				/>
-				<ActionButtons
+				<ButtonsContainer
+					records={this.props.records}
+					categories={this.props.categories}
 					isNew={this.state.remained === this.state.duration * 60}
 					isCompleted={!this.state.remained}
 					isBreakRunning={this.state.isBreakRunning}
 					isTimerRunning={this.state.isTimerRunning}
 					onButtonClick={this.handleActionButtonsClick}
+					toggleDisplayMode={this.props.toggleDisplayMode}
+					displayCube={this.props.displayCube}
+					deleteRecord={this.props.deleteRecord}
+					clearAll={this.props.clearAll}
 				/>
 			</div>
 		);
@@ -322,43 +328,4 @@ Fields.propTypes = {
 	onFieldsSubmit: PropTypes.func
 };
 
-// prefer to have clean render function, so extract codes into button choice function
-class ActionButtons extends Component {
-	renderButton = () => {
-		let buttonText;
-		if (this.props.isBreakRunning && !this.props.isTimerRunning)
-			buttonText = 'Pause';
-		else if (this.props.isCompleted) buttonText = 'Resume';
-		else if (!this.props.isNew && !this.props.isTimerRunning)
-			buttonText = 'Continue';
-		else if (!this.props.isTimerRunning) buttonText = 'Start';
-		else buttonText = 'Stop';
-		return buttonText;
-	};
-
-	render() {
-		return (
-			<div className="wrapper-actionButtons">
-				<button
-					onClick={this.props.onButtonClick}
-					value={this.renderButton(this.props)}
-				>
-					{this.renderButton(this.props)}
-				</button>
-				<button onClick={this.props.onButtonClick} value="cancel">
-					Cancel
-				</button>
-			</div>
-		);
-	}
-}
-
-ActionButtons.propTypes = {
-	props: PropTypes.object,
-	isNew: PropTypes.bool,
-	isCompleted: PropTypes.bool,
-	isTimerRunning: PropTypes.bool,
-	isBreakRunning: PropTypes.bool,
-	onButtonClick: PropTypes.func
-};
 export default Timer;

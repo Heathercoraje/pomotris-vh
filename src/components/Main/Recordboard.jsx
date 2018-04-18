@@ -9,34 +9,34 @@ class Recordboard extends React.Component {
 		cubeMode: true
 	};
 
-	GetTotalTime = records => {
-		const timeArray = records.map(record => Number(record.duration));
-		const totalTime = records.length
-			? formatTime(timeArray.reduce((a, b) => a + b) * 60)
-			: null;
-		return totalTime;
-	};
-	toggleDisplayMode = event => {
-		const temp = this.state.cubeMode;
-		this.setState({
-			cubeMode: !temp
-		});
-	};
+	// GetTotalTime = records => {
+	// 	const timeArray = records.map(record => Number(record.duration));
+	// 	const totalTime = records.length
+	// 		? formatTime(timeArray.reduce((a, b) => a + b) * 60)
+	// 		: null;
+	// 	return totalTime;
+	// };
+	// toggleDisplayMode = event => {
+	// 	const temp = this.state.cubeMode;
+	// 	this.setState({
+	// 		cubeMode: !temp
+	// 	});
+	// };
 
-	toggleButtonText = () => {
-		const isCubeMode = this.state.cubeMode;
-		const buttonText = isCubeMode ? 'Show list' : 'Show cubes';
-		return buttonText;
-	};
-	deleteItem = event => {
-		this.props.deleteRecord(event);
-	};
-	clearAll = () => {
-		this.props.clearAll();
-	};
+	// toggleButtonText = () => {
+	// 	const isCubeMode = this.state.cubeMode;
+	// 	const buttonText = isCubeMode ? 'Show list' : 'Show cubes';
+	// 	return buttonText;
+	// };
+	// deleteItem = event => {
+	// 	this.props.deleteRecord(event);
+	// };
+	// clearAll = () => {
+	// 	this.props.clearAll();
+	// };
 
 	render() {
-		const totalTime = this.GetTotalTime(this.props.records);
+		// const totalTime = this.GetTotalTime(this.props.records);
 		const { records, categories } = this.props;
 		const RecordList = records.map(({ category, task, duration, id }, i) => (
 			<tr className="record-item" key={i} id={id}>
@@ -85,7 +85,7 @@ class Recordboard extends React.Component {
 		}
 		return (
 			<div className="RecordWrapper">
-				<div className="recordHelper">
+				{/* <div className="recordHelper">
 					<button
 						className="toggleButton helerItem "
 						onClick={this.toggleDisplayMode}
@@ -98,7 +98,7 @@ class Recordboard extends React.Component {
 					<button className="clearButton helerItem " onClick={this.clearAll}>
 						Clear
 					</button>
-				</div>
+				</div> */}
 				{content}
 			</div>
 		);
