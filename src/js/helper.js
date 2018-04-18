@@ -34,7 +34,7 @@ function alertMessage(flag) {
 function addColorDetail(records, categories) {
 	const newRecords = records.map(record => {
 		categories.forEach(category => {
-			if (category.category === record.category) {
+			if (record.category !== '' && category.category === record.category) {
 				record.color = category.color;
 			}
 		});
@@ -49,7 +49,7 @@ function generateID() {
 
 function generateRandomColor(task, categories) {
 	let color = '#afe6b1';
-	if (!categories.length) {
+	if (!categories.length || !task) {
 		return color;
 	}
 	const categoriesArray = categories.map(c => c.category);
