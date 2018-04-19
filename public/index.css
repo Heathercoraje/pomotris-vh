@@ -65,11 +65,12 @@ button {
 	background-color: #75bd23;
 }
 .button-total-time {
+	cursor: auto;
 	font-weight: 600;
-	background-color: #62bde6;
+	background-color: #51b7ec;
 }
 .button-total-time:hover {
-	background-color: #62bde6;
+	background-color: #51b7ec;
 }
 .button-toggle {
 	background-color: #63ccda;
