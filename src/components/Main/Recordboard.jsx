@@ -36,7 +36,7 @@ class Recordboard extends React.Component {
 	// };
 
 	render() {
-		// const totalTime = this.GetTotalTime(this.props.records);
+		const displayCube = this.props.displayCube;
 		const { records, categories } = this.props;
 		const RecordList = records.map(({ category, task, duration, id }, i) => (
 			<tr className="record-item" key={i} id={id}>
@@ -60,7 +60,7 @@ class Recordboard extends React.Component {
 			</tr>
 		));
 		let content;
-		if (this.state.cubeMode) {
+		if (displayCube) {
 			content = (
 				<div className="d3-wrapper">
 					<Visual records={records} categories={categories} />

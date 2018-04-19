@@ -21,6 +21,7 @@ class ButtonsContainer extends Component {
 			: null;
 		return totalTime;
 	};
+
 	toggleButtonText = () => {
 		const cubeMode = this.props.displayCube;
 		const buttonText = cubeMode ? 'Show list' : 'Show cubes';
@@ -47,20 +48,18 @@ class ButtonsContainer extends Component {
 				<button onClick={this.props.onButtonClick} value="cancel">
 					Cancel
 				</button>
-				<div className="recordHelper">
-					<button
-						className="toggleButton helerItem "
-						onClick={this.props.toggleDisplayMode}
-					>
-						{this.toggleButtonText()}
-					</button>
-					<span className="totalTimeContainer helerItem ">
-						{totalTime ? 'Total' : '00:00'} {totalTime}
-					</span>
-					<button className="clearButton helerItem " onClick={this.clearAll}>
-						Clear
-					</button>
-				</div>
+				<button
+					className="toggleButton helerItem "
+					onClick={this.props.toggleDisplayMode}
+				>
+					{this.toggleButtonText()}
+				</button>
+				<span className="totalTimeContainer helerItem ">
+					{totalTime ? 'Total' : '00:00'} {totalTime}
+				</span>
+				<button className="clearButton helerItem " onClick={this.clearAll}>
+					Clear
+				</button>
 			</div>
 		);
 	}

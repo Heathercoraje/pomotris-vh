@@ -71,9 +71,10 @@ class Dashboard extends React.Component {
 		this.updateRecordsDetails(data);
 	};
 	toggleDisplayMode = event => {
+		console.log('hello world');
 		const temp = this.state.displayCube;
 		this.setState({
-			cubeMode: !temp
+			displayCube: !temp
 		});
 	};
 	deleteRecord = event => {
@@ -106,6 +107,7 @@ class Dashboard extends React.Component {
 				<Recordboard
 					records={this.state.records}
 					categories={this.state.categories}
+					displayCube={this.state.displayCube}
 				/>
 			</div>
 		);
