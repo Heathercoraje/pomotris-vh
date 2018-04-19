@@ -42,27 +42,27 @@ class ButtonsContainer extends Component {
 				<button
 					onClick={this.props.onButtonClick}
 					value={this.renderButton(this.props)}
-					className="button-main"
+					className="button-main button-start"
 				>
 					{this.renderButton(this.props)}
 				</button>
 				<button
 					onClick={this.props.onButtonClick}
 					value="cancel"
-					className="button-main"
+					className="button-main button-cancel"
 				>
 					Cancel
 				</button>
-				<button className="button-main ">
+				<button className="button-main button-total-time">
 					{totalTime ? 'Total' : '00:00'} {totalTime}
 				</button>
 				<button
-					className="toggleButton button-main "
+					className="button-main button-toggle"
 					onClick={this.props.toggleDisplayMode}
 				>
 					{this.toggleButtonText()}
 				</button>
-				<button className="clearButton button-main " onClick={this.clearAll}>
+				<button className="button-main button-clear" onClick={this.clearAll}>
 					Clear
 				</button>
 			</div>

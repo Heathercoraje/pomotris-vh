@@ -29,22 +29,58 @@ a {
 	padding: 10px;
 	text-align: left;
 }
+
+/* generic button attributes */
+
 button {
 	width: 9vw;
 	height: 4.5vh;
 	margin: 0.3vw 1.2vw;
 	font-size: 1.1vw;
 	font-weight: 500;
-	background-color: MediumAquaMarine;
-	border-radius: 2px;
 	border: none;
 	cursor: pointer;
 	outline: none;
+	background-color: MediumAquaMarine;
+	border-radius: 2px;
 }
+
 .button-main {
 	margin: 0;
+	border-radius: 0;
 	width: 20%;
-	height: 4vh;
+	height: 100%;
+}
+.button-start {
+	background-color: #70c58a;
+}
+.button-start:hover {
+	background-color: #25b451;
+}
+.button-cancel {
+	background-color: #a9d773;
+}
+.button-cancel:hover {
+	background-color: #75bd23;
+}
+.button-total-time {
+	font-weight: 600;
+	background-color: #62bde6;
+}
+.button-total-time:hover {
+	background-color: #62bde6;
+}
+.button-toggle {
+	background-color: #63ccda;
+}
+.button-toggle:hover {
+	background-color: #00bcd4;
+}
+.button-clear {
+	background-color: #f24c4c;
+}
+.button-clear:hover {
+	background-color: #f13030;
 }
 button:hover,
 .active-time {
@@ -107,6 +143,7 @@ button:hover,
 }
 .wrapper-setting {
 	display: flex;
+	height: 13%;
 }
 .timer {
 	display: flex;
@@ -116,20 +153,20 @@ button:hover,
 	background-color: black;
 	border-top-right-radius: 5px;
 	border-top-left-radius: 5px;
-	/* padding: 1.3rem 1rem 1.3rem 1rem; */
 }
 .clock {
-	padding-bottom: 1.5vw;
-	font-size: 5vw;
+	font-size: 5.5vw;
 	font-weight: 500;
+	height: 47%;
 }
-.wrapper-actionButtons {
-	margin: 2vh;
+.buttons-container {
+	height: 17%;
 }
 
 /* forms, inputs */
 .timer-form {
-	margin-bottom: 2vh;
+	margin: 0;
+	height: 23%;
 }
 
 /* settings */
@@ -258,42 +295,7 @@ footer {
 	border-bottom-left-radius: 5px;
 	overflow: scroll;
 }
-.recordHelper {
-	margin: 1vw;
-	margin-bottom: 4vh;
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-end;
-}
-.helerItem {
-	color: #1b1b1b;
-	height: 3vw;
-	width: 9vw;
-	font-size: 1.1vw;
-}
-/* .totalTimeContainer {
-	background-color: #84bcea;
-	font-weight: 500;
-	padding: 0.8vw 2px;
-	margin-right: -1px;
-} */
-.toggleButton,
-.clearButton {
-	background-color: #96d7df;
-	border-radius: 1px;
-	padding: 0;
-	margin: 0;
-}
-.toggleButton:hover {
-	background-color: #6bc6d1;
-}
 
-.clearButton {
-	background-color: #f46f9c;
-}
-.clearButton:hover {
-	background-color: #f60e5d;
-}
 /* table */
 .list-container {
 	margin-top: 1.5vh;
