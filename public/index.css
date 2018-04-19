@@ -339,7 +339,8 @@ footer {
 	width: 38vw;
 	height: 30vh;
 	margin: 0 auto;
-	bottom: 2vh;
+	/* bottom: 2vh; because cubes start from top, needs Vered's confirm*/
+	top: 2vh;
 }
 .grid-wrapper,
 .visual-wrapper,
