@@ -46,6 +46,7 @@ button {
 }
 
 .button-main {
+	font-size: 1vw;
 	margin: 0;
 	border-radius: 0;
 	width: 20%;
@@ -316,22 +317,26 @@ footer {
 }
 .record-item {
 	font-size: 1.7vmin;
-	height: 3.5vmin;
+	height: 5vmin;
 	border-top: 1px solid #ddd;
 }
 .table > tbody > tr > td {
 	padding-left: 8px;
 }
 .time-trashIcon-container {
+	height: 5vmin;
+
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-around;
 }
 .trashIcon {
-	background-color: transparent;
 	color: #434343;
-	float: right;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 2px;
 	width: 5vmin;
 	height: 4vmin;
 	margin: 0;

@@ -71,7 +71,6 @@ class Dashboard extends React.Component {
 		this.updateRecordsDetails(data);
 	};
 	toggleDisplayMode = event => {
-		console.log('hello world');
 		const temp = this.state.displayCube;
 		this.setState({
 			displayCube: !temp

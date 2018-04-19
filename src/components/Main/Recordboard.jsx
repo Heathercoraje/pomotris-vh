@@ -21,14 +21,9 @@ class Recordboard extends React.Component {
 				</td>
 				<td className="time-trashIcon-container">
 					<span>{duration}</span>
-					<button
-						type="button"
-						className="trashIcon"
-						id={id}
-						onClick={this.deleteItem}
-					>
-						<i className="far fa-trash-alt" />
-					</button>
+					<span id={id} className="trashIcon" onClick={this.deleteItem}>
+						<i id={id} className="far fa-trash-alt" />
+					</span>
 				</td>
 			</tr>
 		));
