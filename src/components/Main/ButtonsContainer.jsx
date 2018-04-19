@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
+
 import { formatTime } from '../../js/helper';
 
 class ButtonsContainer extends Component {
@@ -70,12 +71,12 @@ class ButtonsContainer extends Component {
 	}
 }
 
-// ButtonsContainer.propTypes = {
-// 	props: PropTypes.object,
-// 	isNew: PropTypes.bool,
-// 	isCompleted: PropTypes.bool,
-// 	isTimerRunning: PropTypes.bool,
-// 	isBreakRunning: PropTypes.bool,
-// 	onButtonClick: PropTypes.func
-// };
+ButtonsContainer.propTypes = {
+	props: PropTypes.object,
+	isNew: PropTypes.bool,
+	isCompleted: PropTypes.bool,
+	isTimerRunning: PropTypes.bool,
+	isBreakRunning: PropTypes.bool,
+	onButtonClick: PropTypes.func
+};
 export default ButtonsContainer;

@@ -208,11 +208,9 @@ class Timer extends Component {
 					}
 				/>
 				<Fields
+					{...this.state}
 					onFieldsSubmit={this.handleFieldsSubmit}
 					categories={this.props.categories}
-					task={this.state.task}
-					category={this.state.category}
-					isBreakRunning={this.state.isBreakRunning}
 				/>
 				<ButtonsContainer
 					records={this.props.records}
@@ -233,9 +231,12 @@ class Timer extends Component {
 }
 
 Timer.propTypes = {
+	records: PropTypes.array,
 	categories: PropTypes.array,
 	onRecordSubmit: PropTypes.func,
-	onSettingSubmit: PropTypes.func
+	onSettingSubmit: PropTypes.func,
+	clearAll: PropTypes.func,
+	toggleDisplayMode: PropTypes.func
 };
 
 const Clock = props => <div className="clock">{props.time}</div>;

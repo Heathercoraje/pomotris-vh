@@ -5,36 +5,9 @@ import Visual from './Visual';
 import Grid from './Grid';
 
 class Recordboard extends React.Component {
-	state = {
-		cubeMode: true
-	};
-
-	// GetTotalTime = records => {
-	// 	const timeArray = records.map(record => Number(record.duration));
-	// 	const totalTime = records.length
-	// 		? formatTime(timeArray.reduce((a, b) => a + b) * 60)
-	// 		: null;
-	// 	return totalTime;
-	// };
-	// toggleDisplayMode = event => {
-	// 	const temp = this.state.cubeMode;
-	// 	this.setState({
-	// 		cubeMode: !temp
-	// 	});
-	// };
-
-	// toggleButtonText = () => {
-	// 	const isCubeMode = this.state.cubeMode;
-	// 	const buttonText = isCubeMode ? 'Show list' : 'Show cubes';
-	// 	return buttonText;
-	// };
 	deleteItem = event => {
 		this.props.deleteRecord(event);
 	};
-	// clearAll = () => {
-	// 	this.props.clearAll();
-	// };
-
 	render() {
 		const displayCube = this.props.displayCube;
 		const { records, categories } = this.props;
@@ -83,30 +56,15 @@ class Recordboard extends React.Component {
 				</div>
 			);
 		}
-		return (
-			<div className="RecordWrapper">
-				{/* <div className="recordHelper">
-					<button
-						className="toggleButton helerItem "
-						onClick={this.toggleDisplayMode}
-					>
-						{this.toggleButtonText()}
-					</button>
-					<span className="totalTimeContainer helerItem ">
-						{totalTime ? 'Total' : '00:00'} {totalTime}
-					</span>
-					<button className="clearButton helerItem " onClick={this.clearAll}>
-						Clear
-					</button>
-				</div> */}
-				{content}
-			</div>
-		);
+		return <div className="RecordWrapper">{content}</div>;
 	}
 }
 
 Recordboard.propTypes = {
-	records: PropTypes.array
+	records: PropTypes.array,
+	categories: PropTypes.array,
+	displayCube: PropTypes.bool,
+	deleteRecord: PropTypes.func
 };
 
 export default Recordboard;

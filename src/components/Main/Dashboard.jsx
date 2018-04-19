@@ -95,20 +95,13 @@ class Dashboard extends React.Component {
 		return (
 			<div className="children-container">
 				<Timer
-					records={this.state.records}
-					categories={this.state.categories}
-					displayCube={this.state.displayCube}
+					{...this.state}
 					onRecordSubmit={this.handleRecordSubmit}
 					onCategorySubmit={this.handleCategorySubmit}
 					clearAll={this.clearAllRecords}
 					toggleDisplayMode={this.toggleDisplayMode}
 				/>
-				<Recordboard
-					deleteRecord={this.deleteRecord}
-					records={this.state.records}
-					categories={this.state.categories}
-					displayCube={this.state.displayCube}
-				/>
+				<Recordboard {...this.state} deleteRecord={this.deleteRecord} />
 			</div>
 		);
 	}
