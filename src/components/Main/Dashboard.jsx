@@ -8,7 +8,8 @@ import { addColorDetail } from '../../js/helper';
 class Dashboard extends React.Component {
 	state = {
 		records: [],
-		categories: []
+		categories: [],
+		displayCube: true
 	};
 
 	// I am leaving log statements for us to make sure things are working
@@ -69,6 +70,12 @@ class Dashboard extends React.Component {
 			});
 		this.updateRecordsDetails(data);
 	};
+	toggleDisplayMode = event => {
+		const temp = this.state.displayCube;
+		this.setState({
+			displayCube: !temp
+		});
+	};
 	deleteRecord = event => {
 		const prevRecords = this.state.records.slice();
 		const target = event.target.id;
@@ -87,16 +94,13 @@ class Dashboard extends React.Component {
 		return (
 			<div className="children-container">
 				<Timer
+					{...this.state}
 					onRecordSubmit={this.handleRecordSubmit}
 					onCategorySubmit={this.handleCategorySubmit}
-					categories={this.state.categories}
-				/>
-				<Recordboard
-					records={this.state.records}
-					categories={this.state.categories}
-					deleteRecord={this.deleteRecord}
 					clearAll={this.clearAllRecords}
+					toggleDisplayMode={this.toggleDisplayMode}
 				/>
+				<Recordboard {...this.state} deleteRecord={this.deleteRecord} />
 			</div>
 		);
 	}
