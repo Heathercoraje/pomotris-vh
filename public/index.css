@@ -26,19 +26,25 @@ a {
 /* lots of buttons/icons */
 
 .setting-icon {
+	padding: 10px;
 	text-align: left;
 }
 button {
 	width: 9vw;
-	height: 4vh;
+	height: 4.5vh;
 	margin: 0.3vw 1.2vw;
 	font-size: 1.1vw;
 	font-weight: 500;
 	background-color: MediumAquaMarine;
-	border-radius: 4px;
+	border-radius: 2px;
 	border: none;
 	cursor: pointer;
 	outline: none;
+}
+.button-main {
+	margin: 0;
+	width: 20%;
+	height: 4vh;
 }
 button:hover,
 .active-time {
@@ -110,7 +116,7 @@ button:hover,
 	background-color: black;
 	border-top-right-radius: 5px;
 	border-top-left-radius: 5px;
-	padding: 1.3rem 1rem 1.3rem 1rem;
+	/* padding: 1.3rem 1rem 1.3rem 1rem; */
 }
 .clock {
 	padding-bottom: 1.5vw;
@@ -265,12 +271,12 @@ footer {
 	width: 9vw;
 	font-size: 1.1vw;
 }
-.totalTimeContainer {
+/* .totalTimeContainer {
 	background-color: #84bcea;
 	font-weight: 500;
 	padding: 0.8vw 2px;
 	margin-right: -1px;
-}
+} */
 .toggleButton,
 .clearButton {
 	background-color: #96d7df;
@@ -284,7 +290,6 @@ footer {
 
 .clearButton {
 	background-color: #f46f9c;
-	width: 4vw;
 }
 .clearButton:hover {
 	background-color: #f60e5d;

@@ -100,11 +100,11 @@ class Dashboard extends React.Component {
 					displayCube={this.state.displayCube}
 					onRecordSubmit={this.handleRecordSubmit}
 					onCategorySubmit={this.handleCategorySubmit}
-					deleteRecord={this.deleteRecord}
 					clearAll={this.clearAllRecords}
 					toggleDisplayMode={this.toggleDisplayMode}
 				/>
 				<Recordboard
+					deleteRecord={this.deleteRecord}
 					records={this.state.records}
 					categories={this.state.categories}
 					displayCube={this.state.displayCube}

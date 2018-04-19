@@ -28,9 +28,9 @@ class Recordboard extends React.Component {
 	// 	const buttonText = isCubeMode ? 'Show list' : 'Show cubes';
 	// 	return buttonText;
 	// };
-	// deleteItem = event => {
-	// 	this.props.deleteRecord(event);
-	// };
+	deleteItem = event => {
+		this.props.deleteRecord(event);
+	};
 	// clearAll = () => {
 	// 	this.props.clearAll();
 	// };
