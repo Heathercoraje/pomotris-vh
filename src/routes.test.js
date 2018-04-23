@@ -13,9 +13,18 @@ const renderRoutes = path =>
 			<Routes />
 		</MemoryRouter>
 	);
+// testing 3 routes
 describe('#Routes', () => {
 	it('renders dashboard on base route', () => {
 		const component = renderRoutes('/');
 		expect(component.find(Dashboard)).toHaveLength(1);
+	});
+	it('renders Howto component', () => {
+		const component = renderRoutes('/howto');
+		expect(component.find(Howto)).toHaveLength(1);
+	});
+	it('renders Feedback component', () => {
+		const component = renderRoutes('/feedback');
+		expect(component.find(Feedback)).toHaveLength(1);
 	});
 });
