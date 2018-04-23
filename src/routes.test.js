@@ -4,7 +4,7 @@ import { mount, shallow } from 'enzyme';
 import { MemoryRouter } from 'react-router';
 import Routes from './routes';
 import Dashboard from './components/Main/Dashboard';
-import Feedback from './components/Feedback';
+import About from './components/About';
 import Howto from './components/Howto';
 
 const renderRoutes = path =>
@@ -24,7 +24,7 @@ describe('#Routes', () => {
 		expect(component.find(Howto)).toHaveLength(1);
 	});
 	it('renders Feedback component', () => {
-		const component = renderRoutes('/feedback');
-		expect(component.find(Feedback)).toHaveLength(1);
+		const component = renderRoutes('/about');
+		expect(component.find(About)).toHaveLength(1);
 	});
 });

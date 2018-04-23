@@ -1,4 +1,6 @@
 // browser mocks
+// this is to mock localStorage as in node env, node does not know browser api(locaStorage is an api supported by browswer)
+
 const localStorageMock = (function() {
 	let store = {};
 	return {
@@ -21,4 +23,3 @@ Object.defineProperty(window, 'localStorage', {
 	value: localStorageMock
 });
 
-// this is to mock localStorage as in node env, node does not know browser api(locaStorage is an api supported by browswer)

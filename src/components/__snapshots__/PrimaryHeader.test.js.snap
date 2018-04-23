@@ -36,9 +36,9 @@ exports[`PrimaryHeader has links 1`] = `
     <li>
       <Link
         replace={false}
-        to="/feedback"
+        to="/about"
       >
-        Feedback
+        About
       </Link>
     </li>
   </ul>

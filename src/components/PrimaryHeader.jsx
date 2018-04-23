@@ -19,7 +19,7 @@ class PrimaryHeader extends Component {
 						<Link to="/howto">How to</Link>
 					</li>
 					<li>
-						<Link to="/feedback">Feedback</Link>
+						<Link to="/about">About</Link>
 					</li>
 				</ul>
 			</header>
