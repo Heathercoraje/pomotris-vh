@@ -16,10 +16,10 @@ class PrimaryHeader extends Component {
 				</div>
 				<ul>
 					<li>
-						<Link to="/login">Login</Link>
+						<Link to="/howto">How to</Link>
 					</li>
 					<li>
-						<Link to="/mypage">Mypage</Link>
+						<Link to="/feedback">Feedback</Link>
 					</li>
 				</ul>
 			</header>
