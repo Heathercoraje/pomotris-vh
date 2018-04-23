@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer renders correctly 1`] = `
+<footer>
+  <img
+    src={
+      Object {
+        "process": [Function],
+      }
+    }
+    style={
+      Object {
+        "margin": "1vh",
+        "width": "5.5vh",
+      }
+    }
+  />
+  <p>
+     Heathercoraje and Veredrec are in building process 
+  </p>
+  <img
+    src={
+      Object {
+        "process": [Function],
+      }
+    }
+    style={
+      Object {
+        "margin": "1vh",
+        "width": "4vh",
+      }
+    }
+  />
+</footer>
+`;

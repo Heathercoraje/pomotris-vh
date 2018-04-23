@@ -10,6 +10,7 @@ const Footer = () => (
     </p>
     <img className="footer-img-right" src={green} />
   </footer>
+
 );
 
 export default Footer;

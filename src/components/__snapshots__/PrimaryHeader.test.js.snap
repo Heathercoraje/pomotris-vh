@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PrimaryHeader has links 1`] = `
+<header
+  className="primary-header"
+>
+  <div>
+    <span
+      className="logo"
+    >
+      <Link
+        replace={false}
+        to="/"
+      >
+        Pomotris
+        <img
+          className="logo-icon"
+          src={
+            Object {
+              "process": [Function],
+            }
+          }
+        />
+      </Link>
+    </span>
+  </div>
+  <ul>
+    <li>
+      <Link
+        replace={false}
+        to="/howto"
+      >
+        How to
+      </Link>
+    </li>
+    <li>
+      <Link
+        replace={false}
+        to="/about"
+      >
+        About
+      </Link>
+    </li>
+  </ul>
+</header>
+`;
