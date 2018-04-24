@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import Timer from './Timer';
 import Recordboard from './Recordboard';
 import apiLocalStorage from '../../js/apiLocalStorage';

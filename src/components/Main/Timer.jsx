@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+
 import {
 	formatTime,
 	alertMessage,
@@ -144,13 +145,25 @@ class Timer extends Component {
 		});
 	};
 	handleComplete = () => {
-		alertMessage('break');
 		clearInterval(this.countDownID);
 		this.handleRecordSubmit();
-		this.handleBreakStart();
 		this.setState({
 			isTimerRunning: false
 		});
+		// this.props.alert.show('Great job. Take a break', {
+		// 	timeout: 20000,
+		// 	onOpen: () => {},
+		// 	onClose: () => {
+		// 		this.handleBreakStart();
+		// 	}
+		// });
+		swal('Click on either the button or outside the modal.').then(value => {
+			if (value) this.handleBreakStart();
+			swal(`The returned value is: ${value}`);
+		});
+		// this.handleBreakStart();0
+
+		// alertMessage('break', this.handleBreakStart);
 	};
 	handleRecordSubmit = () => {
 		const { category, task, startTime, duration, onRecordSubmit } = this.state;
