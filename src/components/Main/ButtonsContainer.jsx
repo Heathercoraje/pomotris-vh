@@ -32,7 +32,23 @@ class ButtonsContainer extends Component {
 		this.props.deleteRecord(event);
 	};
 	clearAll = () => {
-		this.props.clearAll();
+		swal({
+			title: 'Are you sure?',
+			text:
+				'Once deleted, you will not be able to recover your pomotris records!',
+			icon: 'warning',
+			buttons: true,
+			dangerMode: true
+		}).then(willDelete => {
+			if (willDelete) {
+				this.props.clearAll();
+				swal('Alright. Your pomotris records have been deleted!', {
+					icon: 'success'
+				});
+			} else {
+				swal('Your pomotris records are safe!');
+			}
+		});
 	};
 	render() {
 		const totalTime = this.GetTotalTime(this.props.records);

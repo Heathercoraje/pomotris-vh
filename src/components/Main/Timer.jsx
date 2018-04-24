@@ -19,8 +19,8 @@ class Timer extends Component {
 		startTime: null,
 		duration: 0.1,
 		remained: 0.1 * 60,
-		breakTime: 5,
-		breakTimeRemained: 5 * 60,
+		breakTime: 0.1,
+		breakTimeRemained: 0.1 * 60,
 		isTimerRunning: false,
 		isBreakRunning: false
 	};
@@ -59,6 +59,14 @@ class Timer extends Component {
 			isTimerRunning: false,
 			isBreakRunning: false
 		});
+	};
+
+	GetTotalTime = records => {
+		const timeArray = records.map(record => Number(record.duration));
+		const totalTime = records.length
+			? formatTime(timeArray.reduce((a, b) => a + b) * 60)
+			: null;
+		return totalTime;
 	};
 
 	handleFieldsSubmit = fields => {
@@ -137,11 +145,14 @@ class Timer extends Component {
 		});
 	};
 	handleBreakOver = () => {
-		alertMessage('start');
 		this.resetTimer(this.state.duration);
 		clearInterval(this.breakTimeCountDownID);
 		this.setState({
 			isBreakRunning: false
+		});
+		swal({
+			text: 'Break is over. \n Ready for next pomotris?',
+			icon: 'info'
 		});
 	};
 	handleComplete = () => {
@@ -150,21 +161,18 @@ class Timer extends Component {
 		this.setState({
 			isTimerRunning: false
 		});
-		// this.props.alert.show('Great job. Take a break', {
-		// 	timeout: 20000,
-		// 	onOpen: () => {},
-		// 	onClose: () => {
-		// 		this.handleBreakStart();
-		// 	}
-		// });
-		swal('Click on either the button or outside the modal.').then(value => {
-			if (value) this.handleBreakStart();
-			swal(`The returned value is: ${value}`);
+		swal({
+			text: `Great job! \n Break time starts now. \n Your total time is now ${this.GetTotalTime(
+				this.props.records
+			)}`,
+			icon: 'success'
+		}).then(value => {
+			if (value) {
+				this.handleBreakStart();
+			}
 		});
-		// this.handleBreakStart();0
-
-		// alertMessage('break', this.handleBreakStart);
 	};
+
 	handleRecordSubmit = () => {
 		const { category, task, startTime, duration, onRecordSubmit } = this.state;
 		const color = generateRandomColor(category, this.props.categories);
