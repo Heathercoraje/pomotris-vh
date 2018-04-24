@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import {
 	formatTime,
 	alertMessage,
@@ -59,7 +60,6 @@ class Timer extends Component {
 			isBreakRunning: false
 		});
 	};
-
 	handleFieldsSubmit = fields => {
 		this.setState({
 			task: fields.task,
@@ -136,22 +136,32 @@ class Timer extends Component {
 		});
 	};
 	handleBreakOver = () => {
-		alertMessage('start');
 		this.resetTimer(this.state.duration);
 		clearInterval(this.breakTimeCountDownID);
 		this.setState({
 			isBreakRunning: false
 		});
+		swal({
+			text: 'Break is over. \n Ready for next pomotris?',
+			icon: 'info'
+		});
 	};
 	handleComplete = () => {
-		alertMessage('break');
 		clearInterval(this.countDownID);
 		this.handleRecordSubmit();
-		this.handleBreakStart();
 		this.setState({
 			isTimerRunning: false
 		});
+		swal({
+			text: 'Great job! \n Break time starts now. \n ',
+			icon: 'success'
+		}).then(value => {
+			if (value) {
+				this.handleBreakStart();
+			}
+		});
 	};
+
 	handleRecordSubmit = () => {
 		const { category, task, startTime, duration, onRecordSubmit } = this.state;
 		const color = generateRandomColor(category, this.props.categories);

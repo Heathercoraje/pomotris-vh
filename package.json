@@ -53,15 +53,16 @@
 		"webpack-dev-server": "^3.1.1"
 	},
 	"dependencies": {
-		"webpack": "^4.2.0",
-		"react": "^16.2.0",
-		"react-dom": "^16.2.0",
+		"classnames": "^2.2.5",
+		"d3": "^5.0.0",
+		"react": "^16.3.0",
+		"react-dom": "^16.3.0",
 		"react-faux-dom": "^4.1.0",
 		"react-router-dom": "^4.2.2",
 		"styled-components": "^3.2.3",
-		"classnames": "^2.2.5",
+		"sweetalert": "^2.1.0",
 		"uuid-v4": "^0.1.0",
-		"d3": "^5.0.0"
+		"webpack": "^4.2.0"
 	},
 	"jest": {
 		"moduleNameMapper": {
