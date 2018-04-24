@@ -60,15 +60,6 @@ class Timer extends Component {
 			isBreakRunning: false
 		});
 	};
-
-	GetTotalTime = records => {
-		const timeArray = records.map(record => Number(record.duration));
-		const totalTime = records.length
-			? formatTime(timeArray.reduce((a, b) => a + b) * 60)
-			: null;
-		return totalTime;
-	};
-
 	handleFieldsSubmit = fields => {
 		this.setState({
 			task: fields.task,
@@ -162,9 +153,7 @@ class Timer extends Component {
 			isTimerRunning: false
 		});
 		swal({
-			text: `Great job! \n Break time starts now. \n Your total time is now ${this.GetTotalTime(
-				this.props.records
-			)}`,
+			text: 'Great job! \n Break time starts now. \n ',
 			icon: 'success'
 		}).then(value => {
 			if (value) {
