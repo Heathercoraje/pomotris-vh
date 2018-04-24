@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -19,8 +19,8 @@ class Timer extends Component {
 		startTime: null,
 		duration: 0.1,
 		remained: 0.1 * 60,
-		breakTime: 0.1,
-		breakTimeRemained: 0.1 * 60,
+		breakTime: 5,
+		breakTimeRemained: 5 * 60,
 		isTimerRunning: false,
 		isBreakRunning: false
 	};
