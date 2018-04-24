@@ -22,6 +22,10 @@ a {
   text-decoration: none;
   color: inherit;
 }
+hr {
+  margin: 0;
+  padding: 0;
+}
 
 /* lots of buttons/icons */
 
@@ -163,6 +167,7 @@ button:hover,
 }
 .buttons-container {
   height: 17%;
+  display: flex;
 }
 
 /* forms, inputs */
@@ -491,7 +496,6 @@ footer {
   .modal-style {
     width: 50%;
     height: 50%;
-    top: 40%;
   }
   .input-category {
     font-size: 1.3vw;
@@ -518,6 +522,9 @@ footer {
   .children-container {
     width: 55vw;
   }
+  .clock {
+    font-size: 6vh;
+  }
   .d3-wrapper {
     width: 50vw;
     height: 35vh;
@@ -531,10 +538,17 @@ footer {
     width: 2vw;
     margin: 0.25vw;
   }
+  .footer-img-left {
+    width: 4.7vh;
+    margin: 0.8vh;
+  }
+  .footer-img-right {
+    width: 3.5vh;
+    margin: 0.8vh;
+  }
   /* modal */
   .modal-style {
     width: 60%;
-    top: 35%;
   }
   .input-category {
     font-size: 1.5vw;
@@ -566,8 +580,11 @@ footer {
 }
 
 @media screen and (max-width: 700px) {
+  .primary-header > ul > li {
+    font-size: 2vw;
+  }
   .clock {
-    font-size: 6vw;
+    font-size: 7.5vw;
   }
   .timer-form > input {
     font-size: 2vw;
@@ -592,12 +609,15 @@ footer {
     margin: 0.25vw;
   }
   /* modal */
+  .list-setting > li {
+    padding: 1vw;
+  }
   .input-category {
     font-size: 1.9vw;
     height: 4.7vh;
   }
   .setting-title {
-    font-size: 2.7vw;
+    font-size: 2.8vw;
   }
   .setting-sub-title {
     font-size: 2vh;
@@ -625,7 +645,7 @@ footer {
     width: 0.6rem;
   }
   .clock {
-    font-size: 6.5vw;
+    font-size: 9vw;
   }
   .timer-form > input {
     border-bottom: #fff 1px solid;
@@ -659,7 +679,7 @@ footer {
     height: 4.9vh;
   }
   .setting-title {
-    font-size: 2.8vw;
+    font-size: 3.3vw;
   }
   .setting-sub-title {
     font-size: 2.2vh;
@@ -680,6 +700,12 @@ footer {
 }
 
 @media screen and (max-width: 500px) {
+  header {
+    height: 5%;
+  }
+  .primary-header > ul > li {
+    font-size: 2.5vw;
+  }
   .logo {
     font-size: 3.2vw;
   }
@@ -692,21 +718,36 @@ footer {
   .button-main {
     font-size: 1.8vw;
   }
+  .clock {
+    font-size: 11vw;
+  }
   .block {
     height: 3.1vw;
     width: 3.1vw;
     margin: 0.45vw;
   }
+  .footer-img-left {
+    width: 3vh;
+    margin: 0.5vh;
+  }
+  .footer-img-right {
+    width: 2vh;
+    margin: 0.5vh;
+  }
   /* modal */
   .modal-style {
     width: 78%;
+  }
+  .list-setting > li {
+    font-size: 2.8vw;
+    padding: 1.2vw;
   }
   .input-category {
     font-size: 2.5vw;
     height: 5vh;
   }
   .setting-title {
-    font-size: 2.8vw;
+    font-size: 4vw;
   }
   .setting-sub-title {
     font-size: 1.9vh;
@@ -728,19 +769,24 @@ footer {
   }
 }
 @media screen and (max-width: 450px) {
+  .primary-header > ul > li {
+    font-size: 2.8vw;
+  }
   .logo {
     font-size: 3.5vw;
   }
   .children-container {
     width: 90vw;
+    height: 85%;
+    margin: 2% auto;
   }
   .timer {
     height: 60%;
   }
   .clock {
     height: 45%;
-    font-size: 5vh;
-    padding-top: 4vh;
+    font-size: 15vw;
+    padding-top: 2vh;
   }
   .wrapper-setting {
     height: 15%;
@@ -776,16 +822,28 @@ footer {
   .footer-text {
     font-size: 0.6rem;
   }
+  .footer-img-left {
+    width: 2vh;
+    margin: 0.3vh;
+  }
+  .footer-img-right {
+    width: 1.5vh;
+    margin: 0.3vh;
+  }
   /* modal */
   .modal-style {
     width: 90%;
+  }
+  .list-setting > li {
+    font-size: 3vw;
+    padding: 1.4vw;
   }
   .input-category {
     font-size: 3vw;
     height: 5.5vh;
   }
   .setting-title {
-    font-size: 3.2vw;
+    font-size: 5vw;
   }
   .setting-sub-title {
     font-size: 1.8vh;
