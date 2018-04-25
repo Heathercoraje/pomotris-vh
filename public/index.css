@@ -113,13 +113,21 @@ button:hover,
 .active-breakTime {
   background-color: #28b12e;
 }
+.buttons-modal-category {
+  display: flex;
+  justify-content: center;
+}
 .button-modal-save {
   background-color: MediumAquaMarine;
   color: #fff;
+  width: 28%;
+  margin-right: 2%;
 }
 .button-modal-cancel {
   background-color: #373737;
   color: #fff;
+  width: 28%;
+  margin-left: 2%;
 }
 .button-close:hover,
 .button-modal-cancel:hover {
@@ -624,7 +632,7 @@ footer {
   }
   .button-modal {
     font-size: 1.6vw;
-    width: 12vw;
+    width: 14vw;
   }
   .button-close {
     font-size: 2vw;
@@ -686,7 +694,7 @@ footer {
   }
   .button-modal {
     font-size: 1.8vw;
-    width: 14vw;
+    width: 20vw;
   }
   .button-close {
     font-size: 2.2vw;
@@ -754,18 +762,16 @@ footer {
   }
   .button-modal {
     font-size: 2vw;
-    width: 15vw;
+    width: 22vw;
   }
   .button-close {
     font-size: 2.2vw;
   }
   .button-modal-save {
     font-size: 2vw;
-    width: 25%;
   }
   .button-modal-cancel {
     font-size: 2vw;
-    width: 25%;
   }
 }
 @media screen and (max-width: 450px) {
@@ -851,17 +857,15 @@ footer {
   }
   .button-modal {
     font-size: 2.8vw;
-    width: 18vw;
+    width: 26vw;
   }
   .button-close {
     font-size: 2.6vw;
   }
   .button-modal-save {
     font-size: 2.5vw;
-    width: 30%;
   }
   .button-modal-cancel {
     font-size: 2.5vw;
-    width: 30%;
   }
 }
