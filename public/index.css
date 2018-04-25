@@ -790,27 +790,55 @@ footer {
     height: 60%;
   }
   .clock {
-    height: 45%;
+    height: 36%;
     font-size: 15vw;
     padding-top: 2vh;
   }
   .wrapper-setting {
-    height: 15%;
+    height: 12%;
   }
   .timer-form {
-    height: 27%;
+    height: 28%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    font-size: 2vw;
+    margin-bottom: 2%;
   }
   .buttons-container {
-    height: 13%;
+    height: 11.2%;
+    display: flex;
+    flex-wrap: wrap;
   }
   .RecordWrapper {
-    height: 45%;
+    height: 40%;
   }
   .timer-form > input {
-    font-size: 2.8vw;
+    font-size: 4vw;
   }
   .button-main {
     font-size: 2.7vw;
+  }
+  .button-start {
+    width: 30%;
+    order: 0;
+  }
+  .button-cancel {
+    width: 30%;
+    order: 2;
+  }
+  .button-total-time {
+    width: 40%;
+    order: 1;
+  }
+  .button-toggle {
+    width: 50%;
+    order: 3;
+  }
+  .button-clear {
+    width: 50%;
+    order: 4;
   }
   .d3-wrapper {
     width: 75vw;
