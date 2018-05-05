@@ -773,6 +773,20 @@ footer {
   .button-modal-cancel {
     font-size: 2vw;
   }
+  /* message modal */
+  .swal-button {
+    padding: 0;
+  }
+  .swal-modal {
+    width: calc(100% - 60px);
+  }
+  .swal-text {
+    font-size: 18px;
+  }
+  button.swal-button.swal-button--cancel {
+    margin-right: 10px;
+    width: 15vw;
+  }
 }
 @media screen and (max-width: 450px) {
   .primary-header > ul > li {
@@ -818,7 +832,7 @@ footer {
     font-size: 4vw;
   }
   .button-main {
-    font-size: 2.7vw;
+    font-size: 3vw;
   }
   .button-start {
     width: 30%;
