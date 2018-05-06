@@ -736,6 +736,12 @@ footer {
     width: 3.1vw;
     margin: 0.45vw;
   }
+  .tableHead {
+    font-size: 3vw;
+  }
+  .record-item {
+    font-size: 2.5vw;
+  }
   .footer-img-left {
     width: 3vh;
     margin: 0.5vh;
@@ -863,6 +869,12 @@ footer {
   .grid-wrapper,
   .visual-wrapper {
     width: 75vw;
+  }
+  .tableHead {
+    font-size: 4vw;
+  }
+  .record-item {
+    font-size: 3vw;
   }
   .block {
     height: 3.9vw;
