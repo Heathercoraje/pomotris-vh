@@ -906,7 +906,6 @@ footer {
 	float: left;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 }
 .profile {
 	width: 80%;
