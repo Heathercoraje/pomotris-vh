@@ -16,9 +16,6 @@ class PrimaryHeader extends Component {
 				</div>
 				<ul>
 					<li className="menu-item">
-						<Link to="/howto">Feedback</Link>
-					</li>
-					<li className="menu-item">
 						<Link to="/about">About</Link>
 					</li>
 				</ul>
