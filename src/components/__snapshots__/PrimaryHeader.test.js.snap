@@ -25,15 +25,9 @@ exports[`PrimaryHeader has links 1`] = `
     </span>
   </div>
   <ul>
-    <li>
-      <Link
-        replace={false}
-        to="/howto"
-      >
-        How to
-      </Link>
-    </li>
-    <li>
+    <li
+      className="menu-item"
+    >
       <Link
         replace={false}
         to="/about"
