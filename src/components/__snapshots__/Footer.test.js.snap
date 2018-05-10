@@ -3,31 +3,33 @@
 exports[`Footer renders correctly 1`] = `
 <footer>
   <img
+    className="footer-img-left"
     src={
       Object {
         "process": [Function],
-      }
-    }
-    style={
-      Object {
-        "margin": "1vh",
-        "width": "5.5vh",
       }
     }
   />
-  <p>
-     Heathercoraje and Veredrec are in building process 
+  <p
+    className="footer-text"
+  >
+     
+    Pomotris version 1.0. 2018
+     
+    <a
+      href="https://github.com/Heathercoraje/pomotris-vh"
+      target="_blank"
+    >
+      <i
+        className="fab fa-github"
+      />
+    </a>
   </p>
   <img
+    className="footer-img-right"
     src={
       Object {
         "process": [Function],
-      }
-    }
-    style={
-      Object {
-        "margin": "1vh",
-        "width": "4vh",
       }
     }
   />
