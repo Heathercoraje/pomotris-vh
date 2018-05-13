@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import Routes from '../routes';
+import './../assets/favicon.ico';
 import PrimaryHeader from '../components/PrimaryHeader';
 import Footer from '../components/Footer';
 
 const App = () => (
-	<BrowserRouter>
-		<div className="parent-container">
-			<PrimaryHeader />
-			<hr />
-			<Routes />
-			<Footer />
-		</div>
-	</BrowserRouter>
+  <BrowserRouter>
+    <div className="parent-container">
+      <PrimaryHeader />
+      <hr />
+      <Routes />
+      <Footer />
+    </div>
+  </BrowserRouter>
 );
 
 export default App;
