@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import Routes from '../routes';
+import './../../img/myIcon.ico';
 import PrimaryHeader from '../components/PrimaryHeader';
 import Footer from '../components/Footer';
 
