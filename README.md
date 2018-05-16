@@ -15,7 +15,7 @@ Click [here](https://pomotris.surge.sh)
 
 <img src="img/product0.png" width="600" display="inline">
 
-### Timer: List mode
+* **Timer: List mode**
 
 <img src="img/product1.png" width="600" display="inline">
 
