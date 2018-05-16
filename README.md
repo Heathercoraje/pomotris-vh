@@ -11,18 +11,19 @@ Click [here](https://pomotris.surge.sh)
 
 ## Product
 
-### Timer: Cube mode
+* **Timer: Cube mode**
 
 <img src="img/product0.png" width="600" display="inline">
-### Timer: List mode  
+
+### Timer: List mode
 
 <img src="img/product1.png" width="600" display="inline">
 
-### Setting: Timer option
+* **Setting: timer setting**
 
 <img src="img/product2.png" width="600" display="inline">
 
-### Setting: Timer option
+* **Setting: category setting**
 
 <img src="img/product3.png" width="600" display="inline">
 
