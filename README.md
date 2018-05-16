@@ -11,10 +11,10 @@ Click [here](https://pomotris.surge.sh)
 
 ### Product
 
-<img src="img/product0.png" width="500" display="inline">
-<img src="img/product1.png" width="500" display="inline">
-<img src="img/product2.png" width="500" display="inline">
-<img src="img/product3.png" width="500" display="inline">
+<img src="img/product0.png" width="400" display="inline">
+<img src="img/product1.png" width="400" display="inline">
+<img src="img/product2.png" width=40% display="inline">
+<img src="img/product3.png" width=40% display="inline">
 
 ### User Journey
 
