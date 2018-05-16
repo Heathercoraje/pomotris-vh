@@ -1,10 +1,19 @@
 # Pomortris
 
+### Description:page_facing_up:
+
 Pomotris is a pomodoro timer web application with a cube chart which visualizes records with colorful cubes.  
 Each cube represents 5 mins. Have fun collecting colorful cubes by being productive. 
 
 Your Records will be save inside localStorage of your browser to help the data persistance.  
 Application is restored each day and data gets cleared up at 00:00 everyday.  
+Click [here](https://pomotris.surge.sh)
+
+### Product 
+
+<img src="img/product0.png" width="500" display="inline">
+
+<img src="img/product1.png" width="500" display="inline">
 
 
 ### User Journey
@@ -17,9 +26,3 @@ Application is restored each day and data gets cleared up at 00:00 everyday.
 + Click `Clear` to remove entire timer records.  
 
 ---
-
-### Product 
-
-<img src="img/product0.png" width="500" display="inline">
-
-<img src="img/product1.png" width="500" display="inline">
