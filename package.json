@@ -13,7 +13,9 @@
 		"type": "git",
 		"url": "git+https://github.com/Heathercoraje/pomotris-vh.git"
 	},
-	"keywords": ["timer"],
+	"keywords": [
+		"timer"
+	],
 	"author": "heathercoraje and veredrec",
 	"license": "ISC",
 	"bugs": {
@@ -59,6 +61,7 @@
 		"react-dom": "^16.3.0",
 		"react-faux-dom": "^4.1.0",
 		"react-router-dom": "^4.2.2",
+		"react-sound": "^1.2.0",
 		"styled-components": "^3.2.3",
 		"sweetalert": "^2.1.0",
 		"uuid-v4": "^0.1.0",
@@ -67,11 +70,12 @@
 	},
 	"jest": {
 		"moduleNameMapper": {
-			"\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-				"<rootDir>/assetsTransformer.js",
+			"\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/assetsTransformer.js",
 			"\\.(css|less)$": "<rootDir>/assetsTransformer.js"
 		},
 		"setupTestFrameworkScriptFile": "./setupTests.js",
-		"setupFiles": ["./browserMock.js"]
+		"setupFiles": [
+			"./browserMock.js"
+		]
 	}
 }
